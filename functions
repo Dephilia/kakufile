@@ -1,0 +1,102 @@
+#! /bin/sh
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+# == Mac ================ #
+
+function --(){
+  open "$(pwd)"
+}
+
+function clean-trash(){
+if [ "$(ls -A ${HOME}/.Trash -I .DS_Store)" ]; then
+  echo "Clean Trash"
+  rm -rf ~/.Trash/*
+  afplay /System/Library/Components/CoreAudio.component/Contents/SharedSupport/SystemSounds/finder/empty\ trash.aif
+else
+  echo "Trash is Empty"
+fi
+}
+
+function imethod() {
+  iminfo=$(defaults read ~/Library/Preferences/com.apple.HIToolbox AppleSelectedInputSources)
+  inputsourcekind=$(echo -e "$iminfo" | grep 'InputSourceKind' | grep -v 'Non Keyboard Input Method' |  sed -e 's/[^"]*"\([^"]*\)".*/\1/')
+
+  if [ "${inputsourcekind}" = "Input Mode" ]; then
+      inputmode=$(echo -e "$iminfo" | grep -v 'InputSourceKind' | grep 'Input Mode' | sed -e 's/^.*com/com/' | sed -e 's/.\{2\}$//' | sed -e 's/^.*\.//')
+      echo $inputmode
+  elif [ "${inputsourcekind}" = "Keyboard Layout" ]; then
+      keyboardlayoutname=$(echo -e "$iminfo$" | grep -v 'InputSourceKind' | grep 'KeyboardLayout Name' | sed -e 's/^.*= //' | sed -e 's/.\{1\}$//')
+      echo $keyboardlayoutname
+  else
+      echo "Loading..."  # sometimes error occurs
+  fi
+}
+
+# CPU monitor
+function temp-cpu() {
+  trap '{ echo "\r               \r"; return 0; }' INT
+  while true; do
+    echo -n "\r$(osx-cpu-temp $*)"
+    sleep 1
+  done
+}
+# GPU monitor
+function temp-gpu() {
+  trap '{ echo "\r               \r"; return 0; }' INT
+  while true; do
+    echo -n "\r$(osx-cpu-temp -g $*)"
+    sleep 1
+  done
+}
+
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+# == Linux ================ #
+  :
+fi
+
+
+# == All ================ #
+
+# more smart pathmunge, prevent duplicate path add
+# Solution from https://bugzilla.redhat.com/show_bug.cgi?id=544652
+function pathmunge() {
+  case ":${PATH}:" in
+  *:"$1":*)
+      ;;
+  *)
+      if [ "$2" = "after" ]; then
+          PATH=$PATH:$1
+      else
+          PATH=$1:$PATH
+      fi
+  esac
+}
+
+# Beautifully print your path
+function echopath() {
+  if [ $+PATH ]; then
+    echo "\033[1m\033[1;34m  < $#path element(s) >\033[1;32m"
+    printf '├─ %q\n' "$path[@]"
+    echo "\033[0m"
+  else
+    echo "\033[0;31mPATH unset\033[0m"
+  fi
+}
+
+# ssh auto login
+function ssh-server-keygen() {
+  cat ${HOME}/.ssh/id_rsa.pub | ssh $(echo "$*") "mkdir -p .ssh && cat >> .ssh/authorized_keys"
+}
+
+# get now ip
+function ip-now() {
+  ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'
+}
+
+function gi() {
+  curl -sLw n https://www.gitignore.io/api/$@ ;
+}
+
+function cht() {
+  cht.sh $1 | bat --style plain
+}

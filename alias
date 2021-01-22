@@ -1,0 +1,53 @@
+#! /bin/sh
+
+
+#++++++++++++++++++# 
+#      ALIAS       #
+#++++++++++++++++++# 
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+# == Mac ================ #
+
+# cd alias
+alias cd-dev="cd ~/Documents/Dev"
+alias cd-thesis="cd ~/Documents/NTHU/toMaster/thesis"
+
+# Let brew know I have pyenv
+alias brew="env PATH='${PATH//$(pyenv root)\/shims:/}' brew"
+alias update-brew='tmux new-session -d "brew update && brew upgrade"'
+alias backup-brew="brew bundle dump --file=~/.config/homebrew/Brewfile --force --describe"
+alias sw-node12='PATH="/usr/local/opt/node@12/bin:$PATH"'
+
+alias pyenv='env LDFLAGS="-L/usr/local/opt/zlib/lib" CPPFLAGS="-I/usr/local/opt/zlib/include" pyenv'
+
+alias nproc='sysctl -n hw.logicalcpu'
+alias load_drivers='launchctl load /Library/LaunchAgents/*'
+alias unload_drivers='launchctl unload /Library/LaunchAgents/*'
+
+# lsd
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+
+# == Linux ================ #
+  :
+fi
+
+# WAN ip
+alias catpubip='echo "My WAN/Public IP address: $(curl ifconfig.me -s)"'
+
+alias lg='lazygit'
+
+# restart zsh
+alias restart="clear && exec $SHELL"
+
+# test zsh start time
+alias start-count="time zsh -i -c echo"
+
+alias vtop="vtop --theme brew"
+
+alias lsports='lsof -ni | grep LISTEN'
