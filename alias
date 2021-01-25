@@ -31,6 +31,13 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   :
 fi
 
+# Quick Back
+alias ...='../..'
+alias ....='../../..'
+alias .....='../../../..'
+alias ......='../../../../..'
+alias .......='../../../../../..'
+
 # lsd
 alias ls='lsd'
 alias l='ls -l'
