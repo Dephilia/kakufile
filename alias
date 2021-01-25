@@ -24,18 +24,19 @@ alias nproc='sysctl -n hw.logicalcpu'
 alias load_drivers='launchctl load /Library/LaunchAgents/*'
 alias unload_drivers='launchctl unload /Library/LaunchAgents/*'
 
-# lsd
-alias ls='lsd'
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
 
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 # == Linux ================ #
   :
 fi
+
+# lsd
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
 
 # WAN ip
 alias catpubip='echo "My WAN/Public IP address: $(curl ifconfig.me -s)"'
