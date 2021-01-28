@@ -83,10 +83,6 @@ function echopath() {
   fi
 }
 
-# ssh auto login
-function ssh-server-keygen() {
-  cat ${HOME}/.ssh/id_rsa.pub | ssh $(echo "$*") "mkdir -p .ssh && cat >> .ssh/authorized_keys"
-}
 
 # get now ip
 function ip-now() {
