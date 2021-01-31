@@ -38,12 +38,26 @@ alias .....='../../../..'
 alias ......='../../../../..'
 alias .......='../../../../../..'
 
+# fzf
+# fzf must source before kakufile
+if command -v fzf &> /dev/null ;then
+  alias fp="cat /etc/services | fzf"
+  alias flsof4="lsof -Pn -i4 | awk '{printf \"%10s %6s %5s %4s %-20s\n\", \$1, \$2, \$3, \$8, \$9}' | fzf --border --cycle --ansi --header-lines=1"
+  alias gcob='git checkout $(git branch | fzf --cycle --border --ansi)'
+  alias gadd="git status --short | fzf --multi --color=dark --cycle --border --ansi --preview-window=up:70% --preview=\"git diff --color {+2}\" | awk '{print \$2}'  | xargs git add"
+  alias gco="git diff --name-only | fzf --multi --color=dark --cycle --border --ansi --preview-window=up:70% --preview=\"git diff --color {+1}\" | xargs git checkout"
+  alias gustg="git diff --name-only --cached | fzf --multi --color=dark --cycle --border --ansi --preview-window=up:70% --preview="git diff --color --staged {+1}" | xargs git reset HEAD"
+  alias gbrd="git branch --color=always | fzf --multi --color=dark --cycle --border --ansi | sed 's/*//' | awk '{print \$1}' | xargs git branch -d"
+fi
+
 # lsd
-alias ls='lsd'
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
+if command -v lsd &> /dev/null ;then
+  alias ls='lsd'
+  alias l='ls -l'
+  alias la='ls -a'
+  alias lla='ls -la'
+  alias lt='ls --tree'
+fi
 
 # WAN ip
 alias catpubip='echo "My WAN/Public IP address: $(curl ifconfig.me -s)"'
