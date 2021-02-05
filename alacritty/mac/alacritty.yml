@@ -177,7 +177,6 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: false
 
-# Colors (Tomorrow Night)
 colors:
   # Default colors
   primary:
@@ -250,12 +249,6 @@ colors:
     blue:    '#37a7df'
     magenta: '#df4aa1'
     cyan:    '#7acdde'
-    #red:     '#ff5c57'
-    #green:   '#5af78e'
-    #yellow:  '#f3f99d'
-    #blue:    '#57c7ff'
-    #magenta: '#ff6ac1'
-    #cyan:    '#9aedfe'
     white:   '#f1f1f0'
 
   # Bright colors
