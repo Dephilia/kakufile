@@ -95,6 +95,18 @@ tmux_conf_theme_colour_35="#2F4F4F"   # Dark Slate Gray
 #tmux_conf_theme_colour_16="colour1"
 #tmux_conf_theme_colour_17="colour15"
 
+# My color palette
+dark_gray="#A9A9A9"
+light_blue="#ADD8E6"
+light_cyan="#E0FFFF"
+light_sky_blue="#87CEFA"
+light_slate_gray="#778899"
+light_steel_blue="#B0C4DE"
+slate_gray="#708090"
+steel_blue="#4682B4"
+seashell="#FFF5EE"
+white_smoke="#F5F5F5"
+
 # window style
 tmux_conf_theme_window_fg="default"
 tmux_conf_theme_window_bg="default"
@@ -242,8 +254,8 @@ tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d
 tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} "
 
 # status left style
-tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_8"
-tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_35,$tmux_conf_theme_colour_32,$tmux_conf_theme_colour_11"
+tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_8"
+tmux_conf_theme_status_left_bg="$steel_blue,$slate_gray,$tmux_conf_theme_colour_11"
 tmux_conf_theme_status_left_attr="bold,none,none"
 
 # status right style
