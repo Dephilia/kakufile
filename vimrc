@@ -1,7 +1,7 @@
 " @Author: dephilia <leedaniel682@gmail.com>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2021-01-17 22:59:49
+" @Last Modified time: 2021-02-06 23:48:15
 
 "++++++++++++++++++"
 "      Vars        "
@@ -71,6 +71,7 @@ Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['cpp']}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
 Plug 'moll/vim-node', {'for': ['javascript']}
 Plug 'timonv/vim-cargo', {'for': ['rust']}
+Plug 'rust-lang/rust.vim', {'for': ['rust']}
 
 " **THEME** "
 
