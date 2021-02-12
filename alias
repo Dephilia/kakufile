@@ -14,9 +14,7 @@ alias cd-thesis="cd ~/Documents/NTHU/toMaster/thesis"
 
 # Let brew know I have pyenv
 alias brew="env PATH='${PATH//$(pyenv root)\/shims:/}' brew"
-alias update-brew='tmux new-session -d "brew update && brew upgrade"'
-alias backup-brew="brew bundle dump --file=~/.config/homebrew/Brewfile --force --describe"
-alias sw-node12='PATH="/usr/local/opt/node@12/bin:$PATH"'
+alias backup-brew="brew bundle dump --file=${KAKU_ROOT}/homebrew/Brewfile --force --describe"
 
 alias pyenv='env LDFLAGS="-L/usr/local/opt/zlib/lib" CPPFLAGS="-I/usr/local/opt/zlib/include" pyenv'
 

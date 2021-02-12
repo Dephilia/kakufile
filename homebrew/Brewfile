@@ -1,0 +1,261 @@
+tap "beeftornado/rmtree"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "koekeishiya/formulae"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Interface bandwidth monitor
+brew "bmon"
+# Collection of portable C++ source libraries
+brew "boost"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
+# Outputs current CPU temperature for OSX
+brew "osx-cpu-temp"
+# Library for command-line editing
+brew "readline"
+# Command-line interface for SQLite
+brew "sqlite"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
+# Linux/OSX/FreeBSD resource monitor
+brew "bpytop"
+# Freely available high-quality data compressor
+brew "bzip2"
+# Optimized BLAS library
+brew "openblas"
+# Package manager for C programming
+brew "clib"
+# Cross-platform make
+brew "cmake"
+# Reimplementation of ctags(1)
+brew "ctags"
+# Display user-friendly message boxes from shell scripts
+brew "dialog"
+# More intuitive version of du in rust
+brew "dust"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Git extension for versioning large files
+brew "git-lfs"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Multimedia framework for research and academic purposes
+brew "gpac"
+# GitHub Markdown previewer
+brew "grip"
+# Bash and zsh history suggest box
+brew "hstr"
+# Improved top (interactive process viewer)
+brew "htop"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Implementation of the file(1) command
+brew "libmagic"
+# LLVM's OpenMP runtime library
+brew "libomp"
+# Library for USB device access
+brew "libusb"
+# Next-gen compiler infrastructure
+brew "llvm"
+# Curses-based tool for viewing and analyzing log files
+brew "lnav"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
+# Mac App Store command-line interface
+brew "mas"
+# 'traceroute' and 'ping' in a single tool
+brew "mtr"
+# Free (GNU) replacement for the Pico text editor
+brew "nano"
+# Port scanning utility for large networks
+brew "nmap"
+# Platform built on V8 to build network applications
+brew "node"
+# Cross-platform application and UI framework
+brew "qt"
+# Open source computer vision library
+brew "opencv"
+# Development kit for the Java programming language
+brew "openjdk"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# Python dependency management tool
+brew "pipenv"
+# Professional collaborative platform for embedded development
+brew "platformio"
+# Object-relational database system
+brew "postgresql"
+# Modern replacement for ps written by Rust
+brew "procs"
+# Command-line tool for managing long-running shell commands
+brew "pueue"
+# Monitor data's progress through a pipe
+brew "pv"
+# Python version management
+brew "pyenv"
+# Pyenv plugin to manage virtualenv
+brew "pyenv-virtualenv"
+# Perl-powered file rename script with many helpful built-ins
+brew "rename"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Utility that provides fast incremental file transfer
+brew "rsync"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
+# Modern Day Portscanner
+brew "rustscan"
+# Rust toolchain installer
+brew "rustup-init"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
+# SOcket CAT: netcat on steroids
+brew "socat"
+# Command-line interface for https://speedtest.net bandwidth tests
+brew "speedtest-cli"
+# Terminal multiplexer
+brew "tmux"
+# Program that allows you to count code, quickly
+brew "tokei"
+# Compress/expand executable files
+brew "upx"
+# Vi 'workalike' with many additional features
+brew "vim"
+# Internet file retriever
+brew "wget"
+# Personal information dashboard for your terminal
+brew "wtfutil"
+# JavaScript package manager
+brew "yarn"
+# Download YouTube videos from the command-line
+brew "youtube-dl"
+# General-purpose lossless data-compression library
+brew "zlib"
+# UNIX shell (command interpreter)
+brew "zsh"
+# GPU-accelerated terminal emulator
+cask "alacritty"
+# Application launcher and productivity software
+cask "alfred"
+# Application uninstaller
+cask "appcleaner"
+# Two-factor authentication software
+cask "authy"
+cask "clip-studio-paint"
+# Server and cloud storage browser
+cask "cyberduck"
+# Disk space visualizer
+cask "daisydisk"
+# API documentation browser and code snippet manager
+cask "dash"
+# Free universal database tool and SQL client
+cask "dbeaver-community"
+# Voice and text chat software
+cask "discord"
+# Draw.io is free online diagram software
+cask "drawio"
+# Web browser
+cask "firefox"
+cask "font-fira-mono-nerd-font"
+cask "font-go-mono-nerd-font"
+cask "font-mononoki-nerd-font"
+cask "font-mplus-nerd-font"
+cask "font-noto-sans-cjk"
+# Utility to fix grammar errors and style issues in text
+cask "grammarly"
+# Utility to hide menu bar items
+cask "hiddenbar"
+# Free and open-source media player
+cask "iina"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
+# Programming language for technical computing
+cask "julia"
+# Utility to render Jupyter notebooks
+cask "jupyter-notebook-viewer"
+# File archiver
+cask "keka"
+# Software for Logitech devices
+cask "logitech-options"
+# Full TeX Live distribution without GUI applications
+cask "mactex-no-gui"
+# Provides updates to various Microsoft products
+cask "microsoft-auto-update"
+# Multi-platform web browser
+cask "microsoft-edge"
+cask "minecraft"
+# Open-source music notation software
+cask "musescore"
+# Visualizer for neural network, deep learning, and machine learning models
+cask "netron"
+# Open-source software for live streaming and screen recording
+cask "obs"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Audio editor
+cask "ocenaudio"
+# VPN client
+cask "private-internet-access"
+# Bridges ProtonMail to email clients supporting IMAP and SMTP protocols
+cask "protonmail-bridge"
+cask "qt-creator"
+# PDF reader and note-taking application
+cask "skim"
+# Video chat, voice call and instant messaging application
+cask "skype"
+cask "soundflower"
+# LaTeX editor
+cask "texstudio"
+# Open-source BitTorrent client
+cask "transmission"
+# Configurable document editor that supports Markdown
+cask "typora"
+# Open-source code editor
+cask "visual-studio-code"
+# Multimedia player
+cask "vlc"
+# App to run other operating systems without rebooting
+cask "vmware-fusion"
+# Resources for Wacom tablets
+cask "wacom-tablet"
+cask "welly"
+# Lossless audio decoder
+cask "xld"
+mas "Boop", id: 1518425043
+mas "Codye", id: 1516894961
+mas "Disk Speed Test", id: 425264550
+mas "GarageBand", id: 682658836
+mas "Gifski", id: 1351639930
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "LINE", id: 539883307
+mas "Logic Pro", id: 634148309
+mas "MainStage", id: 634159523
+mas "Messenger", id: 1480068668
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft Word", id: 462054704
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Reeder", id: 1449412482
+mas "Spark", id: 1176895641
+mas "Telegram", id: 747648890
+mas "Twitter", id: 1482454543
