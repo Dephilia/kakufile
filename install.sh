@@ -65,15 +65,28 @@ if command -v COMMAND &> /dev/null; then
   [ $state -eq 0 ] && ln -s $KAKU_HOME/nanorc ${HOME}/.nanorc
 fi
 
-lno=$(\grep -nF 'alias' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
+
+lno=$(\grep -nF 'export KAKU_ROOT' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
 if [ -n "$lno" ]; then
-  echo "    - Alias already exists: line #$lno"
+  echo "    - Already exists: line #$lno"
 else
-  echo ". $KAKU_HOME/alias" >> ${HOME}/.zshrc
+  echo "export KAKU_ROOT="${HOME}/.kakufile"" >> ${HOME}/.zshrc
 fi
-lno=$(\grep -nF 'functions' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
+lno=$(\grep -nF 'bootstrap' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
 if [ -n "$lno" ]; then
-  echo "    - Functions already exists: line #$lno"
+  echo "    - Already exists: line #$lno"
 else
-  echo ". $KAKU_HOME/functions" >> ${HOME}/.zshrc
+  echo ". ${KAKU_ROOT}/bootstrap.sh" >> ${HOME}/.zshrc
 fi
+# lno=$(\grep -nF 'alias' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
+# if [ -n "$lno" ]; then
+#   echo "    - Alias already exists: line #$lno"
+# else
+#   echo ". $KAKU_HOME/alias" >> ${HOME}/.zshrc
+# fi
+# lno=$(\grep -nF 'functions' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
+# if [ -n "$lno" ]; then
+#   echo "    - Functions already exists: line #$lno"
+# else
+#   echo ". $KAKU_HOME/functions" >> ${HOME}/.zshrc
+# fi
