@@ -12,6 +12,7 @@
 - nano
 - git
 - alacritty
+- Brewfile
 
 ### Other
 
