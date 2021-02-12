@@ -1,5 +1,7 @@
 # kakufile
 
+My dotfile settings.
+
 ## Install
 `git clone git@github.com:Dephilia/kakufile.git ~/.kakufile`
 
