@@ -3,7 +3,11 @@
 My dotfile settings.
 
 ## Install
-`git clone git@github.com:Dephilia/kakufile.git ~/.kakufile`
+```shell
+git clone --recursive git@github.com:Dephilia/kakufile.git ~/.kakufile
+cd .kakufile
+./install.sh
+```
 
 ## Configure list
 

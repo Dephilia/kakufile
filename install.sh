@@ -65,19 +65,27 @@ if command -v COMMAND &> /dev/null; then
   [ $state -eq 0 ] && ln -s $KAKU_HOME/nanorc ${HOME}/.nanorc
 fi
 
+echo "Install zsh"
+if_sym_or_file ${HOME}/.zshenv
+[ $state -eq 0 ] && ln -s $KAKU_HOME/zsh/$OS/.zshenv ${HOME}/.zshenv
+[ ! -d $KAKU_HOME/zsh/$OS/.zprezto/contrib ] && git clone --recurse-submodules https://github.com/belak/prezto-contrib $KAKU_HOME/zsh/$OS/.zprezto/contrib
 
-lno=$(\grep -nF 'export KAKU_ROOT' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
-if [ -n "$lno" ]; then
-  echo "    - Already exists: line #$lno"
-else
-  echo "export KAKU_ROOT="${HOME}/.kakufile"" >> ${HOME}/.zshrc
-fi
-lno=$(\grep -nF 'bootstrap' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
-if [ -n "$lno" ]; then
-  echo "    - Already exists: line #$lno"
-else
-  echo ". ${KAKU_ROOT}/bootstrap.sh" >> ${HOME}/.zshrc
-fi
+
+# echo "git update"
+# cd $KAKU_HOME
+
+# lno=$(\grep -nF 'export KAKU_ROOT' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
+# if [ -n "$lno" ]; then
+#   echo "    - Already exists: line #$lno"
+# else
+#   echo "export KAKU_ROOT="${HOME}/.kakufile"" >> ${HOME}/.zshrc
+# fi
+# lno=$(\grep -nF 'bootstrap' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
+# if [ -n "$lno" ]; then
+#   echo "    - Already exists: line #$lno"
+# else
+#   echo ". ${KAKU_ROOT}/bootstrap.sh" >> ${HOME}/.zshrc
+# fi
 # lno=$(\grep -nF 'alias' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
 # if [ -n "$lno" ]; then
 #   echo "    - Alias already exists: line #$lno"
