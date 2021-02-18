@@ -68,7 +68,7 @@ fi
 echo "Install zsh"
 if_sym_or_file ${HOME}/.zshenv
 [ $state -eq 0 ] && ln -s $KAKU_HOME/zsh/$OS/.zshenv ${HOME}/.zshenv
-[ ! -d $KAKU_HOME/zsh/$OS/.zprezto/contrib ] && git clone --recurse-submodules https://github.com/belak/prezto-contrib $KAKU_HOME/zsh/$OS/.zprezto/contrib
+[ ! -d $KAKU_HOME/zsh/prezto/contrib ] && git clone --recurse-submodules https://github.com/belak/prezto-contrib $KAKU_HOME/zsh/prezto/contrib
 
 
 # echo "git update"

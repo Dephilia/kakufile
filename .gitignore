@@ -1,2 +1,4 @@
 gitignore_global
 .zsh_history
+.zcompdump
+.zhistory
