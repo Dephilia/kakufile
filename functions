@@ -57,6 +57,16 @@ fi
 
 # == All ================ #
 
+# Update KAKUFILE
+function update-kaku() {
+  (
+    cd $KAKU_ROOT
+    git pull
+    git submodule update --recursive --init
+    ./install.sh
+  )
+}
+
 # more smart pathmunge, prevent duplicate path add
 # Solution from https://bugzilla.redhat.com/show_bug.cgi?id=544652
 function pathmunge() {
