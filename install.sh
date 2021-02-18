@@ -17,6 +17,9 @@ function if_sym_or_file() {
   fi
 }
 
+
+_install() {
+
 KAKU_HOME="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -58,4 +61,7 @@ fi
 
 echo "Install zsh"
 if_sym_or_file ${HOME}/.zshenv "ln -s $KAKU_HOME/zsh/$OS/.zshenv ${HOME}/.zshenv"
-[ ! -d $KAKU_HOME/zsh/prezto/contrib ] && git clone --recurse-submodules https://github.com/belak/prezto-contrib $KAKU_HOME/zsh/prezto/contrib
+if [ ! -d $KAKU_HOME/zsh/prezto/contrib ]; then git clone --recurse-submodules https://github.com/belak/prezto-contrib $KAKU_HOME/zsh/prezto/contrib; fi
+}
+
+_install
