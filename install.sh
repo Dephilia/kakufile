@@ -6,17 +6,14 @@
 # Distributed under terms of the MIT license.
 #
 
-state=0
 function if_sym_or_file() {
   if [ -L $1 ]; then
     echo "    - File $1 already linked"
-    state=1
   elif [ -f $1 ]; then
     echo "    - File $1 exist, try remove it"
-    state=1
   else
     echo "    - Link $1"
-    state=0
+    $2
   fi
 }
 
@@ -49,52 +46,16 @@ fi
 echo "Link dotfiles"
 mkdir -p ${HOME}/.config/alacritty
 
-if_sym_or_file ${HOME}/.config/alacritty/alacritty.yml
-[ $state -eq 0 ] && ln -s $KAKU_HOME/alacritty/$OS/alacritty.yml ${HOME}/.config/alacritty/alacritty.yml
-if_sym_or_file $KAKU_HOME/gitignore_global
-[ $state -eq 0 ] && ln -s $KAKU_HOME/gitignore/$OS/gitignore_global $KAKU_HOME/gitignore_global
-if_sym_or_file ${HOME}/.gitconfig
-[ $state -eq 0 ] && ln -s $KAKU_HOME/gitconfig ${HOME}/.gitconfig
-if_sym_or_file ${HOME}/.tmux.conf.local
-[ $state -eq 0 ] && ln -s $KAKU_HOME/tmux.conf.local ${HOME}/.tmux.conf.local
-if_sym_or_file ${HOME}/.vimrc
-[ $state -eq 0 ] && ln -s $KAKU_HOME/vimrc ${HOME}/.vimrc
+if_sym_or_file ${HOME}/.config/alacritty/alacritty.yml "ln -s $KAKU_HOME/alacritty/$OS/alacritty.yml ${HOME}/.config/alacritty/alacritty.yml"
+if_sym_or_file $KAKU_HOME/gitignore_global "ln -s $KAKU_HOME/gitignore/$OS/gitignore_global $KAKU_HOME/gitignore_global"
+if_sym_or_file ${HOME}/.gitconfig "ln -s $KAKU_HOME/gitconfig ${HOME}/.gitconfig"
+if_sym_or_file ${HOME}/.tmux.conf.local "ln -s $KAKU_HOME/tmux.conf.local ${HOME}/.tmux.conf.local"
+if_sym_or_file ${HOME}/.vimrc "ln -s $KAKU_HOME/vimrc ${HOME}/.vimrc"
 
 if command -v COMMAND &> /dev/null; then
-  if_sym_or_file ${HOME}/.nanorc
-  [ $state -eq 0 ] && ln -s $KAKU_HOME/nanorc ${HOME}/.nanorc
+  if_sym_or_file ${HOME}/.nanorc "ln -s $KAKU_HOME/nanorc ${HOME}/.nanorc"
 fi
 
 echo "Install zsh"
-if_sym_or_file ${HOME}/.zshenv
-[ $state -eq 0 ] && ln -s $KAKU_HOME/zsh/$OS/.zshenv ${HOME}/.zshenv
+if_sym_or_file ${HOME}/.zshenv "ln -s $KAKU_HOME/zsh/$OS/.zshenv ${HOME}/.zshenv"
 [ ! -d $KAKU_HOME/zsh/prezto/contrib ] && git clone --recurse-submodules https://github.com/belak/prezto-contrib $KAKU_HOME/zsh/prezto/contrib
-
-
-# echo "git update"
-# cd $KAKU_HOME
-
-# lno=$(\grep -nF 'export KAKU_ROOT' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
-# if [ -n "$lno" ]; then
-#   echo "    - Already exists: line #$lno"
-# else
-#   echo "export KAKU_ROOT="${HOME}/.kakufile"" >> ${HOME}/.zshrc
-# fi
-# lno=$(\grep -nF 'bootstrap' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
-# if [ -n "$lno" ]; then
-#   echo "    - Already exists: line #$lno"
-# else
-#   echo ". ${KAKU_ROOT}/bootstrap.sh" >> ${HOME}/.zshrc
-# fi
-# lno=$(\grep -nF 'alias' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
-# if [ -n "$lno" ]; then
-#   echo "    - Alias already exists: line #$lno"
-# else
-#   echo ". $KAKU_HOME/alias" >> ${HOME}/.zshrc
-# fi
-# lno=$(\grep -nF 'functions' ${HOME}/.zshrc | sed 's/:.*//' | tr '\n' ' ')
-# if [ -n "$lno" ]; then
-#   echo "    - Functions already exists: line #$lno"
-# else
-#   echo ". $KAKU_HOME/functions" >> ${HOME}/.zshrc
-# fi
