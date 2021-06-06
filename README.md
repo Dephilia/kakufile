@@ -4,7 +4,7 @@ My dotfile settings.
 
 ## Install
 ```shell
-git clone --recursive git@github.com:Dephilia/kakufile.git ~/.kakufile
+git clone git@github.com:Dephilia/kakufile.git ~/.kakufile
 cd .kakufile
 ./install.sh
 ```
