@@ -62,7 +62,6 @@ function update-kaku() {
   (
     cd $KAKU_ROOT
     git pull
-    git submodule update --recursive --init
     ./install.sh
   )
 }

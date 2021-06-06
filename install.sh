@@ -60,8 +60,11 @@ if command -v COMMAND &> /dev/null; then
 fi
 
 echo "Install zsh"
-if_sym_or_file ${HOME}/.zshenv "ln -s $KAKU_HOME/zsh/$OS/.zshenv ${HOME}/.zshenv"
-if [ ! -d $KAKU_HOME/zsh/prezto/contrib ]; then git clone --recurse-submodules https://github.com/belak/prezto-contrib $KAKU_HOME/zsh/prezto/contrib; fi
+export ZDOTDIR=$KAKU_HOME/zsh/$OS
+if_sym_or_file ${HOME}/.zshenv "ln -s ${ZDOTDIR}/.zshenv ${HOME}/.zshenv"
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+git clone --recurse-submodules https://github.com/belak/prezto-contrib ${ZDOTDIR}/.zprezto/contrib
+
 }
 
 _install

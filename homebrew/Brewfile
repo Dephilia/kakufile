@@ -1,4 +1,3 @@
-tap "apenngrace/vulkan"
 tap "beeftornado/rmtree"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -14,18 +13,14 @@ brew "bat"
 brew "openssl@1.1"
 # Interface bandwidth monitor
 brew "bmon"
-# Outputs current CPU temperature for OSX
-brew "osx-cpu-temp"
+# Freely available high-quality data compressor
+brew "bzip2"
 # Library for command-line editing
 brew "readline"
 # General-purpose data compression with high compression ratio
 brew "xz"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.9"
-# Linux/OSX/FreeBSD resource monitor
-brew "bpytop"
-# Freely available high-quality data compressor
-brew "bzip2"
 # Package manager for C programming
 brew "clib"
 # Cross-platform make
@@ -90,6 +85,8 @@ brew "nmap"
 brew "node"
 # Development kit for the Java programming language
 brew "openjdk"
+# Outputs current CPU temperature for OSX
+brew "osx-cpu-temp"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Python dependency management tool
@@ -136,8 +133,6 @@ brew "upx"
 brew "vim"
 # Internet file retriever
 brew "wget"
-# Personal information dashboard for your terminal
-brew "wtfutil"
 # JavaScript package manager
 brew "yarn"
 # Download YouTube videos from the command-line
@@ -175,6 +170,8 @@ cask "font-go-mono-nerd-font"
 cask "font-mononoki-nerd-font"
 cask "font-mplus-nerd-font"
 cask "font-noto-sans-cjk"
+# Audio player
+cask "foobar2000"
 # Utility to fix grammar errors and style issues in text
 cask "grammarly"
 # Utility to hide menu bar items
@@ -197,6 +194,7 @@ cask "mactex-no-gui"
 cask "microsoft-auto-update"
 # Multi-platform web browser
 cask "microsoft-edge"
+# Sandbox construction video game
 cask "minecraft"
 # Open-source music notation software
 cask "musescore"
@@ -214,7 +212,6 @@ cask "ocenaudio"
 cask "private-internet-access"
 # Bridges ProtonMail to email clients supporting IMAP and SMTP protocols
 cask "protonmail-bridge"
-cask "qt-creator"
 # PDF reader and note-taking application
 cask "skim"
 # Video chat, voice call and instant messaging application
@@ -230,13 +227,15 @@ cask "typora"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
-# App to run other operating systems without rebooting
+# Create, manage, and run virtual machines
 cask "vmware-fusion"
 # Resources for Wacom tablets
 cask "wacom-tablet"
 cask "welly"
 # Lossless audio decoder
 cask "xld"
+# Open-source version of the X.Org X Window System
+cask "xquartz"
 mas "Affinity Photo", id: 824183456
 mas "Boop", id: 1518425043
 mas "Codye", id: 1516894961
