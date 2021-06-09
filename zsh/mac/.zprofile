@@ -59,7 +59,7 @@ fpath=(
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  ${HOME}/{.cargo/bin,.go/bin,.bin}
+  ${HOME}/{.cargo/bin,.go/bin,.local/bin}
   /usr/local/{bin,sbin}
   $path
 )

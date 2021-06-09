@@ -53,14 +53,16 @@ brew "gpac"
 brew "grip"
 # Improved top (interactive process viewer)
 brew "htop"
+# LLVM's OpenMP runtime library
+brew "libomp"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Implementation of the file(1) command
 brew "libmagic"
-# LLVM's OpenMP runtime library
-brew "libomp"
 # Library for USB device access
 brew "libusb"
 # Next-gen compiler infrastructure
@@ -83,6 +85,8 @@ brew "ninja"
 brew "nmap"
 # Platform built on V8 to build network applications
 brew "node"
+# Platform built on V8 to build network applications
+brew "node@14"
 # Development kit for the Java programming language
 brew "openjdk"
 # Outputs current CPU temperature for OSX
@@ -153,9 +157,7 @@ cask "authy"
 cask "clip-studio-paint"
 # Disk space visualizer
 cask "daisydisk"
-# API documentation browser and code snippet manager
-cask "dash"
-# Free universal database tool and SQL client
+# Universal database tool and SQL client
 cask "dbeaver-community"
 # Voice and text chat software
 cask "discord"
@@ -194,6 +196,8 @@ cask "mactex-no-gui"
 cask "microsoft-auto-update"
 # Multi-platform web browser
 cask "microsoft-edge"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
 # Sandbox construction video game
 cask "minecraft"
 # Open-source music notation software
@@ -214,8 +218,6 @@ cask "private-internet-access"
 cask "protonmail-bridge"
 # PDF reader and note-taking application
 cask "skim"
-# Video chat, voice call and instant messaging application
-cask "skype"
 cask "soundflower"
 # LaTeX editor
 cask "texstudio"
@@ -231,13 +233,13 @@ cask "vlc"
 cask "vmware-fusion"
 # Resources for Wacom tablets
 cask "wacom-tablet"
+# BBS client
 cask "welly"
 # Lossless audio decoder
 cask "xld"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
 mas "Affinity Photo", id: 824183456
-mas "Boop", id: 1518425043
 mas "Codye", id: 1516894961
 mas "Disk Speed Test", id: 425264550
 mas "GarageBand", id: 682658836

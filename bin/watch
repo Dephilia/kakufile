@@ -1,0 +1,21 @@
+#!/bin/bash
+# usage: watch <your_command> <sleep_duration>
+
+if [ $# -eq 0 ]; then
+  echo "usage: watch <your_command> <sleep_duration>"
+  exit 1
+fi
+
+if [ -z $2 ]; then
+  interval=2
+else
+  interval=$2
+fi
+
+while :; 
+  do 
+  clear
+  date
+  $1
+  sleep $interval
+done
