@@ -1,7 +1,7 @@
 " @Author: dephilia <leedaniel682@gmail.com>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2021-02-06 23:48:15
+" @Last Modified time: 2021-06-11 11:32:34
 
 "++++++++++++++++++"
 "      Vars        "
@@ -11,6 +11,7 @@ let mapleader = ","
 let g:SnazzyTransparent = 1
 
 " airline setting
+let g:airline_powerline_fonts                 = 1
 let g:airline#extensions#tabline#enabled      = 1
 let g:airline#extensions#tabline#left_sep     = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -75,6 +76,7 @@ Plug 'rust-lang/rust.vim', {'for': ['rust']}
 
 " **THEME** "
 
+Plug 'arcticicestudio/nord-vim'
 Plug 'connorholyday/vim-snazzy'
 
 call plug#end()
