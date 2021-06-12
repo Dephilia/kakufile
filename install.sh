@@ -55,9 +55,9 @@ if_sym_or_file ${HOME}/.gitconfig "ln -s $KAKU_HOME/gitconfig ${HOME}/.gitconfig
 if_sym_or_file ${HOME}/.tmux.conf.local "ln -s $KAKU_HOME/tmux.conf.local ${HOME}/.tmux.conf.local"
 if_sym_or_file ${HOME}/.vimrc "ln -s $KAKU_HOME/vimrc ${HOME}/.vimrc"
 
-if command -v COMMAND &> /dev/null; then
-  if_sym_or_file ${HOME}/.nanorc "ln -s $KAKU_HOME/nanorc ${HOME}/.nanorc"
-fi
+# if command -v COMMAND &> /dev/null; then
+#   if_sym_or_file ${HOME}/.nanorc "ln -s $KAKU_HOME/nanorc ${HOME}/.nanorc"
+# fi
 
 echo "Install zsh"
 export ZDOTDIR=$KAKU_HOME/zsh/$OS
