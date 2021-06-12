@@ -6,6 +6,9 @@
 # Distributed under terms of the MIT license.
 #
 
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+
 function if_sym_or_file() {
   if [ -L $1 ]; then
     echo "    - File $1 already linked"
@@ -49,9 +52,9 @@ fi
 echo "Link dotfiles"
 mkdir -p ${HOME}/.config/alacritty
 
-if_sym_or_file ${HOME}/.config/alacritty/alacritty.yml "ln -s $KAKU_HOME/alacritty/$OS/alacritty.yml ${HOME}/.config/alacritty/alacritty.yml"
+if_sym_or_file ${HOME}/.config/alacritty/alacritty.yml "ln -s $KAKU_HOME/alacritty/$OS/alacritty.yml ${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
 if_sym_or_file $KAKU_HOME/gitignore_global "ln -s $KAKU_HOME/gitignore/$OS/gitignore_global $KAKU_HOME/gitignore_global"
-if_sym_or_file ${HOME}/.gitconfig "ln -s $KAKU_HOME/gitconfig ${HOME}/.gitconfig"
+if_sym_or_file ${HOME}/.gitconfig "ln -s $KAKU_HOME/gitconfig ${XDG_CONFIG_HOME}/git/config"
 if_sym_or_file ${HOME}/.tmux.conf.local "ln -s $KAKU_HOME/tmux.conf.local ${HOME}/.tmux.conf.local"
 if_sym_or_file ${HOME}/.vimrc "ln -s $KAKU_HOME/vimrc ${HOME}/.vimrc"
 
