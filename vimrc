@@ -1,7 +1,7 @@
 " @Author: dephilia <leedaniel682@gmail.com>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2021-06-11 11:32:34
+" @Last Modified time: 2021-06-13 01:21:53
 
 "++++++++++++++++++"
 "      Vars        "
@@ -18,13 +18,13 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter    = 'default'
 let g:airline_theme                           = 'deus'
 
-let g:rainbow_active = 1
-let g:Tlist_Ctags_Cmd = '/usr/local/opt/ctags'
-let g:python_highlight_all = 1
-let g:go_template_autocreate = 0
+let g:rainbow_active          = 1
+let g:Tlist_Ctags_Cmd         = '/usr/local/opt/ctags'
+let g:python_highlight_all    = 1
+let g:go_template_autocreate  = 0
 let g:javascript_plugin_jsdoc = 1
+let g:ycm_confirm_extra_conf  = 0
 " let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf = 0
 
 "++++++++++++++++++"
 "      Plug        "
@@ -56,8 +56,8 @@ Plug 'tpope/vim-surround'                 " quote it
 Plug 'easymotion/vim-easymotion'          " move it!
 Plug 'luochen1990/rainbow'                " colorful brackets
 
-Plug 'scrooloose/nerdtree' , { 'on':  'NERDTreeToggle' } " treeeee
-Plug 'majutsushi/tagbar', {'on': 'TagBarToggle'}
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'majutsushi/tagbar',   { 'on': 'TagBarToggle' }
 
 
 " **Coding!** "
@@ -69,10 +69,10 @@ command! YcmCompleter call plug#load('YouCompleteMe') | call youcompleteme#Enabl
 Plug 'sheerun/vim-polyglot'             " many syntax
 
 Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['cpp']}
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
-Plug 'moll/vim-node', {'for': ['javascript']}
-Plug 'timonv/vim-cargo', {'for': ['rust']}
-Plug 'rust-lang/rust.vim', {'for': ['rust']}
+Plug 'fatih/vim-go',                     {'do':  ':GoUpdateBinaries', 'for': 'go'}
+Plug 'moll/vim-node',                    {'for': ['javascript']}
+Plug 'timonv/vim-cargo',                 {'for': ['rust']}
+Plug 'rust-lang/rust.vim',               {'for': ['rust']}
 
 " **THEME** "
 
