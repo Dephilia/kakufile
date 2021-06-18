@@ -1,7 +1,7 @@
 " @Author: dephilia <leedaniel682@gmail.com>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2021-06-13 01:21:53
+" @Last Modified time: 2021-06-16 13:17:11
 
 "++++++++++++++++++"
 "      Vars        "
@@ -16,7 +16,8 @@ let g:airline#extensions#tabline#enabled      = 1
 let g:airline#extensions#tabline#left_sep     = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter    = 'default'
-let g:airline_theme                           = 'deus'
+" let g:airline_theme                           = 'deus'
+let g:airline_theme                           = 'base16_snazzy'
 
 let g:rainbow_active          = 1
 let g:Tlist_Ctags_Cmd         = '/usr/local/opt/ctags'

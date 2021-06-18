@@ -29,6 +29,8 @@ brew "cmake"
 brew "ctags"
 # Display user-friendly message boxes from shell scripts
 brew "dialog"
+# Minify and secure Docker images
+brew "docker-slim"
 # More intuitive version of du in rust
 brew "dust"
 # Simple, fast and user-friendly alternative to find
@@ -65,8 +67,6 @@ brew "lazygit"
 brew "libmagic"
 # Library for USB device access
 brew "libusb"
-# Next-gen compiler infrastructure
-brew "llvm"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
 # Clone of ls with colorful output, file type icons, and more
@@ -77,8 +77,6 @@ brew "mas"
 brew "minicom"
 # 'traceroute' and 'ping' in a single tool
 brew "mtr"
-# Free (GNU) replacement for the Pico text editor
-brew "nano"
 # Small build system for use with gyp or CMake
 brew "ninja"
 # Port scanning utility for large networks
@@ -95,8 +93,6 @@ brew "osx-cpu-temp"
 brew "pandoc"
 # Python dependency management tool
 brew "pipenv"
-# Professional collaborative platform for embedded development
-brew "platformio"
 # Modern replacement for ps written by Rust
 brew "procs"
 # Command-line tool for managing long-running shell commands
@@ -131,8 +127,12 @@ brew "speedtest-cli"
 brew "tmux"
 # Program that allows you to count code, quickly
 brew "tokei"
+# Command-line interface to the freedesktop.org trashcan
+brew "trash-cli"
 # Compress/expand executable files
 brew "upx"
+# C++ Library Manager
+brew "vcpkg"
 # Vi 'workalike' with many additional features
 brew "vim"
 # Internet file retriever
@@ -172,6 +172,7 @@ cask "font-go-mono-nerd-font"
 cask "font-mononoki-nerd-font"
 cask "font-mplus-nerd-font"
 cask "font-noto-sans-cjk"
+cask "font-powerline-symbols"
 # Audio player
 cask "foobar2000"
 # Utility to fix grammar errors and style issues in text
@@ -241,7 +242,6 @@ cask "xld"
 cask "xquartz"
 mas "Affinity Photo", id: 824183456
 mas "Codye", id: 1516894961
-mas "Disk Speed Test", id: 425264550
 mas "GarageBand", id: 682658836
 mas "Gifski", id: 1351639930
 mas "iMovie", id: 408981434
