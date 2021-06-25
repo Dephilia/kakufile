@@ -59,6 +59,7 @@ fi
 
 # WAN ip
 alias catpubip='echo "My WAN/Public IP address: $(curl ifconfig.me -s)"'
+alias ipinfo='curl -sH "Accept: application/json" ipinfo.io | jq'
 
 alias lg='lazygit'
 
