@@ -1,7 +1,7 @@
 " @Author: dephilia <leedaniel682@gmail.com>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2021-06-16 13:17:11
+" @Last Modified time: 2021-07-09 14:48:56
 
 "++++++++++++++++++"
 "      Vars        "
@@ -16,7 +16,6 @@ let g:airline#extensions#tabline#enabled      = 1
 let g:airline#extensions#tabline#left_sep     = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter    = 'default'
-" let g:airline_theme                           = 'deus'
 let g:airline_theme                           = 'base16_snazzy'
 
 let g:rainbow_active          = 1
@@ -43,19 +42,19 @@ call plug#begin('~/.vim/plugged')
 
 " **BASIC** "
 
-Plug 'vim-airline/vim-airline'            " beautiful status bar
-Plug 'vim-airline/vim-airline-themes'     " airline themes
-Plug 'ryanoasis/vim-devicons'             " give vim icons
-Plug 'aperezdc/vim-template'              " Template for new file
-Plug 'junegunn/vim-easy-align'            " make code beautiful
-Plug 'ahonn/vim-fileheader'               " insert the info at head
-Plug 'airblade/vim-gitgutter'             " show git status
-Plug 'tpope/vim-commentary'               " use [gc] to comment everything
-Plug 'psliwka/vim-smoothie'
-Plug 'godlygeek/tabular'                  " align tool
-Plug 'tpope/vim-surround'                 " quote it
-Plug 'easymotion/vim-easymotion'          " move it!
-Plug 'luochen1990/rainbow'                " colorful brackets
+Plug 'vim-airline/vim-airline'        " beautiful status bar
+Plug 'vim-airline/vim-airline-themes' " airline themes
+Plug 'ryanoasis/vim-devicons'         " give vim icons
+Plug 'aperezdc/vim-template'          " Template for new file
+Plug 'junegunn/vim-easy-align'        " make code beautiful
+Plug 'ahonn/vim-fileheader'           " insert the info at head
+Plug 'airblade/vim-gitgutter'         " show git status
+Plug 'tpope/vim-commentary'           " use [gc] to comment everything
+Plug 'psliwka/vim-smoothie'           " More smoooooooth
+Plug 'godlygeek/tabular'              " align tool
+Plug 'tpope/vim-surround'             " quote it
+Plug 'easymotion/vim-easymotion'      " move it!
+Plug 'luochen1990/rainbow'            " colorful brackets
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'majutsushi/tagbar',   { 'on': 'TagBarToggle' }
