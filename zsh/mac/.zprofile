@@ -91,7 +91,6 @@ fi
 export GOPATH="${XDG_DATA_HOME}/go"
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
-export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
 export HOMEBREW_PREFIX="/usr/local";
 export HOMEBREW_CELLAR="/usr/local/Cellar";
 export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
