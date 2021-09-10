@@ -1,7 +1,7 @@
 " @Author: dephilia <leedaniel682@gmail.com>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2021-07-09 14:48:56
+" @Last Modified time: 2021-08-16 14:54:36
 
 "++++++++++++++++++"
 "      Vars        "
@@ -23,6 +23,7 @@ let g:Tlist_Ctags_Cmd         = '/usr/local/opt/ctags'
 let g:python_highlight_all    = 1
 let g:go_template_autocreate  = 0
 let g:javascript_plugin_jsdoc = 1
+let g:ycm_auto_hover = ''
 let g:ycm_confirm_extra_conf  = 0
 " let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
@@ -36,7 +37,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
 
 call plug#begin('~/.vim/plugged')
 
@@ -137,6 +137,8 @@ noremap <Leader>P "+p
 " autocmd Filetype cpp    nnoremap <buffer> <C-b> :w<CR> :!clang++ % -o /tmp/temp.out -std=c++17 && /tmp/temp.out && rm /tmp/temp.out <CR>
 " autocmd Filetype c      nnoremap <buffer> <C-b> :w<CR> :!clang % -o /tmp/temp.out && /tmp/temp.out && rm /tmp/temp.out <CR>
 " autocmd Filetype tex    nnoremap <buffer> <C-b> :w<CR> :!if [ -s %:r.pdf ] ; then /bin/rm %:r.pdf && pdflatex % ; else pdflatex % ; fi <CR> :!open %:r.pdf <CR> <CR>
+"
+nmap <leader>D <plug>(YCMHover)
 
 "++++++++++++++++++"
 "      MAIN        "

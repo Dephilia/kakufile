@@ -27,10 +27,10 @@ brew "clib"
 brew "cmake"
 # Reimplementation of ctags(1)
 brew "ctags"
+# Secure runtime for JavaScript and TypeScript
+brew "deno"
 # Display user-friendly message boxes from shell scripts
 brew "dialog"
-# Minify and secure Docker images
-brew "docker-slim"
 # More intuitive version of du in rust
 brew "dust"
 # Simple, fast and user-friendly alternative to find
@@ -45,6 +45,8 @@ brew "gcc"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
 # Open source programming language to build simple/reliable/efficient software
@@ -55,6 +57,8 @@ brew "gpac"
 brew "grip"
 # Improved top (interactive process viewer)
 brew "htop"
+# Configurable static site generator
+brew "hugo"
 # LLVM's OpenMP runtime library
 brew "libomp"
 # Tools and libraries to manipulate images in many formats
@@ -73,24 +77,28 @@ brew "lnav"
 brew "lsd"
 # Mac App Store command-line interface
 brew "mas"
+# Modern and intuitive terminal-based text editor
+brew "micro"
 # Menu-driven communications program
 brew "minicom"
 # 'traceroute' and 'ping' in a single tool
 brew "mtr"
+# Interactive cheatsheet tool for the command-line
+brew "navi"
 # Small build system for use with gyp or CMake
 brew "ninja"
 # Port scanning utility for large networks
 brew "nmap"
 # Platform built on V8 to build network applications
 brew "node"
-# Platform built on V8 to build network applications
-brew "node@14"
 # Development kit for the Java programming language
 brew "openjdk"
 # Outputs current CPU temperature for OSX
 brew "osx-cpu-temp"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Port of pdftk in java
+brew "pdftk-java"
 # Python dependency management tool
 brew "pipenv"
 # Modern replacement for ps written by Rust
@@ -135,6 +143,8 @@ brew "upx"
 brew "vcpkg"
 # Vi 'workalike' with many additional features
 brew "vim"
+# Your favorite rust -> wasm workflow tool!
+brew "wasm-pack"
 # Internet file retriever
 brew "wget"
 # JavaScript package manager
@@ -165,8 +175,6 @@ cask "discord"
 cask "docker"
 # Draw.io is free online diagram software
 cask "drawio"
-# Web browser
-cask "firefox"
 cask "font-fira-mono-nerd-font"
 cask "font-go-mono-nerd-font"
 cask "font-mononoki-nerd-font"
@@ -185,8 +193,6 @@ cask "iina"
 cask "iterm2"
 # Programming language for technical computing
 cask "julia"
-# Utility to render Jupyter notebooks
-cask "jupyter-notebook-viewer"
 # File archiver
 cask "keka"
 # Software for Logitech devices
@@ -195,7 +201,7 @@ cask "logitech-options"
 cask "mactex-no-gui"
 # Provides updates to various Microsoft products
 cask "microsoft-auto-update"
-# Multi-platform web browser
+# Web browser
 cask "microsoft-edge"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
@@ -203,14 +209,10 @@ cask "microsoft-teams"
 cask "minecraft"
 # Open-source music notation software
 cask "musescore"
-# Visualizer for neural network, deep learning, and machine learning models
-cask "netron"
 # App to write, plan, collaborate, and get organized
 cask "notion"
 # Open-source software for live streaming and screen recording
 cask "obs"
-# Knowledge base that works on top of a local folder of plain text Markdown files
-cask "obsidian"
 # Audio editor
 cask "ocenaudio"
 # VPN client
@@ -220,8 +222,6 @@ cask "protonmail-bridge"
 # PDF reader and note-taking application
 cask "skim"
 cask "soundflower"
-# LaTeX editor
-cask "texstudio"
 # Open-source BitTorrent client
 cask "transmission"
 # Configurable document editor that supports Markdown
@@ -232,14 +232,10 @@ cask "visual-studio-code"
 cask "vlc"
 # Create, manage, and run virtual machines
 cask "vmware-fusion"
-# Resources for Wacom tablets
-cask "wacom-tablet"
 # BBS client
 cask "welly"
 # Lossless audio decoder
 cask "xld"
-# Open-source version of the X.Org X Window System
-cask "xquartz"
 mas "Affinity Photo", id: 824183456
 mas "Codye", id: 1516894961
 mas "GarageBand", id: 682658836
@@ -253,10 +249,10 @@ mas "Messenger", id: 1480068668
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Word", id: 462054704
+mas "Notability", id: 360593530
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Reeder", id: 1449412482
 mas "Spark", id: 1176895641
 mas "Telegram", id: 747648890
 mas "Twitter", id: 1482454543
-mas "XMind", id: 1327661892
