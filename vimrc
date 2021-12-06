@@ -1,7 +1,7 @@
 " @Author: dephilia <leedaniel682@gmail.com>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2021-08-16 14:54:36
+" @Last Modified time: 2021-11-20 23:12:55
 
 "++++++++++++++++++"
 "      Vars        "
@@ -61,7 +61,7 @@ Plug 'majutsushi/tagbar',   { 'on': 'TagBarToggle' }
 
 
 " **Coding!** "
-Plug 'ycm-core/YouCompleteMe', {'do': 'python install.py --all', 'on': [] }
+Plug 'ycm-core/YouCompleteMe', {'do': 'python3 install.py --all', 'on': [] }
 command! YcmCompleter call plug#load('YouCompleteMe') | call youcompleteme#Enable() | YcmCompleter
 
 " **SYNTAX** "
