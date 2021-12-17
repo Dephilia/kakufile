@@ -1,7 +1,7 @@
 " @Author: dephilia <leedaniel682@gmail.com>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2021-11-20 23:12:55
+" @Last Modified time: 2021-12-17 20:34:28
 
 "++++++++++++++++++"
 "      Vars        "
@@ -171,7 +171,9 @@ hi CursorLine term=bold cterm=bold
 set backspace=indent,eol,start
 
 " Indent Guide
-set list listchars=tab:\:\ ,trail:·,extends:?,precedes:?,nbsp:×
+" set list listchars=tab:\:\ ,trail:·,extends:?,precedes:?,nbsp:×
+set list listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+" Fasion representation
 
 "++++++++++++++++++"
 "       END        "
