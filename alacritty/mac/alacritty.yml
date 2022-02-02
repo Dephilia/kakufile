@@ -768,7 +768,7 @@ key_bindings:
   #- { key: F,              mods: Command|Control,    action: ToggleFullscreen }
   #- { key: F,              mods: Command,            action: SearchForward    }
   #- { key: B,              mods: Command,            action: SearchBackward   }
-  - { key: Q,     mods: Command,       command: { program: "/usr/local/bin/tmux", args: ["kill-server"] }} # kill-server
+  - { key: Q,     mods: Command|Alt,   command: { program: "/usr/local/bin/tmux", args: ["kill-server"] }} # kill-server
   - { key: D,     mods: Command,       chars: "\x01\x2d" } # Split Horizontally
   - { key: D,     mods: Command|Shift, chars: "\x01\x5f" } # Split Vertically
   - { key: W,     mods: Command,       chars: "\x01\x78" } # Close Window
