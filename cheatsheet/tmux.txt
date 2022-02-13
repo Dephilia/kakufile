@@ -1,0 +1,7 @@
+<Prefix>: <Ctrl> + a
+
+New tab: <Prefix> + c
+
+Horizontally Split: <Prefix> + -
+
+Vertically Split: <Prefix> + _

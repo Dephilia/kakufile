@@ -72,3 +72,6 @@ alias start-count="time zsh -i -c echo"
 alias vtop="vtop --theme brew"
 
 alias lsports='lsof -ni | grep LISTEN'
+
+# Alia to new session
+alias tnew="tmux new-session -A -s"
