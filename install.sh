@@ -68,6 +68,14 @@ if_sym_or_file ${HOME}/.zshenv "ln -s ${ZDOTDIR}/.zshenv ${HOME}/.zshenv"
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 git clone --recurse-submodules https://github.com/belak/prezto-contrib ${ZDOTDIR}/.zprezto/contrib
 
+echo "Install oh-my-tmux"
+(
+cd
+git clone https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
+)
+
 }
+
 
 _install

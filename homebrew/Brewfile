@@ -1,4 +1,5 @@
 tap "beeftornado/rmtree"
+tap "caarlos0/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
@@ -7,6 +8,7 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
+tap "yt-dlp/taps"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Cryptography and SSL/TLS Toolkit
@@ -33,6 +35,8 @@ brew "deno"
 brew "dialog"
 # More intuitive version of du in rust
 brew "dust"
+# Calculator REPL, similar to bc(1)
+brew "eva"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Play, record, convert, and stream audio and video
@@ -69,8 +73,6 @@ brew "jq"
 brew "lazygit"
 # Implementation of the file(1) command
 brew "libmagic"
-# Library for USB device access
-brew "libusb"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
 # Clone of ls with colorful output, file type icons, and more
@@ -91,6 +93,8 @@ brew "ninja"
 brew "nmap"
 # Platform built on V8 to build network applications
 brew "node"
+# Batch rename utility
+brew "nomino"
 # Development kit for the Java programming language
 brew "openjdk"
 # Outputs current CPU temperature for OSX
@@ -155,20 +159,24 @@ brew "youtube-dl"
 brew "zlib"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Timer is like sleep, but reports progress.
+brew "caarlos0/tap/timer"
+# A youtube-dl fork with additional features and fixes
+brew "yt-dlp/taps/yt-dlp"
 # GPU-accelerated terminal emulator
 cask "alacritty"
+# Menu bar tool to limit maximum charging percentage
+cask "aldente"
 # Application launcher and productivity software
 cask "alfred"
 # Application uninstaller
 cask "appcleaner"
 # Two-factor authentication software
 cask "authy"
-# Software for drawing and painting
-cask "clip-studio-paint"
 # Disk space visualizer
 cask "daisydisk"
-# Universal database tool and SQL client
-cask "dbeaver-community"
+# Utilities designed to make common development tasks easier
+cask "devtoys"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerized applications and microservices
@@ -183,8 +191,8 @@ cask "font-noto-sans-cjk"
 cask "font-powerline-symbols"
 # Audio player
 cask "foobar2000"
-# Utility to fix grammar errors and style issues in text
-cask "grammarly"
+# GIT client
+cask "fork"
 # Utility to hide menu bar items
 cask "hiddenbar"
 # Free and open-source media player
@@ -197,14 +205,12 @@ cask "julia"
 cask "keka"
 # Software for Logitech devices
 cask "logitech-options"
-# Full TeX Live distribution without GUI applications
-cask "mactex-no-gui"
+# Simple and elegant markdown editor
+cask "mark-text"
 # Provides updates to various Microsoft products
 cask "microsoft-auto-update"
 # Web browser
 cask "microsoft-edge"
-# Meet, chat, call, and collaborate in just one place
-cask "microsoft-teams"
 # Sandbox construction video game
 cask "minecraft"
 # Open-source music notation software
@@ -213,8 +219,8 @@ cask "musescore"
 cask "notion"
 # Open-source software for live streaming and screen recording
 cask "obs"
-# Audio editor
-cask "ocenaudio"
+# Desktop virtualization software
+cask "parallels"
 # VPN client
 cask "private-internet-access"
 # Bridges ProtonMail to email clients supporting IMAP and SMTP protocols
@@ -222,22 +228,17 @@ cask "protonmail-bridge"
 # PDF reader and note-taking application
 cask "skim"
 cask "soundflower"
+# General-purpose text editor
+cask "textmate"
 # Open-source BitTorrent client
 cask "transmission"
-# Configurable document editor that supports Markdown
-cask "typora"
 # Open-source code editor
 cask "visual-studio-code"
-# Multimedia player
-cask "vlc"
-# Create, manage, and run virtual machines
-cask "vmware-fusion"
 # BBS client
 cask "welly"
 # Lossless audio decoder
 cask "xld"
 mas "Affinity Photo", id: 824183456
-mas "Codye", id: 1516894961
 mas "GarageBand", id: 682658836
 mas "Gifski", id: 1351639930
 mas "iMovie", id: 408981434
@@ -254,5 +255,6 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Reeder", id: 1449412482
 mas "Spark", id: 1176895641
+mas "Sunset Code", id: 1480145554
 mas "Telegram", id: 747648890
 mas "Twitter", id: 1482454543
