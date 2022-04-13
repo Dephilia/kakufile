@@ -94,3 +94,4 @@ export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 export HOMEBREW_PREFIX="/usr/local";
 export HOMEBREW_CELLAR="/usr/local/Cellar";
 export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
+export GPG_TTY=$(tty)
