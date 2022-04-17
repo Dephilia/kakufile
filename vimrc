@@ -1,7 +1,7 @@
 " @Author: dephilia <leedaniel682@gmail.com>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2021-12-17 20:34:28
+" @Last Modified time: 2022-04-17 21:21:02
 
 "++++++++++++++++++"
 "      Vars        "
@@ -41,7 +41,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " **BASIC** "
-
 Plug 'vim-airline/vim-airline'        " beautiful status bar
 Plug 'vim-airline/vim-airline-themes' " airline themes
 Plug 'ryanoasis/vim-devicons'         " give vim icons
@@ -57,17 +56,14 @@ Plug 'easymotion/vim-easymotion'      " move it!
 Plug 'luochen1990/rainbow'            " colorful brackets
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'majutsushi/tagbar',   { 'on': 'TagBarToggle' }
-
+Plug 'majutsushi/tagbar',   { 'on': 'TagbarToggle' }
 
 " **Coding!** "
 Plug 'ycm-core/YouCompleteMe', {'do': 'python3 install.py --all', 'on': [] }
 command! YcmCompleter call plug#load('YouCompleteMe') | call youcompleteme#Enable() | YcmCompleter
 
 " **SYNTAX** "
-
 Plug 'sheerun/vim-polyglot'             " many syntax
-
 Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['cpp']}
 Plug 'fatih/vim-go',                     {'do':  ':GoUpdateBinaries', 'for': 'go'}
 Plug 'moll/vim-node',                    {'for': ['javascript']}
@@ -75,17 +71,13 @@ Plug 'timonv/vim-cargo',                 {'for': ['rust']}
 Plug 'rust-lang/rust.vim',               {'for': ['rust']}
 
 " **THEME** "
-
-Plug 'arcticicestudio/nord-vim'
 Plug 'connorholyday/vim-snazzy'
 
 call plug#end()
 
-
 "++++++++++++++++++"
 "       MAP        "
 "++++++++++++++++++"
-
 
 " jj escape
 inoremap <silent> jj <ESC>
@@ -97,9 +89,8 @@ inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
 " Plug mapping
-map  <C-n> :NERDTreeToggle<CR>
-" map  <F2>  :AddFileHeader<CR>
-" nmap <F8>  :TagbarToggle<CR>
+nmap <C-n> :NERDTreeToggle<CR>
+nmap <Leader><Leader>T :TagbarToggle<CR>
 
 " refresh nerdtree
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
@@ -174,6 +165,9 @@ set backspace=indent,eol,start
 " set list listchars=tab:\:\ ,trail:·,extends:?,precedes:?,nbsp:×
 set list listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 " Fasion representation
+
+" Where is the ctags file
+set tags=./tags,./TAGS,tags;~,TAGS;~
 
 "++++++++++++++++++"
 "       END        "

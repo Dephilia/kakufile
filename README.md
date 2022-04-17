@@ -10,7 +10,7 @@ My dotfile settings.
 
 ## Install
 ```shell
-git clone git@github.com:Dephilia/kakufile.git ~/.kakufile
+git clone https://github.com/Dephilia/kakufile.git ~/.kakufile
 cd .kakufile
 ./install.sh
 ```
@@ -30,7 +30,3 @@ cd .kakufile
 
 - functions
 - alias
-
-### Plan to add
-
-- zsh (Using [prezto](https://github.com/sorin-ionescu/prezto))
