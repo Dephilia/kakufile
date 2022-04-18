@@ -4,6 +4,17 @@
 " @Last Modified time: 2022-04-17 21:45:10
 
 "++++++++++++++++++"
+"    Detect OS     "
+"++++++++++++++++++"
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
+"++++++++++++++++++"
 "      Vars        "
 "++++++++++++++++++"
 let mapleader = ","
@@ -22,8 +33,6 @@ let g:rainbow_active          = 1
 let g:python_highlight_all    = 1
 let g:go_template_autocreate  = 0
 let g:javascript_plugin_jsdoc = 1
-let g:ycm_auto_hover = ''
-let g:ycm_confirm_extra_conf  = 0
 
 "++++++++++++++++++"
 "      Plug        "
@@ -36,7 +45,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
 " **BASIC** "
 Plug 'vim-airline/vim-airline'        " beautiful status bar
@@ -82,11 +91,11 @@ inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
 " Plug mapping
-nmap <C-n> :NERDTreeToggle<CR>
-nmap <Leader>T :TagbarToggle<CR>
+map <Leader>N :NERDTreeToggle<CR>
+map <Leader>T :TagbarToggle<CR>
 
 " refresh nerdtree
-nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
+map <Leader>R :NERDTreeFocus<cr>R<c-w><c-p>
 
 " tabline mapping
 nmap <C-h> <Plug>AirlineSelectPrevTab
@@ -101,13 +110,14 @@ let s:AutoBracketEnable = 0
 
 function! ToggleBracketMode()
     if s:AutoBracketEnable
-        iunmap { {}<Left>
-        iunmap {<Enter> {}<Left><CR><ESC><S-o>
-        iunmap ( ()<ESC>i
-        iunmap (<Enter> ()<Left><CR><ESC><S-o>
-        iunmap ' ''<LEFT>
-        iunmap " ""<LEFT>
+        iunmap {
+        iunmap {<Enter>
+        iunmap (
+        iunmap (<Enter>
+        iunmap '
+        iunmap "
         let s:AutoBracketEnable = 0
+        echo "Disable Auto Bracket"
     else
         inoremap { {}<Left>
         inoremap {<Enter> {}<Left><CR><ESC><S-o>
@@ -116,9 +126,11 @@ function! ToggleBracketMode()
         inoremap ' ''<LEFT>
         inoremap " ""<LEFT>
         let s:AutoBracketEnable = 1
+        echo "Enable Auto Bracket"
     endif
 endfunction
-nmap <Leader>B :call ToggleBracketMode() <CR>
+nmap <silent> <Leader>B :call ToggleBracketMode() <CR>
+imap <silent> <Leader>B :call ToggleBracketMode() <CR>
 
 " copy to system clipboard
 noremap <Leader>y "*y
