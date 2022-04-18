@@ -80,11 +80,8 @@ inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
 " Plug mapping
-map <Leader>N :NERDTreeToggle<CR>
-map <Leader>T :TagbarToggle<CR>
-
-" refresh nerdtree
-map <Leader>R :NERDTreeFocus<cr>R<c-w><c-p>
+map <silent> <Leader>N :NERDTreeToggle<CR>
+map <silent> <Leader>T :TagbarToggle<CR>
 
 " tabline mapping
 nmap <C-h> <Plug>AirlineSelectPrevTab
