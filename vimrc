@@ -1,7 +1,7 @@
-" @Author: dephilia <leedaniel682@gmail.com>
+" @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-04-17 21:45:10
+" @Last Modified time: 2022-04-18 20:28:04
 
 "++++++++++++++++++"
 "      Vars        "
@@ -20,8 +20,6 @@ let g:airline_theme                           = 'base16_snazzy'
 
 let g:rainbow_active          = 1
 let g:python_highlight_all    = 1
-let g:go_template_autocreate  = 0
-let g:javascript_plugin_jsdoc = 1
 
 "++++++++++++++++++"
 "      Plug        "
@@ -33,6 +31,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+unlet data_dir
 
 call plug#begin()
 
@@ -80,8 +79,8 @@ inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
 " Plug mapping
-map <silent> <Leader>N :NERDTreeToggle<CR>
-map <silent> <Leader>T :TagbarToggle<CR>
+nmap <silent> <Leader>N :NERDTreeToggle<CR>
+nmap <silent> <Leader>T :TagbarToggle<CR>
 
 " tabline mapping
 nmap <C-h> <Plug>AirlineSelectPrevTab
