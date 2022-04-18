@@ -4,17 +4,6 @@
 " @Last Modified time: 2022-04-17 21:45:10
 
 "++++++++++++++++++"
-"    Detect OS     "
-"++++++++++++++++++"
-if !exists("g:os")
-    if has("win64") || has("win32") || has("win16")
-        let g:os = "Windows"
-    else
-        let g:os = substitute(system('uname'), '\n', '', '')
-    endif
-endif
-
-"++++++++++++++++++"
 "      Vars        "
 "++++++++++++++++++"
 let mapleader = ","
@@ -39,9 +28,9 @@ let g:javascript_plugin_jsdoc = 1
 "++++++++++++++++++"
 
 " Vim plug auto installation
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
