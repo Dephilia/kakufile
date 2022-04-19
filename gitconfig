@@ -1,7 +1,7 @@
 [user]
 	name = Dephilia
 	email = me@dephilia.moe
-	signingkey = 82762096C3E7DBE7EC99D9C8CF50132C0D74D6E3
+	signingkey = 7D6B6881E4DD51F179EA2B1BBDFCC75458E5D48B
 
 [alias]
   lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
