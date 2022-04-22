@@ -59,8 +59,12 @@ if_sym_or_file ${HOME}/.tmux.conf.local "ln -s $KAKU_HOME/tmux.conf.local ${HOME
 if_sym_or_file ${HOME}/.vimrc "ln -s $KAKU_HOME/vimrc ${HOME}/.vimrc"
 
 # Compatibility for neovim
-ln -s ../.vim ~/.config/nvim
-ln -s ../.vimrc ~/.vim/init.vim
+mkdir -p ${HOME}/.config/nvim
+cat << EOF > .config/nvim/init.vim
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath=&runtimepath
+source ~/.vimrc
+EOF
 
 # if command -v COMMAND &> /dev/null; then
 #   if_sym_or_file ${HOME}/.nanorc "ln -s $KAKU_HOME/nanorc ${HOME}/.nanorc"
