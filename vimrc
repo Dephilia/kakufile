@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
-" @Last Modified by: Chi-hao.Lee <Chi-hao.Lee@mediatek.com>
-" @Last Modified time: 2022-04-22 13:41:04
+" @Last Modified by: Dephilia <me@dephilia.moe>
+" @Last Modified time: 2022-04-22 19:03:33
 
 "++++++++++++++++++"
 "      Vars        "
@@ -215,7 +215,7 @@ set tags=./tags,./TAGS,tags;~,TAGS;~
 "++++++++++++++++++"
 "     Neovide      "
 "++++++++++++++++++"
-set guifont=Mononoki\ NF:h14
+set guifont=Mononoki\ Nerd\ Font\ mono:h14
 let g:neovide_transparency=0.9
 let g:neovide_cursor_vfx_mode="railgun"
 
