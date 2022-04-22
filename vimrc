@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
-" @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-04-18 20:28:04
+" @Last Modified by: Chi-hao.Lee <Chi-hao.Lee@mediatek.com>
+" @Last Modified time: 2022-04-22 09:28:57
 
 "++++++++++++++++++"
 "      Vars        "
@@ -117,6 +117,8 @@ endfunction
 nmap <silent> <Leader>B :call ToggleBracketMode() <CR>
 imap <silent> <Leader>B :call ToggleBracketMode() <CR>
 
+map <silent> <Leader><C-r> :source $MYVIMRC <CR>
+
 " copy to system clipboard
 noremap <Leader>y "*y
 noremap <Leader>p "*p
@@ -158,6 +160,12 @@ set list listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,exte
 " Where is the ctags file
 set tags=./tags,./TAGS,tags;~,TAGS;~
 
+"++++++++++++++++++"
+"     Neovide      "
+"++++++++++++++++++"
+set guifont=Mononoki\ NF:h14
+let g:neovide_transparency=0.9
+let g:neovide_cursor_vfx_mode="railgun"
 "++++++++++++++++++"
 "       END        "
 "++++++++++++++++++"
