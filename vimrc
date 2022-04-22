@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Chi-hao.Lee <Chi-hao.Lee@mediatek.com>
-" @Last Modified time: 2022-04-22 09:28:57
+" @Last Modified time: 2022-04-22 11:20:29
 
 "++++++++++++++++++"
 "      Vars        "
@@ -11,12 +11,13 @@ let mapleader = ","
 let g:SnazzyTransparent = 1
 
 " airline setting
-let g:airline_powerline_fonts                 = 1
-let g:airline#extensions#tabline#enabled      = 1
-let g:airline#extensions#tabline#left_sep     = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter    = 'default'
-let g:airline_theme                           = 'base16_snazzy'
+let g:airline_powerline_fonts                   = 1
+let g:airline#extensions#tabline#enabled        = 1
+let g:airline#extensions#tabline#left_sep       = ' '
+let g:airline#extensions#tabline#left_alt_sep   = '|'
+let g:airline#extensions#tabline#formatter      = 'default'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_theme                             = 'base16_snazzy'
 
 let g:rainbow_active          = 1
 let g:python_highlight_all    = 1
@@ -60,11 +61,41 @@ Plug 'moll/vim-node',                    {'for': ['javascript']}
 Plug 'timonv/vim-cargo',                 {'for': ['rust']}
 Plug 'rust-lang/rust.vim',               {'for': ['rust']}
 
+" gtags
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
+
 " **THEME** "
 Plug 'connorholyday/vim-snazzy'
 
 call plug#end()
 
+"++++++++++++++++++"
+"       PLUG       "
+"++++++++++++++++++"
+" NERDTree
+nmap <silent> <Leader>n :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen=1
+" Close NERDTree if only itself
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" vim-gutentags
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+let g:gutentags_ctags_tagfile = '.tags'
+let g:gutentags_modules = []
+if executable('ctags')
+	let g:gutentags_modules += ['ctags']
+endif
+if executable('gtags-cscope') && executable('gtags')
+	let g:gutentags_modules += ['gtags_cscope']
+endif
+
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+let g:gutentags_auto_add_gtags_cscope = 0
 "++++++++++++++++++"
 "       MAP        "
 "++++++++++++++++++"
@@ -79,12 +110,23 @@ inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
 " Plug mapping
-nmap <silent> <Leader>N :NERDTreeToggle<CR>
-nmap <silent> <Leader>T :TagbarToggle<CR>
+nmap <silent> <Leader>t :TagbarToggle<CR>
 
 " tabline mapping
 nmap <C-h> <Plug>AirlineSelectPrevTab
 nmap <C-l> <Plug>AirlineSelectNextTab
+
+" Buffer mapping
+" 1. List buffer
+nnoremap <silent> bl :ls<CR>
+" 2. New empty buffer
+nnoremap <silent> bo :enew<CR>
+" 3. Next buffer
+nnoremap <silent> bn :bnext<CR>
+" 4. Previous buffer
+nnoremap <silent> bp :bprevious<CR>
+" 5. Close buffer
+nnoremap <silent> bd :bdelete<CR>
 
 " easy align
 nmap ga <Plug>(EasyAlign)
@@ -139,6 +181,8 @@ set t_Co=256        " 256 color
 set nocompatible    " Unable vi<>vim
 set expandtab       " <tab> as many <space>
 set tabstop=2       " width of tab
+set showtabline=2
+set noshowmode
 set shiftwidth=2    " indent width
 set softtabstop=2   " how many space insert after press tab
 set autoindent      " auto indent next line
@@ -149,6 +193,7 @@ set hlsearch        " search high light
 set relativenumber  " show relative line number
 set number          " show line number
 set cursorline      " highlight current line
+set hidden          " Hide edited buffer
 hi CursorLine term=bold cterm=bold
 
 " Enable backspace avaliable in Insert mode
@@ -157,7 +202,7 @@ set backspace=indent,eol,start
 " Show hide chars
 set list listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 
-" Where is the ctags file
+" Where is the tags file for ctags
 set tags=./tags,./TAGS,tags;~,TAGS;~
 
 "++++++++++++++++++"
@@ -166,6 +211,7 @@ set tags=./tags,./TAGS,tags;~,TAGS;~
 set guifont=Mononoki\ NF:h14
 let g:neovide_transparency=0.9
 let g:neovide_cursor_vfx_mode="railgun"
+
 "++++++++++++++++++"
 "       END        "
 "++++++++++++++++++"
