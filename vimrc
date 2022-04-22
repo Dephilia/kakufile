@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Chi-hao.Lee <Chi-hao.Lee@mediatek.com>
-" @Last Modified time: 2022-04-22 11:20:29
+" @Last Modified time: 2022-04-22 13:41:04
 
 "++++++++++++++++++"
 "      Vars        "
@@ -65,6 +65,10 @@ Plug 'rust-lang/rust.vim',               {'for': ['rust']}
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
 
+" fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 " **THEME** "
 Plug 'connorholyday/vim-snazzy'
 
@@ -96,6 +100,9 @@ let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 let g:gutentags_auto_add_gtags_cscope = 0
+
+set cscopetag
+set cscopeprg='gtags-cscope'
 "++++++++++++++++++"
 "       MAP        "
 "++++++++++++++++++"
