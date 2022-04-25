@@ -65,6 +65,9 @@ Plug 'rust-lang/rust.vim',               {'for': ['rust']}
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
 
+" html
+Plug 'mattn/emmet-vim', {'for': ['html']}
+
 " fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
