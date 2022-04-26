@@ -7,16 +7,15 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "iamchokerman/ani-cli"
 tap "koekeishiya/formulae"
 tap "yt-dlp/taps"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@1.1"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # Interface bandwidth monitor
 brew "bmon"
-# Freely available high-quality data compressor
-brew "bzip2"
 # Library for command-line editing
 brew "readline"
 # General-purpose data compression with high compression ratio
@@ -27,10 +26,6 @@ brew "python@3.9"
 brew "clib"
 # Cross-platform make
 brew "cmake"
-# Reimplementation of ctags(1)
-brew "ctags"
-# Secure runtime for JavaScript and TypeScript
-brew "deno"
 # Display user-friendly message boxes from shell scripts
 brew "dialog"
 # More intuitive version of du in rust
@@ -53,6 +48,10 @@ brew "git"
 brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
+# Source code tag system
+brew "global"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Multimedia framework for research and academic purposes
@@ -83,10 +82,14 @@ brew "mas"
 brew "micro"
 # Menu-driven communications program
 brew "minicom"
+# Fork of youtube-dl with additional features and fixes
+brew "yt-dlp"
 # 'traceroute' and 'ping' in a single tool
 brew "mtr"
 # Interactive cheatsheet tool for the command-line
 brew "navi"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Small build system for use with gyp or CMake
 brew "ninja"
 # Port scanning utility for large networks
@@ -115,8 +118,6 @@ brew "pv"
 brew "pyenv"
 # Pyenv plugin to manage virtualenv
 brew "pyenv-virtualenv"
-# Cross-platform application and UI framework
-brew "qt"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Search tool like grep and The Silver Searcher
@@ -153,14 +154,14 @@ brew "wasm-pack"
 brew "wget"
 # JavaScript package manager
 brew "yarn"
-# Download YouTube videos from the command-line
-brew "youtube-dl"
 # General-purpose lossless data-compression library
 brew "zlib"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Timer is like sleep, but reports progress.
 brew "caarlos0/tap/timer"
+# A cli to browse and watch anime. This tool scrapes the site gogoanime.
+brew "iamchokerman/ani-cli/ani-cli"
 # A youtube-dl fork with additional features and fixes
 brew "yt-dlp/taps/yt-dlp"
 # GPU-accelerated terminal emulator
@@ -203,6 +204,10 @@ cask "iterm2"
 cask "julia"
 # File archiver
 cask "keka"
+# End-to-end encryption software
+cask "keybase"
+# Open-source keystroke visualizer
+cask "keycastr"
 # Software for Logitech devices
 cask "logitech-options"
 # Simple and elegant markdown editor
@@ -211,14 +216,22 @@ cask "mark-text"
 cask "microsoft-auto-update"
 # Web browser
 cask "microsoft-edge"
+# Minimal browser that protects privacy
+cask "min"
 # Sandbox construction video game
 cask "minecraft"
 # Open-source music notation software
 cask "musescore"
+# Neovim Client
+cask "neovide"
 # App to write, plan, collaborate, and get organized
 cask "notion"
+# Calculator and converter application
+cask "numi"
 # Open-source software for live streaming and screen recording
 cask "obs"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # Desktop virtualization software
 cask "parallels"
 # VPN client
@@ -227,7 +240,6 @@ cask "private-internet-access"
 cask "protonmail-bridge"
 # PDF reader and note-taking application
 cask "skim"
-cask "soundflower"
 # General-purpose text editor
 cask "textmate"
 # Open-source BitTorrent client
@@ -254,7 +266,6 @@ mas "Notability", id: 360593530
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Reeder", id: 1449412482
-mas "Spark", id: 1176895641
 mas "Sunset Code", id: 1480145554
 mas "Telegram", id: 747648890
 mas "Twitter", id: 1482454543

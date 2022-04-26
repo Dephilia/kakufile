@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-04-22 19:03:33
+" @Last Modified time: 2022-04-26 22:33:40
 
 "++++++++++++++++++"
 "      Vars        "
@@ -50,6 +50,7 @@ Plug 'godlygeek/tabular'              " align tool
 Plug 'tpope/vim-surround'             " quote it
 Plug 'easymotion/vim-easymotion'      " move it!
 Plug 'luochen1990/rainbow'            " colorful brackets
+Plug 'vim-scripts/DoxygenToolkit.vim'
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'majutsushi/tagbar',   { 'on': 'TagbarToggle' }

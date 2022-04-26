@@ -58,6 +58,10 @@ if command -v lsd &> /dev/null ;then
   alias lt='ls --tree'
 fi
 
+# lsd
+if command -v neovide &> /dev/null ;then
+  alias nvd='neovide --multigrid'
+fi
 # WAN ip
 alias catpubip='echo "My WAN/Public IP address: $(curl ifconfig.me -s)"'
 alias ipinfo='curl -sH "Accept: application/json" ipinfo.io | jq'

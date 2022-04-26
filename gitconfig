@@ -42,5 +42,6 @@
 	default = current
 [commit]
 	gpgsign = true
+	template = ~/.kakufile/gitmessage
 [tag]
 	gpgSign = true
