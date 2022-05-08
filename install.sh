@@ -52,15 +52,15 @@ fi
 echo "Link dotfiles"
 mkdir -p ${HOME}/.config/alacritty
 
-if_sym_or_file ${HOME}/.config/alacritty/alacritty.yml "ln -s $KAKU_HOME/alacritty/$OS/alacritty.yml ${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
+if_sym_or_file ${XDG_CONFIG_HOME}/alacritty/alacritty.yml "ln -s $KAKU_HOME/alacritty/$OS/alacritty.yml ${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
 if_sym_or_file $KAKU_HOME/gitignore_global "ln -s $KAKU_HOME/gitignore/$OS/gitignore_global $KAKU_HOME/gitignore_global"
-if_sym_or_file ${HOME}/.gitconfig "ln -s $KAKU_HOME/gitconfig ${XDG_CONFIG_HOME}/git/config"
+if_sym_or_file ${XDG_CONFIG_HOME}/git/config "ln -s $KAKU_HOME/gitconfig ${XDG_CONFIG_HOME}/git/config"
 if_sym_or_file ${HOME}/.tmux.conf.local "ln -s $KAKU_HOME/tmux.conf.local ${HOME}/.tmux.conf.local"
 if_sym_or_file ${HOME}/.vimrc "ln -s $KAKU_HOME/vimrc ${HOME}/.vimrc"
 
 # Compatibility for neovim
-mkdir -p ${HOME}/.config/nvim
-cat << EOF > .config/nvim/init.vim
+mkdir -p ${XDG_CONFIG_HOME}/nvim
+cat << EOF > ${XDG_CONFIG_HOME}/nvim/init.vim
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
 source ~/.vimrc
@@ -73,14 +73,20 @@ EOF
 echo "Install zsh"
 export ZDOTDIR=$KAKU_HOME/zsh/$OS
 if_sym_or_file ${HOME}/.zshenv "ln -s ${ZDOTDIR}/.zshenv ${HOME}/.zshenv"
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-git clone --recurse-submodules https://github.com/belak/prezto-contrib ${ZDOTDIR}/.zprezto/contrib
+if [ ! -d ${ZDOTDIR:-$HOME}/.zprezto ]; then
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+fi
+if [ ! -d ${ZDOTDIR}/.zprezto/contrib ]; then
+  git clone --recurse-submodules https://github.com/belak/prezto-contrib ${ZDOTDIR}/.zprezto/contrib
+fi
 
 echo "Install oh-my-tmux"
 (
 cd
-git clone https://github.com/gpakosz/.tmux.git
-ln -s -f .tmux/.tmux.conf
+if [ ! -d ${HOME}/.tmux ]; then
+  git clone https://github.com/gpakosz/.tmux.git
+fi
+if_sym_or_file ${HOME}/.tmux.conf "ln -s -f .tmux/.tmux.conf"
 )
 
 }
