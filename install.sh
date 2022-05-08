@@ -50,7 +50,8 @@ fi
 
 
 echo "Link dotfiles"
-mkdir -p ${HOME}/.config/alacritty
+mkdir -p ${XDG_CONFIG_HOME}/alacritty
+mkdir -p ${XDG_CONFIG_HOME}/git
 
 if_sym_or_file ${XDG_CONFIG_HOME}/alacritty/alacritty.yml "ln -s $KAKU_HOME/alacritty/$OS/alacritty.yml ${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
 if_sym_or_file $KAKU_HOME/gitignore_global "ln -s $KAKU_HOME/gitignore/$OS/gitignore_global $KAKU_HOME/gitignore_global"
