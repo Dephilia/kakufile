@@ -72,7 +72,7 @@ EOF
 # fi
 
 echo "Install zsh"
-export ZDOTDIR=$KAKU_HOME/zsh/$OS
+export ZDOTDIR=$KAKU_HOME/zsh
 if_sym_or_file ${HOME}/.zshenv "ln -s ${ZDOTDIR}/.zshenv ${HOME}/.zshenv"
 if [ ! -d ${ZDOTDIR:-$HOME}/.zprezto ]; then
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
