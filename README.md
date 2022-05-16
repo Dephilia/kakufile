@@ -7,6 +7,9 @@ My dotfile settings.
 - git
 - curl
 - zsh
+- tmux >= 2.4 (For oh-my-tmux)
+- vim >= 8.2
+- gtags, ctags
 
 ## Install
 ```shell
