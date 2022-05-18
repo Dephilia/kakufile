@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-05-12 21:10:29
+" @Last Modified time: 2022-05-18 21:25:41
 
 "++++++++++++++++++"
 "      Vars        "
@@ -53,6 +53,7 @@ Plug 'luochen1990/rainbow'            " colorful brackets
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
 Plug 'majutsushi/tagbar',   { 'on': 'TagbarToggle' }
 
 " **SYNTAX** "
