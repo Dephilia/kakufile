@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-05-18 21:25:41
+" @Last Modified time: 2022-05-18 21:34:39
 
 "++++++++++++++++++"
 "      Vars        "
@@ -63,6 +63,10 @@ Plug 'moll/vim-node',                    {'for': ['javascript']}
 Plug 'timonv/vim-cargo',                 {'for': ['rust']}
 Plug 'rust-lang/rust.vim',               {'for': ['rust']}
 
+" **Coding!** "
+Plug 'ycm-core/YouCompleteMe', {'do': 'python3 install.py --all', 'on': [] }
+command! YcmCompleter call plug#load('YouCompleteMe') | call youcompleteme#Enable() | YcmCompleter
+
 " gtags
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
@@ -107,6 +111,11 @@ let g:gutentags_auto_add_gtags_cscope = 0
 
 set cscopetag
 set cscopeprg='gtags-cscope'
+
+" YCM
+let g:ycm_auto_hover = ''
+let g:ycm_confirm_extra_conf  = 0
+nmap <leader>D <plug>(YCMHover)
 "++++++++++++++++++"
 "       MAP        "
 "++++++++++++++++++"
