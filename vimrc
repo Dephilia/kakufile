@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-05-18 21:34:39
+" @Last Modified time: 2022-05-19 23:18:07
 
 "++++++++++++++++++"
 "      Vars        "
@@ -21,6 +21,14 @@ let g:airline_theme                             = 'base16_snazzy'
 
 let g:rainbow_active          = 1
 let g:python_highlight_all    = 1
+
+let g:coc_global_extensions = [
+\ 'coc-json',
+\ 'coc-clangd',
+\ 'coc-python',
+\ 'coc-dictionary',
+\ 'coc-tag',
+\ ]
 
 "++++++++++++++++++"
 "      Plug        "
@@ -63,13 +71,8 @@ Plug 'moll/vim-node',                    {'for': ['javascript']}
 Plug 'timonv/vim-cargo',                 {'for': ['rust']}
 Plug 'rust-lang/rust.vim',               {'for': ['rust']}
 
-" **Coding!** "
-Plug 'ycm-core/YouCompleteMe', {'do': 'python3 install.py --all', 'on': [] }
-command! YcmCompleter call plug#load('YouCompleteMe') | call youcompleteme#Enable() | YcmCompleter
-
-" gtags
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'skywind3000/gutentags_plus'
+" **LSP** "
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " html
 Plug 'mattn/emmet-vim', {'for': ['html']}
@@ -92,30 +95,16 @@ let NERDTreeQuitOnOpen=1
 " Close NERDTree if only itself
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" vim-gutentags
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-let g:gutentags_ctags_tagfile = '.tags'
-let g:gutentags_modules = []
-if executable('ctags')
-	let g:gutentags_modules += ['ctags']
-endif
-if executable('gtags-cscope') && executable('gtags')
-	let g:gutentags_modules += ['gtags_cscope']
-endif
-
-let g:gutentags_cache_dir = expand('~/.cache/tags')
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-let g:gutentags_auto_add_gtags_cscope = 0
-
-set cscopetag
-set cscopeprg='gtags-cscope'
-
-" YCM
-let g:ycm_auto_hover = ''
-let g:ycm_confirm_extra_conf  = 0
-nmap <leader>D <plug>(YCMHover)
+" Coc call extra setting
+try
+  if has('unix')
+    so ${KAKU_ROOT}/coc-config.vim
+  elseif has('win32')
+    so ~/.kakufile/coc-config.vim
+  endif
+catch
+  echo "Caught error: " . v:exception
+endtry
 "++++++++++++++++++"
 "       MAP        "
 "++++++++++++++++++"
@@ -179,7 +168,7 @@ endfunction
 nmap <silent> <Leader>B :call ToggleBracketMode() <CR>
 imap <silent> <Leader>B :call ToggleBracketMode() <CR>
 
-map <silent> <Leader><C-r> :source $MYVIMRC <CR>
+map <silent> <Leader><C-r> :so % <CR>
 
 " copy to system clipboard
 noremap <Leader>y "*y
