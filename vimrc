@@ -158,7 +158,7 @@ endfunction
 nmap <silent> <Leader>B :call ToggleBracketMode() <CR>
 imap <silent> <Leader>B :call ToggleBracketMode() <CR>
 
-map <silent> <Leader><C-r> :so % <CR>
+map <silent> <Leader><C-r> :so $MYVIMRC <CR>
 
 " copy to system clipboard
 noremap <Leader>y "*y
