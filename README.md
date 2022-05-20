@@ -8,8 +8,13 @@ My dotfile settings.
 - curl
 - zsh
 - tmux >= 2.4 (For oh-my-tmux)
-- vim >= 8.2
-- gtags, ctags
+
+### For vim/nvim
+- vim >= 8.1, nvim >= 0.5
+- node (For coc.nvim)
+- clangd (For coc-clangd)
+- universal-ctags
+- cscope
 
 ## Install
 ```shell
