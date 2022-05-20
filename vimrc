@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-05-20 00:04:36
+" @Last Modified time: 2022-05-20 21:11:41
 
 "++++++++++++++++++"
 "      Vars        "
@@ -231,7 +231,7 @@ let g:neovide_cursor_vfx_mode="railgun"
 "++++++++++++++++++"
 "      cscope      "
 "++++++++++++++++++"
-" Remember to run `cscope -Rbk` First
+" Remember to run `cscope -Rbqk` First
 set cscopetag
 set csto=0
 

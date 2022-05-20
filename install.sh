@@ -10,9 +10,9 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_HOME="${HOME}/.local/share"
 
 function if_sym_or_file() {
-  if [ -L $1 ]; then
+  if [ -L "$1" ]; then
     echo "    - File $1 already linked"
-  elif [ -f $1 ]; then
+  elif [ -f "$1" ]; then
     echo "    - File $1 exist, try remove it"
   else
     echo "    - Link $1"
@@ -23,7 +23,7 @@ function if_sym_or_file() {
 
 _install() {
 
-KAKU_HOME="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+KAKU_HOME="$( cd "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         # ...
@@ -50,18 +50,18 @@ fi
 
 
 echo "Link dotfiles"
-mkdir -p ${XDG_CONFIG_HOME}/alacritty
-mkdir -p ${XDG_CONFIG_HOME}/git
+mkdir -p "${XDG_CONFIG_HOME}/alacritty"
+mkdir -p "${XDG_CONFIG_HOME}/git"
 
-if_sym_or_file ${XDG_CONFIG_HOME}/alacritty/alacritty.yml "ln -s $KAKU_HOME/alacritty/$OS/alacritty.yml ${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
-if_sym_or_file $KAKU_HOME/gitignore_global "ln -s $KAKU_HOME/gitignore/$OS/gitignore_global $KAKU_HOME/gitignore_global"
-if_sym_or_file ${XDG_CONFIG_HOME}/git/config "ln -s $KAKU_HOME/gitconfig ${XDG_CONFIG_HOME}/git/config"
-if_sym_or_file ${HOME}/.tmux.conf.local "ln -s $KAKU_HOME/tmux.conf.local ${HOME}/.tmux.conf.local"
-if_sym_or_file ${HOME}/.vimrc "ln -s $KAKU_HOME/vimrc ${HOME}/.vimrc"
+if_sym_or_file "${XDG_CONFIG_HOME}/alacritty/alacritty.yml" "ln -s $KAKU_HOME/alacritty/$OS/alacritty.yml ${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
+if_sym_or_file "$KAKU_HOME/gitignore_global" "ln -s $KAKU_HOME/gitignore/$OS/gitignore_global $KAKU_HOME/gitignore_global"
+if_sym_or_file "${XDG_CONFIG_HOME}/git/config" "ln -s $KAKU_HOME/gitconfig ${XDG_CONFIG_HOME}/git/config"
+if_sym_or_file "${HOME}/.tmux.conf.local" "ln -s $KAKU_HOME/tmux.conf.local ${HOME}/.tmux.conf.local"
+if_sym_or_file "${HOME}/.vimrc" "ln -s $KAKU_HOME/vimrc ${HOME}/.vimrc"
 
 # Compatibility for neovim
-mkdir -p ${XDG_CONFIG_HOME}/nvim
-cat << EOF > ${XDG_CONFIG_HOME}/nvim/init.vim
+mkdir -p "${XDG_CONFIG_HOME}/nvim"
+cat << EOF > "${XDG_CONFIG_HOME}"/nvim/init.vim
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
 source ~/.vimrc
@@ -72,22 +72,22 @@ EOF
 # fi
 
 echo "Install zsh"
-export ZDOTDIR=$KAKU_HOME/zsh
-if_sym_or_file ${HOME}/.zshenv "ln -s ${ZDOTDIR}/.zshenv ${HOME}/.zshenv"
-if [ ! -d ${ZDOTDIR:-$HOME}/.zprezto ]; then
+export ZDOTDIR="$KAKU_HOME"/zsh
+if_sym_or_file "${HOME}/.zshenv" "ln -s ${ZDOTDIR}/.zshenv ${HOME}/.zshenv"
+if [ ! -d "${ZDOTDIR:-$HOME}"/.zprezto ]; then
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 fi
-if [ ! -d ${ZDOTDIR}/.zprezto/contrib ]; then
-  git clone --recurse-submodules https://github.com/belak/prezto-contrib ${ZDOTDIR}/.zprezto/contrib
+if [ ! -d "${ZDOTDIR}/.zprezto/contrib" ]; then
+  git clone --recurse-submodules https://github.com/belak/prezto-contrib "${ZDOTDIR}/.zprezto/contrib"
 fi
 
 echo "Install oh-my-tmux"
 (
-cd
-if [ ! -d ${HOME}/.tmux ]; then
+cd || exit
+if [ ! -d "${HOME}/.tmux" ]; then
   git clone https://github.com/gpakosz/.tmux.git
 fi
-if_sym_or_file ${HOME}/.tmux.conf "ln -s -f .tmux/.tmux.conf"
+if_sym_or_file "${HOME}/.tmux.conf" "ln -s -f .tmux/.tmux.conf"
 )
 
 }
