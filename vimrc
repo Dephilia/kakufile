@@ -166,6 +166,23 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
+" Copymode -> Toggle hidden char to be visible
+function! CopyModeEnable()
+  set norelativenumber
+  set nonumber
+  set nolist
+  call gitgutter#disable()
+endfunction
+command! -nargs=0 CopyModeEnable :call CopyModeEnable()
+
+function! CopyModeDisable()
+  set relativenumber
+  set number
+  set list listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+  call gitgutter#enable()
+endfunction
+command! -nargs=0 CopyModeDisable :call CopyModeDisable()
+
 "++++++++++++++++++"
 "      MAIN        "
 "++++++++++++++++++"
