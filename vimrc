@@ -1,34 +1,24 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-05-20 21:11:41
+" @Last Modified time: 2022-05-23 01:21:07
 
 "++++++++++++++++++"
 "      Vars        "
 "++++++++++++++++++"
 let mapleader = ","
 
-let g:SnazzyTransparent = 1
-
-" airline setting
-let g:airline_powerline_fonts                   = 1
-let g:airline#extensions#tabline#enabled        = 1
-let g:airline#extensions#tabline#left_sep       = ' '
-let g:airline#extensions#tabline#left_alt_sep   = '|'
-let g:airline#extensions#tabline#formatter      = 'default'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_theme                             = 'base16_snazzy'
-
-let g:rainbow_active          = 1
-let g:python_highlight_all    = 1
+let g:SnazzyTransparent    = 1
+let g:rainbow_active       = 1
+let g:python_highlight_all = 1
 
 let g:coc_global_extensions = [
-\ 'coc-json',
-\ 'coc-clangd',
-\ 'coc-python',
-\ 'coc-dictionary',
-\ 'coc-tag',
-\ ]
+\   'coc-json',
+\   'coc-clangd',
+\   'coc-python',
+\   'coc-dictionary',
+\   'coc-tag',
+\   ]
 
 "++++++++++++++++++"
 "      Plug        "
@@ -44,20 +34,21 @@ unlet data_dir
 
 call plug#begin()
 
-" **BASIC** "
-Plug 'vim-airline/vim-airline'        " beautiful status bar
-Plug 'vim-airline/vim-airline-themes' " airline themes
-Plug 'ryanoasis/vim-devicons'         " give vim icons
-Plug 'aperezdc/vim-template'          " Template for new file
-Plug 'junegunn/vim-easy-align'        " make code beautiful
-Plug 'ahonn/vim-fileheader'           " insert the info at head
-Plug 'airblade/vim-gitgutter'         " show git status
-Plug 'tpope/vim-commentary'           " use [gc] to comment everything
-Plug 'psliwka/vim-smoothie'           " More smoooooooth
-Plug 'godlygeek/tabular'              " align tool
-Plug 'tpope/vim-surround'             " quote it
-Plug 'easymotion/vim-easymotion'      " move it!
-Plug 'luochen1990/rainbow'            " colorful brackets
+                                         " **BASIC** "
+Plug 'itchyny/lightline.vim'             " Yet another plugin for airline
+Plug 'mengelbrecht/lightline-bufferline' " Buffer for lightline
+Plug 'ryanoasis/vim-devicons'            " give vim icons
+Plug 'aperezdc/vim-template'             " Template for new file
+Plug 'junegunn/vim-easy-align'           " make code beautiful
+Plug 'ahonn/vim-fileheader'              " insert the info at head
+Plug 'airblade/vim-gitgutter'            " show git status
+Plug 'tpope/vim-commentary'              " use [gc] to comment everything
+Plug 'psliwka/vim-smoothie'              " More smoooooooth
+Plug 'godlygeek/tabular'                 " align tool
+Plug 'tpope/vim-surround'                " quote it
+Plug 'easymotion/vim-easymotion'         " move it!
+Plug 'justinmk/vim-sneak'                " move it sneaky!
+Plug 'luochen1990/rainbow'               " colorful brackets
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -95,6 +86,47 @@ let NERDTreeQuitOnOpen=1
 " Close NERDTree if only itself
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" lightline
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+let g:lightline = {
+\   'colorscheme': 'snazzy',
+\   'active': {
+\     'left':[ [ 'mode', 'paste' ],
+\              [ 'cocstatus', 'currentfunction', 'gitbranch', 'readonly', 'filename', 'modified' ]
+\     ]
+\   },
+\   'component': {
+\     'lineinfo': ' %3l:%-2v',
+\   },
+\   'component_function': {
+\     'cocstatus': 'coc#status',
+\     'currentfunction': 'CocCurrentFunction',
+\     'gitbranch': 'fugitive#head',
+\   },
+\   'component_expand': {
+\     'buffers': 'lightline#bufferline#buffers'
+\   },
+\   'component_type': {
+\     'buffers': 'tabsel'
+\   }
+\}
+
+let g:lightline.separator = {
+\   'left': '', 'right': ''
+\}
+
+let g:lightline.subseparator = {
+\   'left': '', 'right': ''
+\}
+
+let g:lightline.tabline = {
+\   'left': [ ['buffers'] ],
+\   'right': [ ['tabs'] ]
+\}
+
 "++++++++++++++++++"
 "       MAP        "
 "++++++++++++++++++"
@@ -112,8 +144,10 @@ inoremap <C-l> <Right>
 nmap <silent> <Leader>t :TagbarToggle<CR>
 
 " tabline mapping
-nmap <C-h> <Plug>AirlineSelectPrevTab
-nmap <C-l> <Plug>AirlineSelectNextTab
+nmap <silent> <C-h> :bprevious<CR>
+nmap <silent> <C-l> :bnext<CR>
+nmap <silent> <leader><C-h> :tabprevious<CR>
+nmap <silent> <leader><C-l> :tabnext<CR>
 
 " Buffer mapping
 " 1. List buffer
