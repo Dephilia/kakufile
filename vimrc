@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-05-23 01:21:07
+" @Last Modified time: 2022-05-23 21:33:59
 
 "++++++++++++++++++"
 "      Vars        "
@@ -34,7 +34,7 @@ unlet data_dir
 
 call plug#begin()
 
-                                         " **BASIC** "
+" **BASIC** "
 Plug 'itchyny/lightline.vim'             " Yet another plugin for airline
 Plug 'mengelbrecht/lightline-bufferline' " Buffer for lightline
 Plug 'ryanoasis/vim-devicons'            " give vim icons
@@ -49,6 +49,7 @@ Plug 'tpope/vim-surround'                " quote it
 Plug 'easymotion/vim-easymotion'         " move it!
 Plug 'justinmk/vim-sneak'                " move it sneaky!
 Plug 'luochen1990/rainbow'               " colorful brackets
+Plug 'itchyny/vim-gitbranch'             " Show git branch
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -74,6 +75,7 @@ Plug 'junegunn/fzf.vim'
 
 " **THEME** "
 Plug 'connorholyday/vim-snazzy'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -90,24 +92,51 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
 endfunction
+function! Devicons_Filetype()"{{{
+  " return winwidth(0) > 70 ? (strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() . ' ' . &filetype : 'no ft') : ''
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction"}}}
+function! Devicons_Fileformat()"{{{
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction"}}}
+
+let g:lightline#bufferline#number_separator = ''
+let g:lightline#bufferline#show_number      = 2
+let g:lightline#bufferline#unicode_symbols  = 1
+let g:lightline#bufferline#enable_nerdfont  = 1
+let g:lightline#bufferline#enable_devicons  = 1
+let g:lightline#bufferline#unicode_symbols  = 1
+let g:lightline#bufferline#icon_position    = 'right'
+let g:lightline#bufferline#number_map       = {
+\ 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
+\ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
 
 let g:lightline = {
 \   'colorscheme': 'snazzy',
 \   'active': {
-\     'left':[ [ 'mode', 'paste' ],
-\              [ 'cocstatus', 'currentfunction', 'gitbranch', 'readonly', 'filename', 'modified' ]
+\     'left':[
+\       [ 'mode', 'paste' ],
+\       [ 'currentfunction', 'readonly', 'filename', 'modified' ]
+\     ],
+\     'right': [
+\       [ 'gitbranch', 'devicons_filetype', 'lineinfo' ],
+\       [ 'asyncrun_status', 'cocstatus' ],
 \     ]
 \   },
 \   'component': {
-\     'lineinfo': ' %3l:%-2v',
+\     'lineinfo': '%3p%%  %3l:%-2v',
+\     'vim_logo': "\ue7c5",
 \   },
 \   'component_function': {
 \     'cocstatus': 'coc#status',
 \     'currentfunction': 'CocCurrentFunction',
-\     'gitbranch': 'fugitive#head',
+\     'gitbranch': 'gitbranch#name',
+\     'devicons_filetype': 'Devicons_Filetype',
+\     'devicons_fileformat': 'Devicons_Fileformat',
 \   },
 \   'component_expand': {
-\     'buffers': 'lightline#bufferline#buffers'
+\     'buffers': 'lightline#bufferline#buffers',
+\     'asyncrun_status': 'lightline#asyncrun#status'
 \   },
 \   'component_type': {
 \     'buffers': 'tabsel'
@@ -123,8 +152,8 @@ let g:lightline.subseparator = {
 \}
 
 let g:lightline.tabline = {
-\   'left': [ ['buffers'] ],
-\   'right': [ ['tabs'] ]
+\   'left': [ [ 'vim_logo'], ['buffers'] ],
+\   'right': [ ['close'], ['tabs'] ]
 \}
 
 "++++++++++++++++++"
@@ -194,6 +223,9 @@ imap <silent> <Leader>B :call ToggleBracketMode() <CR>
 
 map <silent> <Leader><C-r> :so $MYVIMRC <CR>
 
+" Clear Additional Space
+command! -nargs=0 ClearSpaces :%s/\s\+$//e
+
 " copy to system clipboard
 noremap <Leader>y "*y
 noremap <Leader>p "*p
@@ -217,6 +249,30 @@ function! CopyModeDisable()
 endfunction
 command! -nargs=0 CopyModeDisable :call CopyModeDisable()
 
+" Hex Modified
+function! HexModeEnable()
+  if !executable('xxd')
+    echo "xxd not installed."
+    return
+  endif
+  set ft=xxd
+  set binary
+  set noeol
+  execute('%!xxd')
+endfunction
+command! -nargs=0 HexModeEnable :call HexModeEnable()
+
+function! HexModeDisable()
+  if !executable('xxd')
+    echo "xxd not installed."
+    return
+  endif
+  execute('%!xxd -r')
+  set ft&
+  set eol
+endfunction
+command! -nargs=0 HexModeDisable :call HexModeDisable()
+
 "++++++++++++++++++"
 "      MAIN        "
 "++++++++++++++++++"
@@ -227,11 +283,10 @@ filetype    indent on " indent length by filetype
 
 set background=dark " background
 set encoding=UTF-8  " coding
-set t_Co=256        " 256 color
-set nocompatible    " Unable vi<>vim
 set expandtab       " <tab> as many <space>
 set tabstop=2       " width of tab
-set showtabline=2
+set showtabline=2   " Tabline
+set laststatus=2    " Statusbar
 set noshowmode
 set shiftwidth=2    " indent width
 set softtabstop=2   " how many space insert after press tab
@@ -289,12 +344,6 @@ nmap zd :cs find d <C-R>=expand("<cword>")<CR><CR>
 "        COC       "
 "++++++++++++++++++"
 
-" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
-" unicode characters in the file autoload/float.vim
-set encoding=utf-8
-
-" TextEdit might fail if hidden is not set.
-set hidden
 
 " Some servers have issues with backup files, see #649.
 set nobackup
