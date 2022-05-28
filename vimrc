@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-05-23 21:33:59
+" @Last Modified time: 2022-05-28 15:54:48
 
 "++++++++++++++++++"
 "      Vars        "
@@ -62,6 +62,11 @@ Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['cpp']}
 Plug 'moll/vim-node',                    {'for': ['javascript']}
 Plug 'timonv/vim-cargo',                 {'for': ['rust']}
 Plug 'rust-lang/rust.vim',               {'for': ['rust']}
+
+" nvim only plugin
+if has('nvim')
+  Plug 'nvim-treesitter/nvim-treesitter'
+endif
 
 " **LSP** "
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
