@@ -1,9 +1,9 @@
 #! /bin/sh
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  function --(){
+  function dir() {
   # Easy open dir
-    open "$(pwd)"
+    open "`pwd`"
   }
 fi
 
