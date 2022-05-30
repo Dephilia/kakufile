@@ -10,7 +10,7 @@
   updateall2 = submodule update --recursive --remote
 
 [core]
-	excludesfile = ~/.kakufile/gitignore_global
+	excludesfile = /Users/dephilia/.kakufile/git/gitignore/mac/gitignore_global
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -42,6 +42,6 @@
 	default = current
 [commit]
 	gpgsign = true
-	template = ~/.kakufile/gitmessage
+	template = /Users/dephilia/.kakufile/git/gitmessage
 [tag]
 	gpgSign = true

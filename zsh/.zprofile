@@ -5,6 +5,20 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# Brew should on the top
+if command -v brew &> /dev/null; then
+  eval "$(brew shellenv)"
+fi
+
+# envs
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
+export GOPATH="${XDG_DATA_HOME}/go"
+export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
+export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+export GPG_TTY=$(tty)
+
 #
 # Browser
 #
@@ -59,18 +73,12 @@ fpath=(
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  ${XDG_DATA_HOME}/{cargo/bin,go/bin}
+  ${GOPATH}/bin
+  ${CARGO_HOME}/bin
   ${HOME}/.local/bin
   /usr/local/{bin,sbin}
   $path
 )
-
-# if command -v pyenv 1>/dev/null 2>&1; then
-#   eval "$(pyenv init -)"
-#   path=(
-#     $path
-#   )
-# fi
 
 #
 # Less
@@ -87,11 +95,3 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
-# envs
-export GOPATH="${XDG_DATA_HOME}/go"
-export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
-export CARGO_HOME="${XDG_DATA_HOME}/cargo"
-export HOMEBREW_PREFIX="/usr/local";
-export HOMEBREW_CELLAR="/usr/local/Cellar";
-export HOMEBREW_REPOSITORY="/usr/local/Homebrew";
-export GPG_TTY=$(tty)

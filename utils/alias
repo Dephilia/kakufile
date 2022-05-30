@@ -1,32 +1,10 @@
 #! /bin/sh
 
-
-#++++++++++++++++++# 
-#      ALIAS       #
-#++++++++++++++++++# 
-
 if [[ "$OSTYPE" == "darwin"* ]]; then
-# == Mac ================ #
 
-# cd alias
-alias cd-dev="cd ~/Documents/Dev"
-alias cd-thesis="cd ~/Documents/NTHU/toMaster/thesis"
+  alias backup-brew="brew bundle dump --file=${KAKU_ROOT}/homebrew/Brewfile --force --describe"
+  alias nproc='sysctl -n hw.logicalcpu'
 
-# Let brew know I have pyenv
-alias brew="env PATH='${PATH//$(pyenv root)\/shims:/}' brew"
-alias backup-brew="brew bundle dump --file=${KAKU_ROOT}/homebrew/Brewfile --force --describe"
-
-alias pyenv='env LDFLAGS="-L/usr/local/opt/zlib/lib" CPPFLAGS="-I/usr/local/opt/zlib/include" pyenv'
-
-alias nproc='sysctl -n hw.logicalcpu'
-alias load_drivers='launchctl load /Library/LaunchAgents/*'
-alias unload_drivers='launchctl unload /Library/LaunchAgents/*'
-
-
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-
-# == Linux ================ #
-  :
 fi
 
 # Quick Back
@@ -58,25 +36,24 @@ if command -v lsd &> /dev/null ;then
   alias lt='ls --tree'
 fi
 
-# lsd
+# neovide
 if command -v neovide &> /dev/null ;then
   alias nvd='neovide --multigrid'
 fi
-# WAN ip
-alias catpubip='echo "My WAN/Public IP address: $(curl ifconfig.me -s)"'
-alias ipinfo='curl -sH "Accept: application/json" ipinfo.io | jq'
 
-alias lg='lazygit'
+# WAN ip
+if command -v curl &> /dev/null ;then
+  alias catpubip='echo "My WAN/Public IP address: $(curl ifconfig.me -s)"'
+  alias ipinfo='curl -sH "Accept: application/json" ipinfo.io | jq'
+fi
 
 # restart zsh
 alias restart="clear && exec $SHELL"
 
 # test zsh start time
-alias start-count="time zsh -i -c echo"
-
-alias vtop="vtop --theme brew"
-
-alias lsports='lsof -ni | grep LISTEN'
+alias startuptime="time zsh -i -c echo"
 
 # Alia to new session
-alias tnew="tmux new-session -A -s"
+if command -v tmux &> /dev/null ;then
+  alias tnew="tmux new-session -A -s"
+fi

@@ -11,7 +11,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-. ${KAKU_ROOT}/bootstrap.sh
+. ${KAKU_ROOT}/scripts/bootstrap.sh
 
 # iterm2 shell integration setting
 # if [[ ("$__CFBundleIdentifier" == "com.googlecode.iterm2") && ( -s "${HOME}/.iterm2_shell_integration.zsh") ]]; then

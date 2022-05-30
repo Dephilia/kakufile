@@ -1,0 +1,39 @@
+#! /bin/sh
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  function --(){
+  # Easy open dir
+    open "$(pwd)"
+  }
+fi
+
+# Beautifully print your path
+function echopath() {
+  if [ $+PATH ]; then
+    echo "\033[1m\033[1;34m  < $#path element(s) >\033[1;32m"
+    printf '├─ %q\n' "$path[@]"
+    echo "\033[0m"
+  else
+    echo "\033[0;31mPATH unset\033[0m"
+  fi
+}
+
+function gi() {
+  curl -sLw n https://www.gitignore.io/api/$@ ;
+}
+
+function cht() {
+  if command -v bat &> /dev/null; then
+    cht.sh $1 | bat --style plain
+  else
+    cht.sh $1 | less
+  fi
+}
+
+function mergepdfs() {
+  if command -v gs &> /dev/null; then
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$1 "${@:2}"
+  else
+    echo "Ghost script not installed."
+  fi
+}
