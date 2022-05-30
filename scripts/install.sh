@@ -73,13 +73,6 @@ _install() {
   link "$nvim_res"      "$nvim_tar"
   link "$zshenv_res"    "$zshenv_tar"
 
-  if command -v git &> /dev/null; then
-    git config --global core.excludesfile "${KAKU_ROOT}/git/gitignore/${OS}/gitignore_global"
-    git config --global commit.template "${KAKU_ROOT}/git/gitmessage"
-  else
-    echo "No git installed, ignore setup config."
-  fi
-
   if [ ! -d "${ZDOTDIR:-$HOME}"/.zprezto ]; then
     echo "Install zprezto"
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
