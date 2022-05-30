@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-05-30 22:33:59
+" @Last Modified time: 2022-05-30 22:48:51
 
 "++++++++++++++++++"
 "      Vars        "
@@ -19,6 +19,7 @@ let g:coc_global_extensions = [
 \   'coc-dictionary',
 \   'coc-tag',
 \   ]
+let g:dashboard_default_executive ='fzf'
 
 "++++++++++++++++++"
 "      Plug        "
@@ -67,6 +68,7 @@ Plug 'rust-lang/rust.vim',               {'for': ['rust']}
 if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter'
 endif
+Plug 'glepnir/dashboard-nvim'
 
 " **LSP** "
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
