@@ -1,12 +1,24 @@
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
 endfunction
+
+lua << EOF
+function getfiletypeicon( filetype )
+    local icon = require('nvim-web-devicons').get_icon_by_filetype( filetype )
+    return icon
+end
+EOF
+
+function! CustomFilename()
+    let filetype = winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : '-') : ''
+    let filename = expand('%:t') !=# '' ? expand('%:t') : '[no name]'
+    let filetypeicon = v:lua.getfiletypeicon(filetype)
+
+    return filetypeicon . ' ' . filetype
+endfunction
+
 function! Devicons_Filetype()"{{{
-  " return winwidth(0) > 70 ? (strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() . ' ' . &filetype : 'no ft') : ''
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-endfunction"}}}
-function! Devicons_Fileformat()"{{{
-  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction"}}}
 
 let g:lightline#bufferline#number_separator = ''
@@ -40,8 +52,7 @@ let g:lightline = {
 \     'cocstatus': 'coc#status',
 \     'currentfunction': 'CocCurrentFunction',
 \     'gitbranch': 'gitbranch#name',
-\     'devicons_filetype': 'Devicons_Filetype',
-\     'devicons_fileformat': 'Devicons_Fileformat',
+\     'devicons_filetype': 'CustomFilename',
 \   },
 \   'component_expand': {
 \     'buffers': 'lightline#bufferline#buffers',
