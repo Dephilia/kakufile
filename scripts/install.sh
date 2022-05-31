@@ -26,10 +26,6 @@ fi
 alacritty_res="${KAKU_ROOT}/alacritty/${OS}/alacritty.yml"
 alacritty_tar="${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
 
-# git
-gitconfig_res="${KAKU_ROOT}/git/gitconfig"
-gitconfig_tar="${XDG_CONFIG_HOME}/git/config"
-
 # tmux
 tmux_res="${KAKU_ROOT}/tmux/tmux.conf.local"
 tmux_tar="${HOME}/.tmux.conf.local"
@@ -65,9 +61,12 @@ _install() {
   mkdir -p "${XDG_CONFIG_HOME}/alacritty"
   mkdir -p "${XDG_CONFIG_HOME}/git"
 
+  touch "${XDG_CONFIG_HOME}/git/config"
+  git config --global include.path "${KAKU_ROOT}/git/gitconfig.kaku"
+  git config --global core.excludesfile "${KAKU_ROOT}/git/gitignore/${OS}/gitignore_global"
+  git config --global commit.template "${KAKU_ROOT}/git/gitmessage"
 
   link "$alacritty_res" "$alacritty_tar"
-  link "$gitconfig_res" "$gitconfig_tar"
   link "$tmux_res"      "$tmux_tar"
   link "$vimrc_res"     "$vimrc_tar"
   link "$nvim_res"      "$nvim_tar"

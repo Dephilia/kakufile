@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
-" @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-05-30 22:22:52
+" @Last Modified by:  <>
+" @Last Modified time: 2022-05-31 20:38:37
 
 " vim should be a simple, fast editor with enough functions only.
 
@@ -82,7 +82,6 @@ function! CopyModeEnable()
   set norelativenumber
   set nonumber
   set nolist
-  call gitgutter#disable()
 endfunction
 command! -nargs=0 CopyModeEnable :call CopyModeEnable()
 
@@ -90,7 +89,6 @@ function! CopyModeDisable()
   set relativenumber
   set number
   set list listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
-  call gitgutter#enable()
 endfunction
 command! -nargs=0 CopyModeDisable :call CopyModeDisable()
 
@@ -150,6 +148,7 @@ set relativenumber  " show relative line number
 set number          " show line number
 set cursorline      " highlight current line
 set hidden          " Hide edited buffer
+set cmdheight=2
 hi CursorLine term=bold cterm=bold
 
 " Enable backspace avaliable in Insert mode
