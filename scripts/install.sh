@@ -42,13 +42,13 @@ nvim_tar="${XDG_CONFIG_HOME}/nvim"
 zshenv_res="${ZDOTDIR}/.zshenv"
 zshenv_tar="${HOME}/.zshenv"
 
-function link() {
+function klink() {
   if [ -L "$2" ]; then
     echo "[WARN] File $2 linked, ignore."
   elif [ -f "$2" ] || [ -d "$2" ]; then
     echo "[WARN] File $2 exists, ignore."
   else
-    echo "[GOOD] Link $2"
+    echo "[GOOD] link $2"
     ln -s "$1" "$2"
   fi
 }
@@ -66,21 +66,21 @@ _install() {
   git config --global core.excludesfile "${KAKU_ROOT}/git/gitignore/${OS}/gitignore_global"
   git config --global commit.template "${KAKU_ROOT}/git/gitmessage"
 
-  link "$alacritty_res" "$alacritty_tar"
-  link "$tmux_res"      "$tmux_tar"
-  link "$vimrc_res"     "$vimrc_tar"
-  link "$nvim_res"      "$nvim_tar"
-  link "$zshenv_res"    "$zshenv_tar"
+  klink "$alacritty_res" "$alacritty_tar"
+  klink "$tmux_res"      "$tmux_tar"
+  klink "$vimrc_res"     "$vimrc_tar"
+  klink "$nvim_res"      "$nvim_tar"
+  klink "$zshenv_res"    "$zshenv_tar"
 
   if [ ! -d "${ZDOTDIR:-$HOME}"/.zprezto ]; then
-    link "${KAKU_ROOT}/thirdparty/prezto" "${ZDOTDIR:-$HOME}/.zprezto"
+    klink "${KAKU_ROOT}/thirdparty/prezto" "${ZDOTDIR:-$HOME}/.zprezto"
   fi
   if [ ! -d "${ZDOTDIR}/.zprezto/contrib" ]; then
-    link "${KAKU_ROOT}/thirdparty/prezto-contrib" "${ZDOTDIR:-$HOME}/.zprezto/contrib"
+    klink "${KAKU_ROOT}/thirdparty/prezto-contrib" "${ZDOTDIR:-$HOME}/.zprezto/contrib"
   fi
 
   if [ ! -d "${HOME}/.tmux" ]; then
-    link "${KAKU_ROOT}/thirdparty/ohmytmux/.tmux.conf" "${HOME}/.tmux.conf"
+    klink "${KAKU_ROOT}/thirdparty/ohmytmux/.tmux.conf" "${HOME}/.tmux.conf"
   fi
 
   # Restart shell

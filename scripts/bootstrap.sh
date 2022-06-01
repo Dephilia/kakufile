@@ -7,5 +7,5 @@
 #
 
 
-source ${KAKU_ROOT}/utils/alias
-source ${KAKU_ROOT}/utils/functions
+. "${KAKU_ROOT}/utils/alias"
+. "${KAKU_ROOT}/utils/functions"
