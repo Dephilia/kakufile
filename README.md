@@ -28,7 +28,7 @@ The install script is only used for \*nix system. Please do not use it on Window
 
 ### By git clone
 ```shell
-git clone https://github.com/Dephilia/kakufile.git ~/.kakufile
+git clone --recurse-submodules https://github.com/Dephilia/kakufile.git ~/.kakufile
 cd .kakufile
 ./scripts/install.sh
 ```

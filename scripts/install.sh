@@ -72,8 +72,6 @@ _install() {
   link "$nvim_res"      "$nvim_tar"
   link "$zshenv_res"    "$zshenv_tar"
 
-  git submodule update --init --recursive --remote
-
   if [ ! -d "${ZDOTDIR:-$HOME}"/.zprezto ]; then
     link "${KAKU_ROOT}/thirdparty/prezto" "${ZDOTDIR:-$HOME}/.zprezto"
   fi
