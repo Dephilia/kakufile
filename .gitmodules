@@ -1,3 +1,11 @@
-[submodule "zsh/prezto"]
-	path = zsh/prezto
+[submodule "thirdparty/prezto"]
+	path = thirdparty/prezto
 	url = https://github.com/sorin-ionescu/prezto.git
+	ignore = dirty
+[submodule "thirdparty/prezto-contrib"]
+	path = thirdparty/prezto-contrib
+	url = https://github.com/belak/prezto-contrib
+	ignore = dirty
+[submodule "thirdparty/ohmytmux"]
+	path = thirdparty/ohmytmux
+	url = https://github.com/gpakosz/.tmux.git

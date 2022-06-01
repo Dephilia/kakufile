@@ -72,19 +72,17 @@ _install() {
   link "$nvim_res"      "$nvim_tar"
   link "$zshenv_res"    "$zshenv_tar"
 
+  git submodule update --init --recursive --remote
+
   if [ ! -d "${ZDOTDIR:-$HOME}"/.zprezto ]; then
-    echo "Install zprezto"
-    git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+    link "${KAKU_ROOT}/thirdparty/prezto" "${ZDOTDIR:-$HOME}/.zprezto"
   fi
   if [ ! -d "${ZDOTDIR}/.zprezto/contrib" ]; then
-    echo "Install zprezto contrib"
-    git clone --recurse-submodules https://github.com/belak/prezto-contrib "${ZDOTDIR}/.zprezto/contrib"
+    link "${KAKU_ROOT}/thirdparty/prezto-contrib" "${ZDOTDIR:-$HOME}/.zprezto/contrib"
   fi
 
   if [ ! -d "${HOME}/.tmux" ]; then
-    echo "Install oh-my-tmux"
-    git clone https://github.com/gpakosz/.tmux.git "${HOME}/.tmux"
-    link "${HOME}/.tmux/.tmux.conf" "${HOME}/.tmux.conf"
+    link "${KAKU_ROOT}/thirdparty/ohmytmux/.tmux.conf" "${HOME}/.tmux.conf"
   fi
 
   # Restart shell

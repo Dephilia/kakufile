@@ -9,7 +9,6 @@
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 
 rm -rf ${XDG_CONFIG_HOME}/alacritty \
-${XDG_CONFIG_HOME}/git \
 ${XDG_CONFIG_HOME}/nvim \
 ${HOME}/.tmux.conf.local \
 ${HOME}/.vimrc \
