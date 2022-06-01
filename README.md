@@ -30,7 +30,7 @@ The install script is only used for \*nix system. Please do not use it on Window
 ```shell
 git clone https://github.com/Dephilia/kakufile.git ~/.kakufile
 cd .kakufile
-./install.sh
+./scripts/install.sh
 ```
 
 ### Post Install
