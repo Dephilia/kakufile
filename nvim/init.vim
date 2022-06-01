@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-05-31 22:18:12
+" @Last Modified time: 2022-06-01 21:31:00
 
 "++++++++++++++++++"
 "      Post        "
@@ -19,12 +19,11 @@ let g:coc_global_extensions = [
 \   'coc-dictionary',
 \   'coc-tag',
 \   ]
-let g:dashboard_default_executive ='telescope'
 
 "++++++++++++++++++"
 "       PLUG       "
 "++++++++++++++++++"
-"
+
 runtime vim/plugs.vim
 
 " Include
@@ -32,6 +31,7 @@ runtime vim/utils.vim
 runtime vim/lightline.vim
 runtime vim/coc.vim
 runtime vim/cscfg.vim
+runtime vim/dashboard.vim
 runtime lua/treesitter.lua
 runtime lua/nvimtree.lua
 
