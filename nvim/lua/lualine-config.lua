@@ -39,7 +39,7 @@ local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
 end
 
 local function vim_logo()
-  return "\u{e7c5}"
+  return "" -- \ue7c5
 end
 
 require('lualine').setup {
