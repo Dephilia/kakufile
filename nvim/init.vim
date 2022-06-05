@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-06-06 01:33:25
+" @Last Modified time: 2022-06-06 01:43:39
 
 "++++++++++++++++++"
 "      Post        "
@@ -13,6 +13,7 @@ let g:rainbow_active           = 1
 let g:python_highlight_all     = 1
 let g:tagbar_no_status_line    = 1
 let g:vista_disable_statusline = 1
+let g:vista_stay_on_open       = 0
 
 let g:coc_global_extensions = [
 \   'coc-json',

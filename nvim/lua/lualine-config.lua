@@ -47,7 +47,12 @@ local function tagbar_fn()
 end
 
 local function vista_tags()
-  return vim.b.vista_nearest_method_or_function
+  local v = vim.b.vista_nearest_method_or_function
+  if v==nil then
+    return ''
+  else
+    return v
+  end
 end
 
 local tagbar = {
