@@ -42,6 +42,28 @@ local function vim_logo()
   return "" -- \ue7c5
 end
 
+local function tagbar_fn()
+  return vim.fn['tagbar#currenttag']('%s', '', 'f', 'scoped-stl')
+end
+
+local function vista_tags()
+  return vim.b.vista_nearest_method_or_function
+end
+
+local tagbar = {
+  sections = {
+    lualine_z = { 'filetype' },
+  },
+  filetypes = { 'tagbar' }
+}
+
+local vista = {
+  sections = {
+    lualine_z = { 'filetype' },
+  },
+  filetypes = { 'vista' }
+}
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -50,9 +72,7 @@ require('lualine').setup {
     section_separators = { left = '', right = ''},
     always_divide_middle = true,
     globalstatus = true,
-    disabled_filetypes = {
-      'tagbar',
-    },
+    disabled_filetypes = {},
   },
   sections = {
     lualine_a = {'mode'},
@@ -63,7 +83,7 @@ require('lualine').setup {
     lualine_c = {
       {'filename', fmt=trunc(90, 30, 80)},
     },
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {vista_tags, 'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
@@ -86,5 +106,7 @@ require('lualine').setup {
   extensions = {
     'fzf',
     'nvim-tree',
+    tagbar,
+    vista,
   }
 }

@@ -1,16 +1,18 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-06-01 23:27:29
+" @Last Modified time: 2022-06-06 01:33:25
 
 "++++++++++++++++++"
 "      Post        "
 "++++++++++++++++++"
 let mapleader = ","
 
-let g:SnazzyTransparent    = 1
-let g:rainbow_active       = 1
-let g:python_highlight_all = 1
+let g:SnazzyTransparent        = 1
+let g:rainbow_active           = 1
+let g:python_highlight_all     = 1
+let g:tagbar_no_status_line    = 1
+let g:vista_disable_statusline = 1
 
 let g:coc_global_extensions = [
 \   'coc-json',
@@ -35,6 +37,8 @@ runtime lua/treesitter.lua
 runtime lua/nvimtree.lua
 runtime lua/lualine-config.lua
 
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
 "++++++++++++++++++"
 "       MAP        "
 "++++++++++++++++++"
@@ -49,7 +53,7 @@ inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
 " Plug mapping
-nmap <silent> <Leader>t :TagbarToggle<CR>
+nmap <silent> <Leader>t :Vista!!<CR>
 nmap <silent> <Leader>n :NvimTreeToggle<CR>
 
 " Find files using Telescope command-line sugar.
