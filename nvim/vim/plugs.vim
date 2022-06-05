@@ -2,6 +2,7 @@
 let data_dir = has('nvim') ? stdpath('data') . '/site' : has('win32') ? '~/vimfiles' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.fnamemodify(data_dir.'/autoload/plug.vim', ':p:S').' --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  set rtp+=data_dir.'/autoload'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 unlet data_dir
