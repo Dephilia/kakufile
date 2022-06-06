@@ -1,49 +1,44 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-06-06 01:43:39
+" @Last Modified time: 2022-06-06 22:00:06
 
-"++++++++++++++++++"
-"      Post        "
-"++++++++++++++++++"
+" Pre Plug Configuration
+" Description: Some settings need to be configured
+"   before load it.
+"=============================="
 let mapleader = ","
 
 let g:SnazzyTransparent        = 1
 let g:rainbow_active           = 1
-let g:python_highlight_all     = 1
-let g:tagbar_no_status_line    = 1
-let g:vista_disable_statusline = 1
-let g:vista_stay_on_open       = 0
 
-let g:coc_global_extensions = [
-\   'coc-json',
-\   'coc-clangd',
-\   'coc-python',
-\   'coc-dictionary',
-\   'coc-tag',
-\   ]
-
-"++++++++++++++++++"
-"       PLUG       "
-"++++++++++++++++++"
-
+" Load Plug
+" Description: vim-plug start end.
+"=============================="
 runtime vim/plugs.vim
 
-" Include
+" Post Configuration
+"=============================="
 runtime vim/utils.vim
-runtime vim/coc.vim
 runtime vim/cscfg.vim
 runtime vim/dashboard.vim
-runtime lua/treesitter.lua
-runtime lua/nvimtree.lua
-runtime lua/lualine-config.lua
 
+" Lua configuration
+lua << EOF
+  require('treesitter')
+  require('nvimtree')
+  require('lualine-config')
+  require('lsp/setup')
+  require('lsp/nvim-cmp')
+  require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
+EOF
+
+" Auto command
+"=============================="
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
-"++++++++++++++++++"
-"       MAP        "
-"++++++++++++++++++"
-
+" Key mapping
+"=============================="
 " jj escape
 inoremap <silent> jj <ESC>
 
@@ -54,10 +49,12 @@ inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
 " Plug mapping
-nmap <silent> <Leader>t :Vista!!<CR>
-nmap <silent> <Leader>n :NvimTreeToggle<CR>
+nmap <silent> <Leader>vv :Vista!!<CR>
+nmap <silent> <Leader>t  :SymbolsOutline<CR>
+nmap <silent> <Leader>n  :NvimTreeToggle<CR>
 
 " Find files using Telescope command-line sugar.
+nnoremap <leader>ft <cmd>Telescope <cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -87,19 +84,18 @@ xmap ga <Plug>(EasyAlign)
 
 map <silent> <Leader><C-r> :so $MYVIMRC <CR>
 
-" Clear Additional Space
-command! -nargs=0 ClearSpaces :%s/\s\+$//e
-
 " copy to system clipboard
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
-"++++++++++++++++++"
-"      MAIN        "
-"++++++++++++++++++"
+nmap <leader>e <cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>
+vmap <leader>e <cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>
+omap <leader>e <cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END, inclusive_jump = true })<cr>
 
+" Vim settings
+"=============================="
 syntax      enable    " Enable syntax
 colorscheme snazzy
 
@@ -141,13 +137,11 @@ set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-"++++++++++++++++++"
-"     Neovide      "
-"++++++++++++++++++"
+" GUI Settings
+"=============================="
 set guifont=Mononoki\ Nerd\ Font\ mono:h14
 let g:neovide_transparency=0.9
 let g:neovide_cursor_vfx_mode="railgun"
 
-"++++++++++++++++++"
-"       END        "
-"++++++++++++++++++"
+" END
+"=============================="

@@ -65,3 +65,6 @@ function! HexModeDisable()
   set eol
 endfunction
 command! -nargs=0 HexModeDisable :call HexModeDisable()
+
+" Clear Additional Space
+command! -nargs=0 ClearSpaces :%s/\s\+$//e
