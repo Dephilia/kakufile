@@ -11,18 +11,18 @@ TMP="/tmp/nvim-release"
 
 _main(){
 mkdir -p $TMP
-cp -r ~/.config/nvim $TMP/config
-cp -r ~/.local/share/nvim $TMP/datas
+rsync -ahL ~/.config/nvim $TMP/config --exclude .git
+rsync -ahL ~/.local/share/nvim $TMP/datas --exclude .git
 cat << EOF > $TMP/install.sh
 #! /bin/sh
 # This is an autogenerate file to install prebuilt
 # nvim plugs.
 if [ ! -d ~/.config/nvim ]; then
-  mv config ~/.config/nvim
+  mv config/nvim ~/.config/nvim
 fi
 
 if [ ! -d ~/.local/share/nvim ]; then
-  mv config ~/.local/share/nvim
+  mv datas/nvim ~/.local/share/nvim
 fi
 EOF
 chmod a+x $TMP/install.sh
