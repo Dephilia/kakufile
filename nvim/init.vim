@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-06-06 22:00:06
+" @Last Modified time: 2022-06-08 22:20:04
 
 " Pre Plug Configuration
 " Description: Some settings need to be configured
@@ -11,6 +11,7 @@ let mapleader = ","
 
 let g:SnazzyTransparent        = 1
 let g:rainbow_active           = 1
+set termguicolors
 
 " Load Plug
 " Description: vim-plug start end.
@@ -31,11 +32,13 @@ lua << EOF
   require('lsp/setup')
   require('lsp/nvim-cmp')
   require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
+  require("notify").setup({
+    background_colour = "#000000",
+  })
 EOF
 
 " Auto command
 "=============================="
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 " Key mapping
 "=============================="
@@ -118,7 +121,6 @@ set relativenumber  " show relative line number
 set number          " show line number
 set cursorline      " highlight current line
 set hidden          " Hide edited buffer
-set termguicolors
 hi CursorLine term=bold cterm=bold
 
 " Enable backspace avaliable in Insert mode

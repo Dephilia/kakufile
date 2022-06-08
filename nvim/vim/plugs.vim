@@ -13,22 +13,27 @@ call plug#begin()
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kdheepak/tabline.nvim'
 Plug 'glepnir/dashboard-nvim'
-Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeToggle' }
+" devicons also affect Telescope
 Plug 'kyazdani42/nvim-web-devicons'
+ \| Plug 'kyazdani42/nvim-tree.lua'
 
-" Vim utils, motions
-Plug 'phaazon/hop.nvim'        " Replacement for easymotion & sneak
-Plug 'aperezdc/vim-template'   " Template for new file
-Plug 'junegunn/vim-easy-align' " make code beautiful
-Plug 'ahonn/vim-fileheader'    " insert the info at head
-Plug 'airblade/vim-gitgutter'  " show git status
-Plug 'itchyny/vim-gitbranch'   " Show git branch
-Plug 'tpope/vim-commentary'    " use [gc] to comment everything
-Plug 'psliwka/vim-smoothie'    " More smoooooooth
-Plug 'godlygeek/tabular'       " align tool
-Plug 'tpope/vim-surround'      " quote it
-Plug 'luochen1990/rainbow'     " colorful brackets
-Plug 'vim-scripts/DoxygenToolkit.vim'
+" Vim                                  utils, motions
+Plug 'phaazon/hop.nvim'                " Replacement for easymotion & sneak
+Plug 'aperezdc/vim-template'           " Template for new file
+Plug 'junegunn/vim-easy-align'         " make code beautiful
+Plug 'ahonn/vim-fileheader'            " insert the info at head
+Plug 'airblade/vim-gitgutter'          " show git status
+Plug 'itchyny/vim-gitbranch'           " Show git branch
+Plug 'psliwka/vim-smoothie'            " More smoooooooth
+Plug 'godlygeek/tabular'               " align tool
+Plug 'tpope/vim-commentary'            " use [gc] to comment everything
+Plug 'tpope/vim-surround'              " quote it
+Plug 'tpope/vim-fugitive'              " Gitttt
+Plug 'luochen1990/rainbow'             " colorful brackets
+Plug 'vim-scripts/DoxygenToolkit.vim', { 'on': 'Dox'}
+Plug 'rcarriga/nvim-notify'            " Notify interface
+Plug 'sbdchd/neoformat', { 'on': 'Neoformat' } " Code formatter
+Plug 'skywind3000/asyncrun.vim'        " Asyncrun
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
@@ -36,9 +41,9 @@ Plug 'sheerun/vim-polyglot'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'liuchengxu/vista.vim'
-Plug 'simrat39/symbols-outline.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'liuchengxu/vista.vim', { 'on': 'Vista!!' }
+Plug 'simrat39/symbols-outline.nvim', { 'on': 'SymbolsOutline' }
 
 " Completion Family
 Plug 'hrsh7th/cmp-nvim-lsp'
