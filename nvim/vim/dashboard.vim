@@ -5,6 +5,7 @@ let g:dashboard_custom_header =<< trim END
  ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
  ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
  ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝
+    -- Neovim of Dephilia
 END
 " Generate ascii art here
 " https://lachlanarthur.github.io/Braille-ASCII-Art/

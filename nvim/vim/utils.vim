@@ -10,7 +10,7 @@ function! ToggleBracketMode()
         iunmap '
         iunmap "
         let s:AutoBracketEnable = 0
-        echo "Disable Auto Bracket"
+        call v:lua.vim.notify("Disable Auto Bracket", "info", {'title': 'neovim config'})
     else
         inoremap { {}<Left>
         inoremap {<Enter> {}<Left><CR><ESC><S-o>
@@ -19,7 +19,7 @@ function! ToggleBracketMode()
         inoremap ' ''<LEFT>
         inoremap " ""<LEFT>
         let s:AutoBracketEnable = 1
-        echo "Enable Auto Bracket"
+        call v:lua.vim.notify("Enable Auto Bracket", "info", {'title': 'neovim config'})
     endif
 endfunction
 nmap <silent> <Leader>B :call ToggleBracketMode() <CR>
@@ -31,6 +31,7 @@ function! CopyModeEnable()
   set nonumber
   set nolist
   call gitgutter#disable()
+  call v:lua.vim.notify("Enable Copy Mode", "info", {'title': 'neovim config'})
 endfunction
 command! -nargs=0 CopyModeEnable :call CopyModeEnable()
 
@@ -39,6 +40,7 @@ function! CopyModeDisable()
   set number
   set list listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
   call gitgutter#enable()
+  call v:lua.vim.notify("Disable Copy Mode", "info", {'title': 'neovim config'})
 endfunction
 command! -nargs=0 CopyModeDisable :call CopyModeDisable()
 
@@ -52,6 +54,7 @@ function! HexModeEnable()
   set binary
   set noeol
   execute('%!xxd')
+  call v:lua.vim.notify("Enable Hex Mode\nCall :HexModeDisable before save file.", "info", {'title': 'neovim config'})
 endfunction
 command! -nargs=0 HexModeEnable :call HexModeEnable()
 
@@ -63,6 +66,7 @@ function! HexModeDisable()
   execute('%!xxd -r')
   set ft&
   set eol
+  call v:lua.vim.notify("Disable Hex Mode", "info", {'title': 'neovim config'})
 endfunction
 command! -nargs=0 HexModeDisable :call HexModeDisable()
 

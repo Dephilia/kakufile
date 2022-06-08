@@ -1,7 +1,12 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-06-08 22:20:04
+" @Last Modified time: 2022-06-09 00:57:08
+
+if !has('nvim-0.7.0')
+  echohl Error | echomsg "Nvim 0.7.0 required, but is missing!" | echohl None
+  finish
+endif
 
 " Pre Plug Configuration
 " Description: Some settings need to be configured
@@ -35,10 +40,19 @@ lua << EOF
   require("notify").setup({
     background_colour = "#000000",
   })
+  vim.notify = require("notify")
 EOF
+
 
 " Auto command
 "=============================="
+" Conflict to fugitive, not use now
+" augroup non_utf8_file_warn
+"   autocmd!
+"   autocmd BufRead * if &fileencoding != 'utf-8' |
+"         \ call v:lua.vim.notify("File is not in UTF-8 format!", "warn", {"title": "File type warning"}) |
+"         \ endif
+" augroup END
 
 " Key mapping
 "=============================="
@@ -85,7 +99,8 @@ nnoremap <silent> bd :bdelete<CR>
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
-map <silent> <Leader><C-r> :so $MYVIMRC <CR>
+map <silent> <Leader><C-r> <cmd> so $MYVIMRC <bar>
+  \ call v:lua.vim.notify("Reload Config", "info", {'title': 'neovim config'}) <CR>
 
 " copy to system clipboard
 noremap <Leader>y "*y
@@ -141,9 +156,11 @@ set shortmess+=c
 
 " GUI Settings
 "=============================="
-set guifont=Mononoki\ Nerd\ Font\ mono:h14
-let g:neovide_transparency=0.9
-let g:neovide_cursor_vfx_mode="railgun"
+if exists('g:neovide')
+  set guifont=Mononoki\ Nerd\ Font\ mono:h14
+  let g:neovide_transparency=0.9
+  let g:neovide_cursor_vfx_mode="railgun"
+endif
 
 " END
 "=============================="
