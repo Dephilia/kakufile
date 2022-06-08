@@ -54,8 +54,8 @@ Plug 'onsails/lspkind-nvim'
 " fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'nvim-lua/plenary.nvim' " Dependency for telescope
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+  \| Plug 'nvim-telescope/telescope.nvim'
 
 " Themes
 Plug 'connorholyday/vim-snazzy'
