@@ -19,14 +19,17 @@ let g:dashboard_custom_shortcut={
 \ 'book_marks'         : '<leader> f b',
 \ }
 let g:dashboard_default_executive ='telescope'
-autocmd FileType dashboard nmap <buffer> <Leader>ss :<C-u>SessionSave<CR>
-autocmd FileType dashboard nmap <buffer> <Leader>sl :<C-u>SessionLoad<CR>
-autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>fh :DashboardFindHistory<CR>
-autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>ff :DashboardFindFile<CR>
-autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>tc :DashboardChangeColorscheme<CR>
-autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>fa :DashboardFindWord<CR>
-autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>fb :DashboardJumpMark<CR>
-autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>cn :DashboardNewFile<CR>
-" hide tilde
-autocmd FileType dashboard setlocal fillchars+=eob:\ 
 
+augroup dashboard_cfg
+  autocmd!
+   autocmd FileType dashboard nmap <buffer> <Leader>ss :<C-u>SessionSave<CR>
+   autocmd FileType dashboard nmap <buffer> <Leader>sl :<C-u>SessionLoad<CR>
+   autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>fh :DashboardFindHistory<CR>
+   autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>ff :DashboardFindFile<CR>
+   autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+   autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>fa :DashboardFindWord<CR>
+   autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>fb :DashboardJumpMark<CR>
+   autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>cn :DashboardNewFile<CR>
+   " hide tilde
+   autocmd FileType dashboard setlocal fillchars+=eob:\ 
+augroup END
