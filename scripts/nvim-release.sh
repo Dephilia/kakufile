@@ -13,18 +13,18 @@ _main(){
 mkdir -p $TMP
 curl -L https://github.com/neovim/neovim/releases/latest/download/nvim.appimage -o $TMP/nvim.appimage
 chmod u+x $TMP/nvim.appimage
-cp -r ~/.config/nvim $TMP/config
-cp -r ~/.local/share/nvim $TMP/datas
+cp -rH ~/.config/nvim $TMP/config
+cp -rH ~/.local/share/nvim $TMP/datas
 cat << EOF > $TMP/install.sh
 #! /bin/sh
 # This is an autogenerate file to install prebuilt
 # nvim plugs.
 if [ ! -d ~/.config/nvim ]; then
-  mv config/nvim ~/.config/nvim
+  mv config ~/.config/nvim
 fi
 
 if [ ! -d ~/.local/share/nvim ]; then
-  mv datas/nvim ~/.local/share/nvim
+  mv datas ~/.local/share/nvim
 fi
 EOF
 chmod a+x $TMP/install.sh
