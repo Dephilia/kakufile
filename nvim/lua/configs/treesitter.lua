@@ -5,8 +5,8 @@
 --
 -- Distributed under terms of the MIT license.
 --
-
-require'nvim-treesitter.configs'.setup {
+--
+local M = {
   -- A list of parser names, or "all"
   ensure_installed = { "c", "cpp", "python", "lua", "rust", "vim" },
 
@@ -33,3 +33,14 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+if vim.g['plugin_provider'] == 'packer' then
+local ok, treesitter = pcall(require, "nvim-treesitter.configs")
+if not ok then
+  return
+end
+treesitter.setup(M)
+elseif vim.g['plugin_provider'] == 'vim-plug' then
+require'nvim-treesitter.configs'.setup(M)
+end
+

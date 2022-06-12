@@ -2,3 +2,4 @@
 .zcompdump
 .zhistory
 *.zprezto
+packer_compiled.lua

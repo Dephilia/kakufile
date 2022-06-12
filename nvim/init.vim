@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-06-09 00:57:08
+" @Last Modified time: 2022-06-13 01:32:08
 
 if !has('nvim-0.7.0')
   echohl Error | echomsg "Nvim 0.7.0 required, but is missing!" | echohl None
@@ -14,38 +14,28 @@ endif
 "=============================="
 let mapleader = ","
 
+let g:plugin_provider = 'packer'
 let g:SnazzyTransparent        = 1
 let g:rainbow_active           = 1
 set termguicolors
 
 " Load Plug
-" Description: vim-plug start end.
+" Description: Load the plugins by the provider. Default: packer
 "=============================="
-runtime vim/plugs.vim
+if g:plugin_provider == 'vim-plug'
+  runtime vim/plugs.vim
+elseif g:plugin_provider == 'packer'
+  lua require('plugins')
+endif
 
 " Post Configuration
 "=============================="
 runtime vim/utils.vim
 runtime vim/cscfg.vim
-runtime vim/dashboard.vim
-
-" Lua configuration
-lua << EOF
-  require('treesitter')
-  require('nvimtree')
-  require('lualine-config')
-  require('lsp/setup')
-  require('lsp/nvim-cmp')
-  require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
-  require("notify").setup({
-    background_colour = "#000000",
-  })
-  vim.notify = require("notify")
-EOF
-
 
 " Auto command
 "=============================="
+autocmd FileType dashboard setlocal fillchars+=eob:\ 
 " Conflict to fugitive, not use now
 " augroup non_utf8_file_warn
 "   autocmd!

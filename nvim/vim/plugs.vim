@@ -82,3 +82,20 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " Plug 'justinmk/vim-sneak'                " move it sneaky!
 
 call plug#end()
+
+" Lua configuration
+lua << EOF
+require('treesitter')
+require('configs/lualine-config')
+require('configs/tabline-config')
+require('configs/nvimtree')
+require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
+require("notify").setup({
+  background_colour = "#000000",
+})
+vim.notify = require("notify")
+require('lsp/setup')
+require('lsp/nvim-cmp')
+EOF
+endif
+runtime vim/dashboard.vim
