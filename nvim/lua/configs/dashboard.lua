@@ -6,79 +6,61 @@
 -- Distributed under terms of the MIT license.
 --
 
-local empty_line = [[]]
 local header = {
-	empty_line,
-	empty_line,
-	empty_line,
-	[[███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗]],
-	[[████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║]],
-	[[██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║]],
-	[[██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║]],
-	[[██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║]],
-	[[╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
-  [[  -- Dephilia's Configutation]],
-	empty_line,
-	empty_line,
+' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+'  -- Dephilia\'s Configuration                         ',
+'',
+'',
 }
 
-
--- local home = os.getenv('HOME')
 local db = require('dashboard')
 db.custom_header = header
-db.hide_statusline = false
-db.hide_tabline = false
 db.custom_center = {
     {
       icon = "  ",
-      desc = 'New file                                ',
-      shortcut = ":enew",
-      action = "enew",
+      desc = 'New file                                 ',
+      shortcut = "<leader> b o",
+      action = "DashboardNewFile",
     },
     {
       icon = '  ',
-      desc = 'Find File                               ',
+      desc = 'Find File                                ',
       action = 'Telescope find_files hidden=true no_ignore=true',
-      shortcut = ', f f',
+      shortcut = '<leader> f f',
     },
-    -- {
-    --   icon = "  ",
-    --   desc = 'Update Plugins                          ',
-    --   shortcut = ":PackerSync",
-    --   action = "PackerSync",
-    -- },
+    {
+      icon = '  ',
+      desc = 'Marks                                    ',
+      action = 'Telescope marks',
+      shortcut = '<leader> f m'
+    },
+    {
+      icon = '  ',
+      desc = 'Find word                                ',
+      shortcut = '<leader> f g',
+      action = 'Telescope live_grep',
+    },
+    {
+      icon = "  ",
+      desc = 'Update Plugins                           ',
+      shortcut = ":PackerSync",
+      action = "PackerSync",
+    },
     {
       icon = "  ",
-      desc = 'Close Neovim                            ',
-      shortcut = ":qa!",
+      desc = 'Close Neovim                             ',
+      shortcut = ":qa!       ",
       action = "qa!",
     },
-    -- {
-    --   icon = '  ',
-    --   desc = 'Find word                               ',
-    --   aciton = 'Telescope live_grep',
-    --   shortcut = ', f g',
-    -- },
-    -- {icon = '  ',
-    -- desc ='File Browser                            ',
-    -- action =  'Telescope file_browser',
-    -- shortcut = 'SPC f b'},
-    -- {icon = '  ',
-    -- desc = 'Recently laset session                  ',
-    -- shortcut = 'SPC s l',
-    -- action ='SessionLoad'},
-    -- {icon = '  ',
-    -- desc = 'Recently opened files                   ',
-    -- action =  'DashboardFindHistory',
-    -- shortcut = 'SPC f h'},
-    -- {
-    --   icon = "  ",
-    --   desc = "Open floating terminal                 ",
-    --   shortcut = "SPC t t",
-    --   action = "FloatermToggle",
-    -- },
-    -- {icon = '  ',
-    -- desc = 'Open Personal dotfiles                  ',
-    -- action = 'Telescope dotfiles path=' .. home ..'/.dotfiles',
-    -- shortcut = 'SPC f d'},
   }
+
+vim.highlight.create('DashboardHeader',     {guifg='#A0E7E5'}, false)
+vim.highlight.create('DashboardCenter',     {guifg='#FFAEBC'}, false)
+vim.highlight.create('DashboardCenterIcon', {guifg='#B4F8C8'}, false)
+vim.highlight.create('DashboardShortCut',   {guifg='#FBE7C6'}, false)
+vim.highlight.create('DashboardFooter',     {guifg='lightgrey'}, false)

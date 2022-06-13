@@ -16,6 +16,7 @@ end
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+  use {'wbthomason/packer.nvim'}
 
   use {
     'nvim-lualine/lualine.nvim',
@@ -50,8 +51,8 @@ return require('packer').startup(function(use)
   }
 
   use {
+    -- Do not use the bug v1
     'phaazon/hop.nvim',
-    branch = 'v1', -- optional but strongly recommended
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
       require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
@@ -85,7 +86,14 @@ return require('packer').startup(function(use)
     opt = true,
     cmd = { 'Neoformat'}
   }
-  use {'skywind3000/asyncrun.vim'}
+  use {
+    'skywind3000/asyncrun.vim',
+    opt = true,
+    cmd = { 'AsyncRun' },
+    setup = function()
+      vim.g['asyncrun_open'] = 8
+    end
+  }
 
   use {'sheerun/vim-polyglot', opt = true}
 
@@ -96,7 +104,10 @@ return require('packer').startup(function(use)
     'neovim/nvim-lspconfig',
     config = function()
       require('lsp/setup')
-    end
+    end,
+    requires = {
+      {'hrsh7th/cmp-nvim-lsp'},
+    }
   }
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -119,14 +130,14 @@ return require('packer').startup(function(use)
       require('lsp/nvim-cmp')
     end,
     requires = {
-      'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-vsnip',
-      'hrsh7th/vim-vsnip',
-      'rafamadriz/friendly-snippets',
-      'onsails/lspkind-nvim',
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/cmp-cmdline'},
+      {'hrsh7th/cmp-buffer'},
+      {'hrsh7th/cmp-path'},
+      {'hrsh7th/cmp-vsnip'},
+      {'hrsh7th/vim-vsnip'},
+      {'rafamadriz/friendly-snippets'},
+      {'onsails/lspkind-nvim'},
     }
   }
   -- fzf, the fuzzy finder
