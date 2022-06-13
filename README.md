@@ -8,10 +8,6 @@ The install script is only used for \*nix system. Please do not use it on Window
 - alacritty (linux/mac)
 - git
 - nvim/vim
-  - node (For coc.nvim)
-  - clangd (For coc-clangd)
-  - universal-ctags
-  - cscope
 - tmux
   - \>= 2.4 for Oh-my-tmux support
 - zsh
@@ -25,6 +21,7 @@ The install script is only used for \*nix system. Please do not use it on Window
 
 - git
 - curl
+- node \>= 14
 
 ### By git clone
 ```shell
