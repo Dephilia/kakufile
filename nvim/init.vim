@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-06-13 23:14:41
+" @Last Modified time: 2022-06-14 21:50:29
 
 if !has('nvim-0.7.0')
   echohl Error | echomsg "Nvim 0.7.0 required, but is missing!" | echohl None
@@ -42,6 +42,7 @@ augroup dashboard_cfg
    
    " hide tilde
    autocmd FileType dashboard setlocal fillchars+=eob:\ 
+   autocmd FileType dashboard setlocal noru
 augroup END
 " Conflict to fugitive, not use now
 " augroup non_utf8_file_warn
