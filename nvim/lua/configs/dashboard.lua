@@ -24,10 +24,10 @@ local db = require('dashboard')
 db.custom_header = header
 db.custom_center = {
     {
-      icon = "  ",
+      icon = '  ',
       desc = 'New file                                 ',
-      shortcut = "<leader> b o",
-      action = "DashboardNewFile",
+      action = 'DashboardNewFile',
+      shortcut = '<leader> b o',
     },
     {
       icon = '  ',
@@ -44,20 +44,20 @@ db.custom_center = {
     {
       icon = '  ',
       desc = 'Find word                                ',
-      shortcut = '<leader> f g',
       action = 'Telescope live_grep',
+      shortcut = '<leader> f g',
     },
     {
-      icon = "  ",
+      icon = '  ',
       desc = 'Update Plugins                           ',
-      shortcut = ":PackerSync",
-      action = "PackerSync",
+      action = 'PackerSync',
+      shortcut = ':PackerSync ',
     },
     {
-      icon = "  ",
+      icon = '  ',
       desc = 'Close Neovim                             ',
-      shortcut = ":qa!       ",
-      action = "qa!",
+      action = 'qa!',
+      shortcut = ':qa!        ',
     },
   }
 
