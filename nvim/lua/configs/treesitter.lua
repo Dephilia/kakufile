@@ -5,16 +5,18 @@
 --
 -- Distributed under terms of the MIT license.
 --
---
-local M = {
+-- local langs = { "c", "cpp", "python", "lua", "rust", "vim" }
+local langs = vim.g['treesitter_langs']
+
+require 'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "cpp", "python", "lua", "rust", "vim" },
+  ensure_installed = langs,
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = true,
 
   -- List of parsers to ignore installing (for "all")
-  ignore_install = { },
+  ignore_install = {},
 
   highlight = {
     -- `false` will disable the whole extension
@@ -24,7 +26,7 @@ local M = {
     -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
     -- the name of the parser)
     -- list of language that will be disabled
-    disable = {  },
+    disable = {},
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -33,14 +35,3 @@ local M = {
     additional_vim_regex_highlighting = false,
   },
 }
-
-if vim.g['plugin_provider'] == 'packer' then
-local ok, treesitter = pcall(require, "nvim-treesitter.configs")
-if not ok then
-  return
-end
-treesitter.setup(M)
-elseif vim.g['plugin_provider'] == 'vim-plug' then
-require'nvim-treesitter.configs'.setup(M)
-end
-

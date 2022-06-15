@@ -1,7 +1,7 @@
 " @Author: Dephilia <me@dephilia.moe>
 " @Date: 2019-10-17 23:45:54
 " @Last Modified by: Dephilia <me@dephilia.moe>
-" @Last Modified time: 2022-06-14 21:50:29
+" @Last Modified time: 2022-06-15 22:33:00
 
 if !has('nvim-0.7.0')
   echohl Error | echomsg "Nvim 0.7.0 required, but is missing!" | echohl None
@@ -14,24 +14,46 @@ endif
 "=============================="
 let mapleader = ","
 
-let g:plugin_provider = 'packer'
-let g:SnazzyTransparent        = 1
-let g:rainbow_active           = 1
+let g:treesitter_langs = [ 
+      \ 'bash',
+      \ 'c',
+      \ 'cpp',
+      \ 'cmake',
+      \ 'html',
+      \ 'javascript',
+      \ 'json',
+      \ 'make',
+      \ 'python',
+      \ 'lua',
+      \ 'rust',
+      \ 'toml',
+      \ 'yaml',
+      \ 'vim',
+      \ ]
+let g:lsp_servers = [
+      \ 'pyright',
+      \ 'clangd',
+      \ 'sumneko_lua',
+      \ 'rust_analyzer',
+      \ 'bashls',
+      \ 'html',
+      \ 'tsserver',
+      \ ]
+
 set termguicolors
 
 " Load Plug
 " Description: Load the plugins by the provider. Default: packer
 "=============================="
-if g:plugin_provider == 'vim-plug'
-  runtime vim/plugs.vim
-elseif g:plugin_provider == 'packer'
-  lua require('plugins')
-endif
+lua require('plugins')
 
 " Post Configuration
 "=============================="
 runtime vim/utils.vim
 runtime vim/cscfg.vim
+
+let g:rainbow_active = 1
+let g:SnazzyTransparent = 1
 
 " Auto command
 "=============================="
@@ -39,7 +61,7 @@ augroup dashboard_cfg
   autocmd!
    autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>fm :Telescope marks<CR>
    autocmd FileType dashboard nnoremap <buffer> <silent> <Leader>bo :DashboardNewFile<CR>
-   
+
    " hide tilde
    autocmd FileType dashboard setlocal fillchars+=eob:\ 
    autocmd FileType dashboard setlocal noru
@@ -69,17 +91,17 @@ nmap <silent> <Leader>t  :SymbolsOutline<CR>
 nmap <silent> <Leader>n  :NvimTreeToggle<CR>
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ft <cmd>Telescope <cr>
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <Leader>ft <cmd>Telescope <cr>
+nnoremap <Leader>ff <cmd>Telescope find_files<cr>
+nnoremap <Leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <Leader>fb <cmd>Telescope buffers<cr>
+nnoremap <Leader>fh <cmd>Telescope help_tags<cr>
 
 " tabline mapping
 nmap <silent> <C-h> :bprevious<CR>
 nmap <silent> <C-l> :bnext<CR>
-nmap <silent> <leader><C-h> :tabprevious<CR>
-nmap <silent> <leader><C-l> :tabnext<CR>
+nmap <silent> <Leader><C-h> :tabprevious<CR>
+nmap <silent> <Leader><C-l> :tabnext<CR>
 
 " Buffer mapping
 " 1. List buffer
@@ -106,9 +128,9 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
-nmap <leader>e <cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>
-vmap <leader>e <cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>
-omap <leader>e <cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END, inclusive_jump = true })<cr>
+nmap <Leader>e <cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>
+vmap <Leader>e <cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>
+omap <Leader>e <cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END, inclusive_jump = true })<cr>
 
 " Vim settings
 "=============================="

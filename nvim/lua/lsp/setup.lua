@@ -93,15 +93,7 @@ vim.lsp.handlers["$/progress"] = function(_, result, ctx)
   end
 end
 
-local servers = {
-  'pyright',
-  'clangd',
-  'sumneko_lua',
-  'rust_analyzer',
-  'bashls',
-  'html',
-  'tsserver',
-}
+local servers = vim.g['lsp_servers']
 
 require("nvim-lsp-installer").setup({
   ensure_installed = servers,
@@ -148,38 +140,43 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
+end
+
+local lua_settings = {
+  Lua = {
+    runtime = {
+      -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+      version = 'LuaJIT',
+    },
+    diagnostics = {
+      -- Get the language server to recognize the `vim` global
+      globals = { 'vim' },
+    },
+    workspace = {
+      -- Make the server aware of Neovim runtime files
+      library = vim.api.nvim_get_runtime_file("", true),
+    },
+    -- Do not send telemetry data containing a randomized but unique identifier
+    telemetry = {
+      enable = false,
+    }
+  }
+}
+
+local function lang_config(lang)
+  if lang == 'sumneko_lua' then return lua_settings
+    -- Add other language specified configuration here
+  else return nil
+  end
 end
 
 -- Loop config
 for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
+  local S = {
     on_attach = on_attach,
     capabilities = capabilities,
+    settings = lang_config(lsp)
   }
+  require('lspconfig')[lsp].setup(S)
 end
-
-require 'lspconfig'.sumneko_lua.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}

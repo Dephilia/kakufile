@@ -7,16 +7,17 @@
 --
 
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path })
 end
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  use {'wbthomason/packer.nvim'}
+  use { 'wbthomason/packer.nvim' }
 
   use {
     'nvim-lualine/lualine.nvim',
@@ -27,7 +28,7 @@ return require('packer').startup(function(use)
   }
   use {
     'kdheepak/tabline.nvim',
-    requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} },
+    requires = { { 'hoob3rt/lualine.nvim', opt = true }, { 'kyazdani42/nvim-web-devicons', opt = true } },
     config = function()
       require('configs/tabline-config')
     end
@@ -55,21 +56,21 @@ return require('packer').startup(function(use)
     'phaazon/hop.nvim',
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
-      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
   }
-  use {'aperezdc/vim-template'}
-  use {'junegunn/vim-easy-align'}
-  use {'ahonn/vim-fileheader'}
-  use {'airblade/vim-gitgutter'}
-  use {'itchyny/vim-gitbranch'}
-  use {'psliwka/vim-smoothie'}
-  use {'godlygeek/tabular'}
-  use {'tpope/vim-commentary'}
-  use {'tpope/vim-surround'}
-  use {'tpope/vim-fugitive'}
-  use {'luochen1990/rainbow'}
-  use {'vim-scripts/DoxygenToolkit.vim',
+  use { 'aperezdc/vim-template' }
+  use { 'junegunn/vim-easy-align' }
+  use { 'ahonn/vim-fileheader' }
+  use { 'airblade/vim-gitgutter' }
+  use { 'itchyny/vim-gitbranch' }
+  use { 'psliwka/vim-smoothie' }
+  use { 'godlygeek/tabular' }
+  use { 'tpope/vim-commentary' }
+  use { 'tpope/vim-surround' }
+  use { 'tpope/vim-fugitive' }
+  use { 'luochen1990/rainbow' }
+  use { 'vim-scripts/DoxygenToolkit.vim',
     opt = true,
     cmd = { 'Dox' }
   }
@@ -82,9 +83,9 @@ return require('packer').startup(function(use)
       vim.notify = require("notify")
     end
   }
-  use {'sbdchd/neoformat',
+  use { 'sbdchd/neoformat',
     opt = true,
-    cmd = { 'Neoformat'}
+    cmd = { 'Neoformat' }
   }
   use {
     'skywind3000/asyncrun.vim',
@@ -95,7 +96,7 @@ return require('packer').startup(function(use)
     end
   }
 
-  use {'sheerun/vim-polyglot', opt = true}
+  use { 'sheerun/vim-polyglot', opt = true }
 
   use {
     'williamboman/nvim-lsp-installer'
@@ -104,10 +105,7 @@ return require('packer').startup(function(use)
     'neovim/nvim-lspconfig',
     config = function()
       require('lsp/setup')
-    end,
-    requires = {
-      {'hrsh7th/cmp-nvim-lsp'},
-    }
+    end
   }
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -121,7 +119,7 @@ return require('packer').startup(function(use)
     opt = true,
     cmd = { 'Vista', 'Vista!!' }
   }
-  use {'simrat39/symbols-outline.nvim', opt = true, cmd = { 'SymbolsOutline' } }
+  use { 'simrat39/symbols-outline.nvim', opt = true, cmd = { 'SymbolsOutline' } }
 
   use {
     'hrsh7th/nvim-cmp',
@@ -129,14 +127,14 @@ return require('packer').startup(function(use)
       require('lsp/nvim-cmp')
     end,
     requires = {
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'hrsh7th/cmp-cmdline'},
-      {'hrsh7th/cmp-buffer'},
-      {'hrsh7th/cmp-path'},
-      {'hrsh7th/cmp-vsnip'},
-      {'hrsh7th/vim-vsnip'},
-      {'rafamadriz/friendly-snippets'},
-      {'onsails/lspkind-nvim'},
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-cmdline' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-vsnip' },
+      { 'hrsh7th/vim-vsnip' },
+      { 'rafamadriz/friendly-snippets' },
+      { 'onsails/lspkind-nvim' },
     }
   }
   -- fzf, the fuzzy finder
@@ -158,14 +156,14 @@ return require('packer').startup(function(use)
   }
 
   -- Themes
-  use {'connorholyday/vim-snazzy'}
-  use {'arcticicestudio/nord-vim', opt = true}
+  use { 'connorholyday/vim-snazzy' }
+  use { 'arcticicestudio/nord-vim', opt = true }
   use {
     "catppuccin/nvim",
     as = "catppuccin",
     opt = true
   }
-  use {'folke/tokyonight.nvim', opt = true}
+  use { 'folke/tokyonight.nvim', opt = true }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

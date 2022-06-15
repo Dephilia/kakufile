@@ -74,14 +74,15 @@ cmp.setup.cmdline('/', {
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-local function cmdline_os ()
+local function cmdline_os()
   -- I found that in macos, cmdline works well; while in linux and windows, press ':!' will stock
-  if vim.fn.has('macunix')==1 then
+  if vim.fn.has('macunix') == 1 then
     return { name = 'cmdline' }
   else
     return { name = 'cmdline', keyword_pattern = [[\!\@<!\w*]] }
   end
 end
+
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
@@ -90,4 +91,3 @@ cmp.setup.cmdline(':', {
     cmdline_os()
   })
 })
-
