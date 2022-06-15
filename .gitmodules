@@ -9,3 +9,6 @@
 [submodule "thirdparty/ohmytmux"]
 	path = thirdparty/ohmytmux
 	url = https://github.com/gpakosz/.tmux.git
+[submodule "nvim"]
+	path = nvim
+	url = https://github.com/Dephilia/nvim
