@@ -1,14 +1,14 @@
 #! /bin/sh
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  function dir() {
+  dir() {
   # Easy open dir
-    open "`pwd`"
+    open "$(pwd)"
   }
 fi
 
 # Beautifully print your path
-function echopath() {
+ echopath() {
   if [ $+PATH ]; then
     echo "\033[1m\033[1;34m  < $#path element(s) >\033[1;32m"
     printf '├─ %q\n' "$path[@]"
@@ -18,11 +18,11 @@ function echopath() {
   fi
 }
 
-function gi() {
+ gi() {
   curl -sLw n https://www.gitignore.io/api/$@ ;
 }
 
-function cht() {
+ cht() {
   if command -v bat &> /dev/null; then
     cht.sh $1 | bat --style plain
   else
@@ -30,12 +30,18 @@ function cht() {
   fi
 }
 
-function mergepdfs() {
+ mergepdfs() {
   if command -v gs &> /dev/null; then
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$1 "${@:2}"
   else
     echo "Ghost script not installed."
   fi
+}
+
+# fzf git diff
+fgdiff() {
+  preview="git diff $@ --color=always -- {-1}"
+  git diff $@ --name-only | fzf -m --ansi --preview $preview
 }
 
 # See https://transfer.sh
