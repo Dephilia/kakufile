@@ -13,7 +13,10 @@ fi
 # Customize to your needs...
 . ${KAKU_ROOT}/scripts/bootstrap.sh
 
-# iterm2 shell integration setting
-# if [[ ("$__CFBundleIdentifier" == "com.googlecode.iterm2") && ( -s "${HOME}/.iterm2_shell_integration.zsh") ]]; then
-#   source "${HOME}/.iterm2_shell_integration.zsh"
-# fi
+# FZF
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+    --color=fg:#e5e9f0,bg:#3b4252,hl:#81a1c1
+    --color=fg+:#e5e9f0,bg+:#3b4252,hl+:#81a1c1
+    --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
+    --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
