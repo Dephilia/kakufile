@@ -4,6 +4,7 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
+source ${KAKU_ROOT}/thirdparty/zsh-defer/zsh-defer.plugin.zsh
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -11,7 +12,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-. ${KAKU_ROOT}/scripts/bootstrap.sh
+zsh-defer source ${KAKU_ROOT}/scripts/bootstrap.sh
 
 # FZF
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'

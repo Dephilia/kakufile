@@ -13,3 +13,6 @@
 	path = nvim
 	url = https://github.com/Dephilia/nvim
 	branch = main
+[submodule "thirdparty/zsh-defer"]
+	path = thirdparty/zsh-defer
+	url = https://github.com/romkatv/zsh-defer.git
