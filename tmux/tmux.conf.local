@@ -8,7 +8,7 @@
 
 # Make vim color correct
 set-option -sa terminal-overrides ",xterm*:Tc"
-set -g default-terminal "xterm-256color"
+# set -g default-terminal "xterm-256color"
 
 # -- navigation ----------------------------------------------------------------
 
