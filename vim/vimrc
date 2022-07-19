@@ -1,56 +1,58 @@
-" @Author: Dephilia <me@dephilia.moe>
-" @Date: 2019-10-17 23:45:54
-" @Last Modified by:  <>
-" @Last Modified time: 2022-05-31 20:38:37
+" (c) 2022 Dephilia
+" MIT license (See LICENSE for details)
+if !has('vim9script')
+   " legacy script commands go here
+   echo "vim9script not supported, skipped."
+   finish
+endif
 
-" vim should be a simple, fast editor with enough functions only.
+vim9script
 
-let mapleader = ","
+g:mapleader = ","
 
+#++++++++++++++++++#
+#       MAP        #
+#++++++++++++++++++#
 
-"++++++++++++++++++"
-"       MAP        "
-"++++++++++++++++++"
-
-" jj escape
+# jj escape
 inoremap <silent> jj <ESC>
 
-" use arrow key
+# use arrow key
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
-" tabline mapping
+# tabline mapping
 nmap <silent> <C-h> :bprevious<CR>
 nmap <silent> <C-l> :bnext<CR>
 nmap <silent> <leader><C-h> :tabprevious<CR>
 nmap <silent> <leader><C-l> :tabnext<CR>
 
-" Buffer mapping
-" 1. List buffer
+# Buffer mapping
+# 1. List buffer
 nnoremap <silent> bl :ls<CR>
-" 2. New empty buffer
+# 2. New empty buffer
 nnoremap <silent> bo :enew<CR>
-" 3. Next buffer
+# 3. Next buffer
 nnoremap <silent> bn :bnext<CR>
-" 4. Previous buffer
+# 4. Previous buffer
 nnoremap <silent> bp :bprevious<CR>
-" 5. Close buffer
+# 5. Close buffer
 nnoremap <silent> bd :bdelete<CR>
 
-" Auto add bracket
-let s:AutoBracketEnable = 0
+#" Auto add bracket
+var AutoBracketEnable = 0
 
-function! ToggleBracketMode()
-    if s:AutoBracketEnable
+def g:ToggleBracketMode()
+    if AutoBracketEnable
         iunmap {
         iunmap {<Enter>
         iunmap (
         iunmap (<Enter>
         iunmap '
         iunmap "
-        let s:AutoBracketEnable = 0
+        AutoBracketEnable = 0
         echo "Disable Auto Bracket"
     else
         inoremap { {}<Left>
@@ -59,41 +61,41 @@ function! ToggleBracketMode()
         inoremap (<Enter> ()<Left><CR><ESC><S-o>
         inoremap ' ''<LEFT>
         inoremap " ""<LEFT>
-        let s:AutoBracketEnable = 1
+        AutoBracketEnable = 1
         echo "Enable Auto Bracket"
     endif
-endfunction
+enddef
 nmap <silent> <Leader>B :call ToggleBracketMode() <CR>
 imap <silent> <Leader>B :call ToggleBracketMode() <CR>
 
 map <silent> <Leader><C-r> :so $MYVIMRC <CR>
 
-" Clear Additional Space
+# Clear Additional Space
 command! -nargs=0 ClearSpaces :%s/\s\+$//e
 
-" copy to system clipboard
+# copy to system clipboard
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
-" Copymode -> Toggle hidden char to be visible
-function! CopyModeEnable()
+# Copymode -> Toggle hidden char to be visible
+def g:CopyModeEnable()
   set norelativenumber
   set nonumber
   set nolist
-endfunction
+enddef
 command! -nargs=0 CopyModeEnable :call CopyModeEnable()
 
-function! CopyModeDisable()
+def g:CopyModeDisable()
   set relativenumber
   set number
   set list listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
-endfunction
+enddef
 command! -nargs=0 CopyModeDisable :call CopyModeDisable()
 
-" Hex Modified
-function! HexModeEnable()
+# Hex Modified
+def g:HexModeEnable()
   if !executable('xxd')
     echo "xxd not installed."
     return
@@ -102,10 +104,10 @@ function! HexModeEnable()
   set binary
   set noeol
   execute('%!xxd')
-endfunction
+enddef
 command! -nargs=0 HexModeEnable :call HexModeEnable()
 
-function! HexModeDisable()
+def g:HexModeDisable()
   if !executable('xxd')
     echo "xxd not installed."
     return
@@ -113,61 +115,88 @@ function! HexModeDisable()
   execute('%!xxd -r')
   set ft&
   set eol
-endfunction
+enddef
 command! -nargs=0 HexModeDisable :call HexModeDisable()
 
-"++++++++++++++++++"
-"      MAIN        "
-"++++++++++++++++++"
+# Relativenumber hook
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != 'i' | set rnu | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave * if &nu | set nornu | endif
+augroup END
 
-" Got the theme from https://github.com/connorholyday/vim-snazzy
+#++++++++++++++++++#
+#      MAIN        #
+#++++++++++++++++++#
+
+# Got the theme from https://github.com/connorholyday/vim-snazzy
 if empty(glob('~/.vim/colors/snazzy.vim'))
   silent execute '!curl -fLo ~/.vim/colors/snazzy.vim --create-dirs https://raw.githubusercontent.com/connorholyday/vim-snazzy/master/colors/snazzy.vim'
 endif
-let g:SnazzyTransparent    = 1
+
+g:SnazzyTransparent = 1
+
+# Default colorsheme
+# Description: Use snazzy default
+#==============================
 colorscheme snazzy
 
-syntax      enable    " Enable syntax
-filetype    indent on " indent length by filetype
+# Syntax Enable
+# Description: Enable syntax default
+#==============================
+syntax enable
 
-set background=dark " background
-set encoding=UTF-8  " coding
-set expandtab       " <tab> as many <space>
-set tabstop=2       " width of tab
-set showtabline=2   " Tabline
-set laststatus=2    " Statusbar
-set noshowmode
-set shiftwidth=2    " indent width
-set softtabstop=2   " how many space insert after press tab
-set autoindent      " auto indent next line
-set smartindent     " smart indent
-set incsearch       " inc search
-set ignorecase      " ignore case
-set hlsearch        " search high light
-set relativenumber  " show relative line number
-set number          " show line number
-set cursorline      " highlight current line
-set hidden          " Hide edited buffer
-set cmdheight=2
-hi CursorLine term=bold cterm=bold
+# Vim settings
+# Description: The vim's settings
+#==============================
+set background=dark # background
+set encoding=UTF-8  # coding
+set showtabline=2   # Tabline
+set laststatus=2    # Statusbar
+set noshowmode      # hide the -- INSERT --
+set cmdheight=1     # Higher cmd line (Set to 1 because notify.nvim)
+set autoindent      # auto indent next line
+set smartindent     # smart indent
+set incsearch       # inc search
+set ignorecase      # ignore case
+set hlsearch        # search high light
+set relativenumber  # show relative line number
+set number          # show line number
+set cursorline      # highlight current line
+set hidden          # Hide edited buffer
+set updatetime=300  # Short update time
+set shortmess+=c    # Supress ins-completion msg
+set ttimeoutlen=5   # Limit timeout for esc
+set tags=./tags,./TAGS,tags;~,TAGS;~ # Tags location
 
-" Enable backspace avaliable in Insert mode
+# Tab
+set noexpandtab    # Use tab
+set tabstop=8      # Tab width. Default 8
+set shiftwidth=4   # Input tab width.
+set softtabstop=-1 # Follow shiftwidth setting
+
+# Show hide chars
+set list listchars+=tab:→\ 
+set list listchars+=space:·
+set list listchars+=nbsp:␣
+set list listchars+=trail:•
+set list listchars+=eol:¶
+set list listchars+=precedes:«
+set list listchars+=extends:»
+
+# Enable backspace avaliable in Insert mode
 set backspace=indent,eol,start
 
-" Show hide chars
-if has("patch-7.4.710")
-  set list listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
-else
-  set list listchars=tab:→\ ,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
-endif
+# Folding
+set foldenable
+set foldlevel=99
+set fillchars+=fold:\ ,foldopen:,foldsep:\ ,foldclose:
+hi CursorLine term=bold cterm=bold
 
-" Where is the tags file for ctags
-set tags=./tags,./TAGS,tags;~,TAGS;~
-
-"++++++++++++++++++"
-"      cscope      "
-"++++++++++++++++++"
-" Remember to run `cscope -Rbqk` First
+#++++++++++++++++++#
+#      cscope      #
+#++++++++++++++++++#
+# Remember to run `cscope -Rbqk` First
 set cscopetag
 set csto=0
 
@@ -187,70 +216,87 @@ nmap zf :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap zi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap zd :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-"++++++++++++++++++"
-"      tabline     "
-"++++++++++++++++++"
-set tabline=%!SimpleTabLine()  " custom tab pages line
-function! SimpleTabLine()
-  let s = ''
-  " loop through each tab page
+#++++++++++++++++++#
+#      tabline     #
+#++++++++++++++++++#
+set tabline=%!SimpleTabLine()
+def g:SimpleTabLine(): string
+  var s = ''
+  var n = ''
+  var m = 0
+
+  # loop through each tab page
   for i in range(tabpagenr('$'))
     if i + 1 == tabpagenr()
-      let s .= '%#TabLineSel#'
+      s ..= '%#TabLineSel#'
     else
-      let s .= '%#TabLine#'
+      s ..= '%#TabLine#'
     endif
     if i + 1 == tabpagenr()
-      let s .= '%#TabLineSel#' " WildMenu
+      s ..= '%#TabLineSel#' # WildMenu
     else
-      let s .= '%#Title#'
+      s ..= '%#Title#'
     endif
-    " set the tab page number (for mouse clicks)
-    let s .= '%' . (i + 1) . 'T '
-    " set page number string
-    let s .= i + 1 . ''
-    " get buffer names and statuses
-    let n = ''  " temp str for buf names
-    let m = 0   " &modified counter
-    let buflist = tabpagebuflist(i + 1)
-    " loop through each buffer in a tab
+    # set the tab page number (for mouse clicks)
+    s ..= '%' .. (i + 1) .. 'T '
+    # set page number string
+    s ..= i + 1 .. ''
+    # get buffer names and statuses
+    n = ''  # temp str for buf names
+    m = 0   # &modified counter
+    var buflist = tabpagebuflist(i + 1)
+
+    # loop through each buffer in a tab
     for b in buflist
       if getbufvar(b, "&buftype") == 'help'
-        " let n .= '[H]' . fnamemodify(bufname(b), ':t:s/.txt$//')
+        # n ..= '[H]' .. fnamemodify(bufname(b), ':t:s/.txt$//')
       elseif getbufvar(b, "&buftype") == 'quickfix'
-        " let n .= '[Q]'
+        # n ..= '[Q]'
       elseif getbufvar(b, "&modifiable")
-        let n .= fnamemodify(bufname(b), ':t') . ', ' " pathshorten(bufname(b))
+        n ..= fnamemodify(bufname(b), ':t') .. ', ' # pathshorten(bufname(b))
       endif
       if getbufvar(b, "&modified")
-        let m += 1
+        m += 1
       endif
     endfor
-    " let n .= fnamemodify(bufname(buflist[tabpagewinnr(i + 1) - 1]), ':t')
-    let n = substitute(n, ', $', '', '')
-    " add modified label
+
+    # n ..= fnamemodify(bufname(buflist[tabpagewinnr(i + 1) - 1]), ':t')
+    n = substitute(n, ', $', '', '')
+    # add modified label
     if m > 0
-      let s .= '+'
-      " let s .= '[' . m . '+]'
+      s ..= '+'
+      # s ..= '[' .. m .. '+]'
     endif
     if i + 1 == tabpagenr()
-      let s .= ' %#TabLineSel#'
+      s ..= ' %#TabLineSel#'
     else
-      let s .= ' %#TabLine#'
+      s ..= ' %#TabLine#'
     endif
-    " add buffer names
+    # add buffer names
     if n == ''
-      let s.= '[New]'
+      s ..= '[New]'
     else
-      let s .= n
+      s ..= n
     endif
-    " switch to no underlining and add final space
-    let s .= ' '
+    # switch to no underlining and add final space
+    s ..= ' '
   endfor
-  let s .= '%#TabLineFill#%T'
-  " right-aligned close button
-  " if tabpagenr('$') > 1
-  "   let s .= '%=%#TabLineFill#%999Xclose'
-  " endif
+
+  s ..= '%#TabLineFill#%T'
   return s
-endfunction
+enddef
+
+#++++++++++++++++++#
+#    statusline    #
+#++++++++++++++++++#
+set laststatus=2
+set statusline=%4*%<\ %1*[%F]
+set statusline+=%4*\ %5*[%{&encoding},
+set statusline+=%{&fileformat}]%m
+set statusline+=%4*%=\ %6*%y%4*\ %3*%l%4*,\ %3*%c%4*\ \<\ %2*%P%4*\ \>
+highlight User1 ctermfg=red
+highlight User2 term=underline cterm=underline ctermfg=green
+highlight User3 term=underline cterm=underline ctermfg=yellow
+highlight User4 term=underline cterm=underline ctermfg=white
+highlight User5 ctermfg=cyan
+highlight User6 ctermfg=white
