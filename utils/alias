@@ -1,10 +1,8 @@
 #! /bin/sh
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-
-  alias backup-brew="brew bundle dump --file=${KAKU_ROOT}/homebrew/Brewfile --force --describe"
+if [ "$(uname)" = "Darwin" ]; then
+  alias backup-brew='brew bundle dump --file=${KAKU_ROOT}/homebrew/Brewfile --force --describe'
   alias nproc='sysctl -n hw.logicalcpu'
-
 fi
 
 # Quick Back
@@ -15,20 +13,13 @@ alias ......='../../../../..'
 alias .......='../../../../../..'
 
 # fzf
-# fzf must source before kakufile
-if command -v fzf &> /dev/null ;then
-  alias fp="cat /etc/services | fzf"
-  alias flsof4="lsof -Pn -i4 | awk '{printf \"%10s %6s %5s %4s %-20s\n\", \$1, \$2, \$3, \$8, \$9}' | fzf --border --cycle --ansi --header-lines=1"
-  alias gcob='git checkout $(git branch | fzf --cycle --border --ansi)'
-  alias gadd="git status --short | fzf --multi --color=dark --cycle --border --ansi --preview-window=up:70% --preview=\"git diff --color {+2}\" | awk '{print \$2}'  | xargs git add"
-  alias gco="git diff --name-only | fzf --multi --color=dark --cycle --border --ansi --preview-window=up:70% --preview=\"git diff --color {+1}\" | xargs git checkout"
-  alias gustg="git diff --name-only --cached | fzf --multi --color=dark --cycle --border --ansi --preview-window=up:70% --preview="git diff --color --staged {+1}" | xargs git reset HEAD"
-  alias gbrd="git branch --color=always | fzf --multi --color=dark --cycle --border --ansi | sed 's/*//' | awk '{print \$1}' | xargs git branch -d"
-  alias exehis='eval $(history -n -1 1 | fzf)'
+if command -v fzf > /dev/null ;then
+  alias fp='cat /etc/services | fzf'
+  alias exehis='eval $(history -n -1 1 | fzf --multi --color=dark --cycle --border --ansi)'
 fi
 
 # lsd
-if command -v lsd &> /dev/null ;then
+if command -v lsd > /dev/null ;then
   alias ls='lsd'
   alias l='ls -l'
   alias la='ls -a'
@@ -36,24 +27,20 @@ if command -v lsd &> /dev/null ;then
   alias lt='ls --tree'
 fi
 
-# neovide
-if command -v neovide &> /dev/null ;then
-  alias nvd='neovide --multigrid'
-fi
-
 # WAN ip
-if command -v curl &> /dev/null ;then
+if command -v curl > /dev/null ;then
   alias catpubip='echo "My WAN/Public IP address: $(curl ifconfig.me -s)"'
   alias ipinfo='curl -sH "Accept: application/json" ipinfo.io | jq'
+  alias wttr='curl wttr.in -s | sed "s/(Province of China)//g"'
 fi
 
 # restart zsh
-alias restart="clear && exec $SHELL"
+alias restart='clear && exec $SHELL'
 
 # test zsh start time
 alias startuptime="time zsh -i -c echo"
 
 # Alia to new session
-if command -v tmux &> /dev/null ;then
+if command -v tmux > /dev/null ;then
   alias tnew="tmux new-session -A -s"
 fi
