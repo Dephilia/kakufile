@@ -1,4 +1,6 @@
 return {
+	initial_cols = 120,
+	initial_rows = 36,
 	hide_tab_bar_if_only_one_tab = true,
 	font_size = 16.0,
 	force_reverse_video_cursor = true,
