@@ -300,3 +300,13 @@ highlight User3 term=underline cterm=underline ctermfg=yellow
 highlight User4 term=underline cterm=underline ctermfg=white
 highlight User5 ctermfg=cyan
 highlight User6 ctermfg=white
+
+#++++++++++++++++++#
+#       tmux       #
+#++++++++++++++++++#
+if exists("$TMUX")
+  set t_Co=256
+  set notermguicolors
+else
+  set termguicolors
+endif
