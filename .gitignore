@@ -2,4 +2,5 @@
 .zcompdump
 .zhistory
 *.zprezto
+.zsh_sessions
 packer_compiled.lua
