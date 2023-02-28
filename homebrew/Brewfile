@@ -1,177 +1,88 @@
-tap "caarlos0/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
+tap "homebrew/command-not-found"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "ikanago/tap"
 tap "yt-dlp/taps"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
-# Generate compilation database for clang tooling
-brew "bear"
-# Interface bandwidth monitor
-brew "bmon"
-# Library for command-line editing
-brew "readline"
 # General-purpose data compression with high compression ratio
 brew "xz"
+# Library for command-line editing
+brew "readline"
+# Download with resuming and segmented downloading
+brew "aria2"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.9"
-# Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
-brew "clang-format"
-# Package manager for C programming
-brew "clib"
 # Cross-platform make
 brew "cmake"
-# Tool for browsing source code
-brew "cscope"
-# Display user-friendly message boxes from shell scripts
-brew "dialog"
-# More intuitive version of du in rust
-brew "dust"
-# Calculator REPL, similar to bc(1)
-brew "eva"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# GNU compiler collection
-brew "gcc"
-# GitHub command-line tool
-brew "gh"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
-# Source code tag system
-brew "global"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Open source programming language to build simple/reliable/efficient software
-brew "go"
-# Multimedia framework for research and academic purposes
-brew "gpac"
-# GitHub Markdown previewer
-brew "grip"
 # Improved top (interactive process viewer)
 brew "htop"
 # Configurable static site generator
 brew "hugo"
-# Database of common MIME types
-brew "shared-mime-info"
-# LLVM's OpenMP runtime library
-brew "libomp"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Simple terminal UI for git commands
-brew "lazygit"
-# Implementation of the file(1) command
-brew "libmagic"
-# Curses-based tool for viewing and analyzing log files
-brew "lnav"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Mac App Store command-line interface
 brew "mas"
-# Modern and intuitive terminal-based text editor
-brew "micro"
-# Menu-driven communications program
-brew "minicom"
-# 'traceroute' and 'ping' in a single tool
-brew "mtr"
 # Interactive cheatsheet tool for the command-line
 brew "navi"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Small build system for use with gyp or CMake
 brew "ninja"
-# Port scanning utility for large networks
-brew "nmap"
 # Platform built on V8 to build network applications
 brew "node"
-# Batch rename utility
-brew "nomino"
 # Development kit for the Java programming language
 brew "openjdk"
-# Outputs current CPU temperature for OSX
-brew "osx-cpu-temp"
-# Swiss-army knife of markup format conversion
-brew "pandoc"
-# Port of pdftk in java
-brew "pdftk-java"
 # Python dependency management tool
 brew "pipenv"
-# Modern replacement for ps written by Rust
-brew "procs"
-# Command-line tool for managing long-running shell commands
-brew "pueue"
-# Monitor data's progress through a pipe
-brew "pv"
 # Python version management
 brew "pyenv"
 # Pyenv plugin to manage virtualenv
 brew "pyenv-virtualenv"
-# Perl-powered file rename script with many helpful built-ins
-brew "rename"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
-# Modern Day Portscanner
-brew "rustscan"
 # Rust toolchain installer
 brew "rustup-init"
-# Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck"
-# SOcket CAT: netcat on steroids
-brew "socat"
-# Command-line interface for https://speedtest.net bandwidth tests
-brew "speedtest-cli"
+# Intuitive find & replace CLI
+brew "sd"
 # Terminal multiplexer
 brew "tmux"
-# Program that allows you to count code, quickly
-brew "tokei"
-# Command-line interface to the freedesktop.org trashcan
-brew "trash-cli"
-# Compress/expand executable files
-brew "upx"
 # Vi 'workalike' with many additional features
 brew "vim"
-# Your favorite rust -> wasm workflow tool!
-brew "wasm-pack"
 # Internet file retriever
 brew "wget"
 # JavaScript package manager
 brew "yarn"
-# General-purpose lossless data-compression library
-brew "zlib"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Timer is like sleep, but reports progress.
-brew "caarlos0/tap/timer"
-# Decorate alphanumeric characters in your input with various font; special characters in Unicode
-brew "ikanago/tap/omekasy"
 # A youtube-dl fork with additional features and fixes
 brew "yt-dlp/taps/yt-dlp"
 # GPU-accelerated terminal emulator
 cask "alacritty"
-# Menu bar tool to limit maximum charging percentage
-cask "aldente"
-# Application launcher and productivity software
-cask "alfred"
 # Application uninstaller
 cask "appcleaner"
 # Two-factor authentication software
@@ -186,24 +97,28 @@ cask "discord"
 cask "docker"
 # Draw.io is free online diagram software
 cask "drawio"
-cask "font-fira-mono-nerd-font"
+# Developer targeted fonts with a high number of glyphs
 cask "font-go-mono-nerd-font"
+# Sans-serif, slab-serif, monospace and quasi‑proportional typeface family
+cask "font-iosevka-aile"
+# Sans-serif, slab-serif, monospace and quasi‑proportional typeface family
+cask "font-iosevka-etoile"
+# Developer targeted fonts with a high number of glyphs
+cask "font-iosevka-nerd-font"
+# Developer targeted fonts with a high number of glyphs
 cask "font-mononoki-nerd-font"
+# Developer targeted fonts with a high number of glyphs
 cask "font-mplus-nerd-font"
 cask "font-noto-sans-cjk"
 cask "font-powerline-symbols"
 # Audio player
 cask "foobar2000"
-# GIT client
-cask "fork"
 # Utility to hide menu bar items
 cask "hiddenbar"
 # Free and open-source media player
 cask "iina"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-# Programming language for technical computing
-cask "julia"
 # File archiver
 cask "keka"
 # End-to-end encryption software
@@ -212,20 +127,10 @@ cask "keybase"
 cask "keycastr"
 # Software for Logitech devices
 cask "logitech-options"
-# Provides updates to various Microsoft products
-cask "microsoft-auto-update"
-# Web browser
-cask "microsoft-edge"
 # Minimal browser that protects privacy
 cask "min"
 # Sandbox construction video game
 cask "minecraft"
-# Open-source music notation software
-cask "musescore"
-# Neovim Client
-cask "neovide"
-# App to write, plan, collaborate, and get organized
-cask "notion"
 # Calculator and converter application
 cask "numi"
 # Open-source software for live streaming and screen recording
@@ -234,20 +139,14 @@ cask "obs"
 cask "obsidian"
 # Desktop virtualization software
 cask "parallels"
-# VPN client
-cask "private-internet-access"
-# Bridges ProtonMail to email clients supporting IMAP and SMTP protocols
+# Bridges Proton Mail to email clients supporting IMAP and SMTP protocols
 cask "protonmail-bridge"
 # PDF reader and note-taking application
 cask "skim"
-# General-purpose text editor
-cask "textmate"
 # Open-source BitTorrent client
 cask "transmission"
 # Open-source code editor
 cask "visual-studio-code"
-# BBS client
-cask "welly"
 # Lossless audio decoder
 cask "xld"
 mas "Affinity Photo", id: 824183456
