@@ -49,8 +49,6 @@ brew "neovim"
 brew "ninja"
 # Platform built on V8 to build network applications
 brew "node"
-# Development kit for the Java programming language
-brew "openjdk"
 # Python dependency management tool
 brew "pipenv"
 # Python version management
@@ -63,8 +61,6 @@ brew "python@3.10"
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
 # Rust toolchain installer
 brew "rustup-init"
 # Intuitive find & replace CLI
@@ -93,22 +89,14 @@ cask "daisydisk"
 cask "devtoys"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerized applications and microservices
-cask "docker"
 # Draw.io is free online diagram software
 cask "drawio"
-# Developer targeted fonts with a high number of glyphs
-cask "font-go-mono-nerd-font"
 # Sans-serif, slab-serif, monospace and quasi‑proportional typeface family
 cask "font-iosevka-aile"
 # Sans-serif, slab-serif, monospace and quasi‑proportional typeface family
 cask "font-iosevka-etoile"
 # Developer targeted fonts with a high number of glyphs
-cask "font-iosevka-nerd-font"
-# Developer targeted fonts with a high number of glyphs
 cask "font-mononoki-nerd-font"
-# Developer targeted fonts with a high number of glyphs
-cask "font-mplus-nerd-font"
 cask "font-noto-sans-cjk"
 cask "font-powerline-symbols"
 # Audio player
@@ -125,26 +113,12 @@ cask "keka"
 cask "keybase"
 # Open-source keystroke visualizer
 cask "keycastr"
-# Software for Logitech devices
-cask "logitech-options"
-# Minimal browser that protects privacy
-cask "min"
-# Sandbox construction video game
-cask "minecraft"
-# Calculator and converter application
-cask "numi"
-# Open-source software for live streaming and screen recording
-cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-# Desktop virtualization software
-cask "parallels"
 # Bridges Proton Mail to email clients supporting IMAP and SMTP protocols
 cask "protonmail-bridge"
 # PDF reader and note-taking application
 cask "skim"
-# Open-source BitTorrent client
-cask "transmission"
 # Open-source code editor
 cask "visual-studio-code"
 # Lossless audio decoder
@@ -154,17 +128,11 @@ mas "GarageBand", id: 682658836
 mas "Gifski", id: 1351639930
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
-mas "LINE", id: 539883307
 mas "Logic Pro", id: 634148309
 mas "MainStage", id: 634159523
-mas "Messenger", id: 1480068668
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft PowerPoint", id: 462062816
-mas "Microsoft Word", id: 462054704
 mas "Notability", id: 360593530
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Reeder", id: 1449412482
-mas "Sunset Code", id: 1480145554
 mas "Telegram", id: 747648890
 mas "Twitter", id: 1482454543
+mas "uBlacklist for Safari", id: 1547912640
