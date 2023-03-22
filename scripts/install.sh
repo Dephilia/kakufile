@@ -42,6 +42,10 @@ nvim_tar="${XDG_CONFIG_HOME}/nvim"
 zshenv_res="${ZDOTDIR}/.zshenv"
 zshenv_tar="${HOME}/.zshenv"
 
+# helix
+hx_res="${KAKU_ROOT}/helix"
+hx_tar="${XDG_CONFIG_HOME}/helix"
+
 function klink() {
   if [ -L "$2" ]; then
     echo "[WARN] File $2 linked, ignore."
@@ -71,6 +75,7 @@ _install() {
   klink "$vimrc_res"     "$vimrc_tar"
   klink "$nvim_res"      "$nvim_tar"
   klink "$zshenv_res"    "$zshenv_tar"
+  klink "$hx_res"        "$hx_tar"
 
   if [ ! -d "${ZDOTDIR:-$HOME}"/.zprezto ]; then
     klink "${KAKU_ROOT}/thirdparty/prezto" "${ZDOTDIR:-$HOME}/.zprezto"
