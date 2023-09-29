@@ -1,10 +1,8 @@
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/command-not-found"
-tap "homebrew/core"
 tap "homebrew/services"
 tap "yt-dlp/taps"
 # General-purpose data compression with high compression ratio
@@ -15,14 +13,16 @@ brew "readline"
 brew "aria2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Cross-platform make
 brew "cmake"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
+brew "gh"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -31,12 +31,16 @@ brew "git-delta"
 brew "git-lfs"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Post-modern modal text editor
+brew "helix"
 # Improved top (interactive process viewer)
 brew "htop"
 # Configurable static site generator
 brew "hugo"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Fast, Dynamic Programming Language
+brew "julia"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Mac App Store command-line interface
@@ -49,6 +53,8 @@ brew "neovim"
 brew "ninja"
 # Platform built on V8 to build network applications
 brew "node"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Python dependency management tool
 brew "pipenv"
 # Python version management
@@ -57,6 +63,8 @@ brew "pyenv"
 brew "pyenv-virtualenv"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
@@ -73,6 +81,8 @@ brew "vim"
 brew "wget"
 # JavaScript package manager
 brew "yarn"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
 # UNIX shell (command interpreter)
 brew "zsh"
 # A youtube-dl fork with additional features and fixes
@@ -81,15 +91,13 @@ brew "yt-dlp/taps/yt-dlp"
 cask "alacritty"
 # Application uninstaller
 cask "appcleaner"
-# Two-factor authentication software
-cask "authy"
 # Disk space visualizer
 cask "daisydisk"
 # Utilities designed to make common development tasks easier
 cask "devtoys"
 # Voice and text chat software
 cask "discord"
-# Draw.io is free online diagram software
+# Online diagram software
 cask "drawio"
 # Sans-serif, slab-serif, monospace and quasi‑proportional typeface family
 cask "font-iosevka-aile"
@@ -105,14 +113,14 @@ cask "foobar2000"
 cask "hiddenbar"
 # Free and open-source media player
 cask "iina"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
 # File archiver
 cask "keka"
 # End-to-end encryption software
 cask "keybase"
 # Open-source keystroke visualizer
 cask "keycastr"
+# Sandbox construction video game
+cask "minecraft"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Bridges Proton Mail to email clients supporting IMAP and SMTP protocols
@@ -121,6 +129,8 @@ cask "protonmail-bridge"
 cask "skim"
 # Open-source code editor
 cask "visual-studio-code"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "wezterm"
 # Lossless audio decoder
 cask "xld"
 mas "Affinity Photo", id: 824183456
@@ -136,3 +146,9 @@ mas "Pages", id: 409201541
 mas "Telegram", id: 747648890
 mas "Twitter", id: 1482454543
 mas "uBlacklist for Safari", id: 1547912640
+vscode "alexanderbast.vscode-snazzy"
+vscode "christian-kohler.path-intellisense"
+vscode "eamodio.gitlens"
+vscode "julialang.language-julia"
+vscode "PKief.material-icon-theme"
+vscode "vscodevim.vim"
