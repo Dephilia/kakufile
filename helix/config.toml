@@ -1,9 +1,10 @@
-theme = "catppuccin_mocha"
+theme = "kanagawa"
 
 [editor]
 line-number = "relative"
 cursorline = true
 color-modes = true
+bufferline = "multiple"
 
 [editor.cursor-shape]
 insert = "bar"
