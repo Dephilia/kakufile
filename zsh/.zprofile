@@ -17,6 +17,7 @@ export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
 export GOPATH="${XDG_DATA_HOME}/go"
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+export RYE_HOME="${XDG_DATA_HOME}/rye"
 export GPG_TTY=$(tty)
 
 #
@@ -73,6 +74,7 @@ fpath=(
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  ${RYE_HOME}/shims
   ${GOPATH}/bin
   ${CARGO_HOME}/bin
   ${HOME}/.local/bin
