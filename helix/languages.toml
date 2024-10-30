@@ -1,9 +1,59 @@
 [[language]]
 name = "python"
-language-servers = [ "pyright", "ruff" ]
+language-id = "python"
+roots = ["pyproject.toml", "setup.py", "poetry.lock", ".git", ".jj", ".venv/"]
+language-servers = ["ruff", "pyright"]
+auto-format = true
+formatter = { command = "ruff", args = ["format", "-"] }
+file-types = ["py", "ipynb"]
+comment-token = "#"
+shebangs = ["python"]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
 
 [language-server.ruff]
 command = "ruff-lsp"
+args = ["server"]
+environment = { "RUFF_TRACE" = "messages" }
 
 [language-server.ruff.config.settings]
-args = ["--ignore", "E501"]
+lineLength = 80
+logLevel = "debug"
+
+[language-server.ruff.config.settings.lint]
+select = [
+  "E",
+  "F",
+  "W",
+  "B",
+  "I",
+  "RUF",
+  "N",
+  "LOG",
+  "ERA",
+  "W",
+  "D",
+  "UP",
+  "ANN",
+  "ASYNC",
+  "S",
+  "RET",
+  "TCH",
+  "ARG",
+  "PTH",
+  "DOC",
+]
+preview = true
+
+[language-server.ruff.config.settings.format]
+preview = true
+quote-style = "double"
+docstring-code-format = true
+indent-style = "space"
+
+[language-server.taplo.config]
+# Workaround for nonsense of being nonfunctional outside git directories
+# (https://github.com/helix-editor/helix/issues/3897#issuecomment-2361674437)
+root_dir = [".git", "*.toml"]
