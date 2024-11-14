@@ -76,9 +76,9 @@ style = "Regular"
 x = 1
 y = 4
 
-[terminal.shell]
-args = ["-l", "-c", "tmux new-session -A -s main"]
-program = "/bin/zsh"
+# [terminal.shell]
+# args = ["-l", "-c", "tmux new-session -A -s main"]
+# program = "/bin/zsh"
 
 [window]
 decorations = "buttonless"
