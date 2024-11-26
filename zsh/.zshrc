@@ -22,7 +22,22 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
     --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
     --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
 
-# Rye
-if command -v rye &> /dev/null; then
-  eval "$(rye self completion -s zsh)"
+# Only enable fzf history search if fzf is installed
+if command -v fzf > /dev/null 2>&1; then
+  fzf-history-widget() {
+    local selected_command
+    selected_command=$(history | fzf --height 40% --reverse --preview 'echo {} | cut -c 8-' | cut -c 8-)
+    if [[ -n $selected_command ]]; then
+      eval "$selected_command"
+      zle reset-prompt
+    fi
+  }
+
+  zle -N fzf-history-widget
+  bindkey '^R' fzf-history-widget
+fi
+
+# uv completion
+if command -v uv &> /dev/null; then
+  eval "$(uv generate-shell-completion zsh)"
 fi
