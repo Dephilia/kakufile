@@ -14,37 +14,11 @@ command = "pyright-langserver"
 args = ["--stdio"]
 
 [language-server.ruff]
-command = "ruff-lsp"
+command = "ruff"
 args = ["server"]
 environment = { "RUFF_TRACE" = "messages" }
 
-[language-server.ruff.config.settings]
-lineLength = 80
-logLevel = "debug"
-
 [language-server.ruff.config.settings.lint]
-select = [
-  "E",
-  "F",
-  "W",
-  "B",
-  "I",
-  "RUF",
-  "N",
-  "LOG",
-  "ERA",
-  "W",
-  "D",
-  "UP",
-  "ANN",
-  "ASYNC",
-  "S",
-  "RET",
-  "TCH",
-  "ARG",
-  "PTH",
-  "DOC",
-]
 preview = true
 
 [language-server.ruff.config.settings.format]

@@ -26,9 +26,13 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 if command -v fzf > /dev/null 2>&1; then
   fzf-history-widget() {
     local selected_command
-    selected_command=$(history | fzf --height 40% --reverse --preview 'echo {} | cut -c 8-' | cut -c 8-)
+    selected_command=$(history \
+      | awk '{first_col_length = index($0, $2) - 1; print substr($0, first_col_length + 1)}' \
+      | fzf --height 40% --reverse --preview 'echo {}' \
+      | tr -d '\n')
     if [[ -n $selected_command ]]; then
-      eval "$selected_command"
+      BUFFER="$selected_command"
+      CURSOR=${#BUFFER}
       zle reset-prompt
     fi
   }
@@ -40,4 +44,9 @@ fi
 # uv completion
 if command -v uv &> /dev/null; then
   eval "$(uv generate-shell-completion zsh)"
+fi
+
+# zoxide
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
 fi

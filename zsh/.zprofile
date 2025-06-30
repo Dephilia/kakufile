@@ -32,9 +32,19 @@ fi
 # Editors
 #
 
-export EDITOR='nvim'
-export VISUAL='nvim'
-export PAGER='less'
+if command -v hx &> /dev/null; then
+  export EDITOR='hx'
+  export VISUAL='hx'
+else
+  export EDITOR='nano'
+  export VISUAL='nano'
+fi
+
+if command -v bat &> /dev/null; then
+  export PAGER='bat'
+else
+  export PAGER='less'
+fi
 
 #
 # Language

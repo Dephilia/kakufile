@@ -1,7 +1,6 @@
-" (c) 2022 Dephilia
+" (c) 2025 Dephilia
 " MIT license (See LICENSE for details)
 if !has('vim9script')
-   " legacy script commands go here
    echo "vim9script not supported, skipped."
    finish
 endif
@@ -24,29 +23,22 @@ inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
 # tabline mapping
-nmap <silent> <C-h> :bprevious<CR>
-nmap <silent> <C-l> :bnext<CR>
-nmap <silent> <leader><C-h> :tabprevious<CR>
-nmap <silent> <leader><C-l> :tabnext<CR>
+nnoremap <silent> <C-h> :bprevious<CR>
+nnoremap <silent> <C-l> :bnext<CR>
+nnoremap <silent> <leader><C-h> :tabprevious<CR>
+nnoremap <silent> <leader><C-l> :tabnext<CR>
 
 # Buffer mapping
-# 1. List buffer
 nnoremap <silent> bl :ls<CR>
-# 2. New empty buffer
 nnoremap <silent> bo :enew<CR>
-# 3. Next buffer
 nnoremap <silent> bn :bnext<CR>
-# 4. Previous buffer
 nnoremap <silent> bp :bprevious<CR>
-# 5. Close buffer
 nnoremap <silent> bd :bdelete<CR>
 
-#" Auto add bracket
-var AutoBracketEnable = 0
-
-def g:ToggleBracketMode()
+# Auto add bracket
+def ToggleBracketMode()
     if AutoBracketEnable
-        iunmap {
+        iunmap { 
         iunmap {<Enter>
         iunmap (
         iunmap (<Enter>
@@ -55,127 +47,64 @@ def g:ToggleBracketMode()
         AutoBracketEnable = 0
         echo "Disable Auto Bracket"
     else
-        inoremap { {}<Left>
-        inoremap {<Enter> {}<Left><CR><ESC><S-o>
-        inoremap ( ()<ESC>i
-        inoremap (<Enter> ()<Left><CR><ESC><S-o>
-        inoremap ' ''<LEFT>
-        inoremap " ""<LEFT>
+        imap { {}<Left>
+        imap {<Enter> {}<Left><CR><ESC><S-o>
+        imap ( ()<ESC>i
+        imap (<Enter> ()<Left><CR><ESC><S-o>
+        imap ' ''<LEFT>
+        imap " ""<LEFT>
         AutoBracketEnable = 1
         echo "Enable Auto Bracket"
     endif
 enddef
-nmap <silent> <Leader>B :call ToggleBracketMode() <CR>
-imap <silent> <Leader>B :call ToggleBracketMode() <CR>
 
-map <silent> <Leader><C-r> :so $MYVIMRC <CR>
+nnoremap <silent> <Leader>B :call ToggleBracketMode()<CR>
+inoremap <silent> <Leader>B <ESC>:call ToggleBracketMode()<CR>
+
+nnoremap <silent> <Leader><C-r> :so $MYVIMRC<CR>
 
 # Clear Additional Space
 command! -nargs=0 ClearSpaces :%s/\s\+$//e
 
-# copy to system clipboard
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+# Copy to system clipboard
+nnoremap <Leader>y "*y
+nnoremap <Leader>p "*p
+nnoremap <Leader>Y "+y
+nnoremap <Leader>P "+p
 
-# Copymode -> Toggle hidden char to be visible
-def g:CopyModeEnable()
-  set norelativenumber
-  set nonumber
-  set nolist
-enddef
-command! -nargs=0 CopyModeEnable :call CopyModeEnable()
+# Copymode Toggle
+command! CopyModeEnable :set norelativenumber nonumber nolist
+command! CopyModeDisable :set relativenumber number list listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 
-def g:CopyModeDisable()
-  set relativenumber
-  set number
-  set list listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
-enddef
-command! -nargs=0 CopyModeDisable :call CopyModeDisable()
+# Hex Mode
+command! HexModeEnable :if executable('xxd') | set ft=xxd binary noeol | %!xxd | else | echo "xxd not installed." | endif
+command! HexModeDisable :if executable('xxd') | %!xxd -r | set ft& eol | else | echo "xxd not installed." | endif
 
-# Hex Modified
-def g:HexModeEnable()
-  if !executable('xxd')
-    echo "xxd not installed."
-    return
-  endif
-  set ft=xxd
-  set binary
-  set noeol
-  execute('%!xxd')
-enddef
-command! -nargs=0 HexModeEnable :call HexModeEnable()
-
-def g:HexModeDisable()
-  if !executable('xxd')
-    echo "xxd not installed."
-    return
-  endif
-  execute('%!xxd -r')
-  set ft&
-  set eol
-enddef
-command! -nargs=0 HexModeDisable :call HexModeDisable()
-
-# Relativenumber hook
+# Relative number hook
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != 'i' | set rnu | endif
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave * if &nu | set nornu | endif
 augroup END
 
-#++++++++++++++++++#
-#      MAIN        #
-#++++++++++++++++++#
-
-# Got the theme from https://github.com/connorholyday/vim-snazzy
+# Set color scheme
 if empty(glob('~/.vim/colors/snazzy.vim'))
   silent execute '!curl -fLo ~/.vim/colors/snazzy.vim --create-dirs https://raw.githubusercontent.com/connorholyday/vim-snazzy/master/colors/snazzy.vim'
 endif
 
-g:SnazzyTransparent = 1
-
-# Default colorsheme
-# Description: Use snazzy default
-#==============================
 colorscheme snazzy
-
-# Syntax Enable
-# Description: Enable syntax default
-#==============================
 syntax enable
 
 # Vim settings
-# Description: The vim's settings
-#==============================
-set background=dark # background
-set encoding=UTF-8  # coding
-set showtabline=2   # Tabline
-set laststatus=2    # Statusbar
-set noshowmode      # hide the -- INSERT --
-set cmdheight=1     # Higher cmd line (Set to 1 because notify.nvim)
-set autoindent      # auto indent next line
-set smartindent     # smart indent
-set incsearch       # inc search
-set ignorecase      # ignore case
-set hlsearch        # search high light
-set relativenumber  # show relative line number
-set number          # show line number
-set cursorline      # highlight current line
-set hidden          # Hide edited buffer
-set updatetime=300  # Short update time
-set shortmess+=c    # Supress ins-completion msg
-set ttimeoutlen=5   # Limit timeout for esc
-set tags=./tags,./TAGS,tags;~,TAGS;~ # Tags location
+set background=dark encoding=UTF-8 showtabline=2 laststatus=2 noshowmode
+set cmdheight=1 autoindent smartindent incsearch ignorecase hlsearch relativenumber
+set number cursorline hidden updatetime=300 shortmess+=c ttimeoutlen=5
+set tags=./tags,./TAGS,tags;~,TAGS;~
 
-# Tab
-set noexpandtab    # Use tab
-set tabstop=8      # Tab width. Default 8
-set shiftwidth=4   # Input tab width.
-set softtabstop=-1 # Follow shiftwidth setting
+# Tab settings
+set noexpandtab tabstop=8 shiftwidth=4 softtabstop=-1
 
-# Show hide chars
+# Show hidden chars
 set list listchars+=tab:→\ 
 set list listchars+=space:·
 set list listchars+=nbsp:␣
@@ -184,129 +113,16 @@ set list listchars+=eol:¶
 set list listchars+=precedes:«
 set list listchars+=extends:»
 
-# Enable backspace avaliable in Insert mode
+# Backspace handling
 set backspace=indent,eol,start
 
 # Folding
-set foldenable
-set foldlevel=99
-set fillchars+=fold:\ ,foldopen:,foldsep:\ ,foldclose:
+set foldenable foldlevel=99 fillchars+=fold:\ ,foldopen:,foldsep:\ ,foldclose:
 hi CursorLine term=bold cterm=bold
 
-#++++++++++++++++++#
-#      cscope      #
-#++++++++++++++++++#
-# Remember to run `cscope -Rbqk` First
-set cscopetag
-set csto=0
-
-if filereadable("cscope.out")
-  cs add cscope.out
-elseif $CSCOPE_DB != ""
-  cs add $CSCOPE_DB
-endif
-set cscopeverbose
-
-nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap zg :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap zc :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap zt :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap ze :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap zf :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap zi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap zd :cs find d <C-R>=expand("<cword>")<CR><CR>
-
-#++++++++++++++++++#
-#      tabline     #
-#++++++++++++++++++#
-set tabline=%!SimpleTabLine()
-def g:SimpleTabLine(): string
-  var s = ''
-  var n = ''
-  var m = 0
-
-  # loop through each tab page
-  for i in range(tabpagenr('$'))
-    if i + 1 == tabpagenr()
-      s ..= '%#TabLineSel#'
-    else
-      s ..= '%#TabLine#'
-    endif
-    if i + 1 == tabpagenr()
-      s ..= '%#TabLineSel#' # WildMenu
-    else
-      s ..= '%#Title#'
-    endif
-    # set the tab page number (for mouse clicks)
-    s ..= '%' .. (i + 1) .. 'T '
-    # set page number string
-    s ..= i + 1 .. ''
-    # get buffer names and statuses
-    n = ''  # temp str for buf names
-    m = 0   # &modified counter
-    var buflist = tabpagebuflist(i + 1)
-
-    # loop through each buffer in a tab
-    for b in buflist
-      if getbufvar(b, "&buftype") == 'help'
-        # n ..= '[H]' .. fnamemodify(bufname(b), ':t:s/.txt$//')
-      elseif getbufvar(b, "&buftype") == 'quickfix'
-        # n ..= '[Q]'
-      elseif getbufvar(b, "&modifiable")
-        n ..= fnamemodify(bufname(b), ':t') .. ', ' # pathshorten(bufname(b))
-      endif
-      if getbufvar(b, "&modified")
-        m += 1
-      endif
-    endfor
-
-    # n ..= fnamemodify(bufname(buflist[tabpagewinnr(i + 1) - 1]), ':t')
-    n = substitute(n, ', $', '', '')
-    # add modified label
-    if m > 0
-      s ..= '+'
-      # s ..= '[' .. m .. '+]'
-    endif
-    if i + 1 == tabpagenr()
-      s ..= ' %#TabLineSel#'
-    else
-      s ..= ' %#TabLine#'
-    endif
-    # add buffer names
-    if n == ''
-      s ..= '[New]'
-    else
-      s ..= n
-    endif
-    # switch to no underlining and add final space
-    s ..= ' '
-  endfor
-
-  s ..= '%#TabLineFill#%T'
-  return s
-enddef
-
-#++++++++++++++++++#
-#    statusline    #
-#++++++++++++++++++#
-set laststatus=2
-set statusline=%4*%<\ %1*[%F]
-set statusline+=%4*\ %5*[%{&encoding},
-set statusline+=%{&fileformat}]%m
-set statusline+=%4*%=\ %6*%y%4*\ %3*%l%4*,\ %3*%c%4*\ \<\ %2*%P%4*\ \>
-highlight User1 ctermfg=red
-highlight User2 term=underline cterm=underline ctermfg=green
-highlight User3 term=underline cterm=underline ctermfg=yellow
-highlight User4 term=underline cterm=underline ctermfg=white
-highlight User5 ctermfg=cyan
-highlight User6 ctermfg=white
-
-#++++++++++++++++++#
-#       tmux       #
-#++++++++++++++++++#
+# Tmux support
 if exists("$TMUX")
-  set t_Co=256
-  set notermguicolors
+  set t_Co=256 notermguicolors
 else
   set termguicolors
 endif
